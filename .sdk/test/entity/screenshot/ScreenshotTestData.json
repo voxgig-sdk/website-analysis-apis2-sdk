@@ -1,0 +1,33 @@
+{
+  "existing": {
+    "screenshot": {
+      "SCREENSHOT00": {
+        "screenshot": "s1e",
+        "success": false,
+        "url": "s20",
+        "id": "SCREENSHOT00"
+      },
+      "SCREENSHOT01": {
+        "screenshot": "s3c",
+        "success": false,
+        "url": "s3e",
+        "id": "SCREENSHOT01"
+      },
+      "SCREENSHOT02": {
+        "screenshot": "s5a",
+        "success": false,
+        "url": "s5c",
+        "id": "SCREENSHOT02"
+      }
+    }
+  },
+  "new": {
+    "screenshot": {
+      "screenshot_ref01": {
+        "screenshot": "s78",
+        "success": false,
+        "url": "s7a"
+      }
+    }
+  }
+}

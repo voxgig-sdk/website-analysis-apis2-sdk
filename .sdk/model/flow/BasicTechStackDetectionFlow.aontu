@@ -1,0 +1,22 @@
+# BasicTechStackDetectionFlow
+
+main: kit: flow: BasicTechStackDetectionFlow:
+{
+  entity: "tech_stack_detection",
+  kind: "basic",
+  name: "BasicTechStackDetectionFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "tech_stack_detection_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTechStackDetectionFlow"
+}

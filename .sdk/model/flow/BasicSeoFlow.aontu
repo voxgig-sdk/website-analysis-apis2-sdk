@@ -1,0 +1,22 @@
+# BasicSeoFlow
+
+main: kit: flow: BasicSeoFlow:
+{
+  entity: "seo",
+  kind: "basic",
+  name: "BasicSeoFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "seo_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSeoFlow"
+}

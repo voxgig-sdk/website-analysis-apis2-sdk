@@ -1,0 +1,89 @@
+# Entity: seo
+
+main: kit: entity: seo: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "description"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "heading"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "keyword"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "recommendation"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "score"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "success"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "title"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "seo"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "https://example.com"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/seo"
+          parts: [
+            "seo"
+          ]
+          select: {
+            exist: [
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

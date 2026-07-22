@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "dead_link_checker": {
+      "DEAD_LINK_CHECKER00": {
+        "status_code": "s14",
+        "url": "s15"
+      },
+      "DEAD_LINK_CHECKER01": {
+        "status_code": "s28",
+        "url": "s29"
+      },
+      "DEAD_LINK_CHECKER02": {
+        "status_code": "s3c",
+        "url": "s3d"
+      }
+    }
+  },
+  "new": {
+    "dead_link_checker": {
+      "dead_link_checker_ref01": {
+        "status_code": "s50",
+        "url": "s51"
+      }
+    }
+  }
+}

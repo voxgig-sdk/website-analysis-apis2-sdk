@@ -1,0 +1,89 @@
+# Entity: ssl
+
+main: kit: entity: ssl: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "days_remaining"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "issuer"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "subject"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "success"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "url"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "valid"
+      req: false
+      type: "`$BOOLEAN`"
+    }
+    {
+      name: "valid_from"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "valid_to"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "ssl"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "https://example.com"
+                kind: "query"
+                name: "url"
+                orig: "url"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/ssl"
+          parts: [
+            "ssl"
+          ]
+          select: {
+            exist: [
+              "url"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

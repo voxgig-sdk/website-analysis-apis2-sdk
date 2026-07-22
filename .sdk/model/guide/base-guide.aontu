@@ -1,0 +1,44 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 6
+  metrics: count: path: 6
+  metrics: count: method: 6
+
+  entity: dead_link_checker: {
+    path: "/deadlinks": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: performance: {
+    path: "/performance": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: screenshot: {
+    path: "/screenshot": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: seo: {
+    path: "/seo": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: ssl: {
+    path: "/ssl": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: tech_stack_detection: {
+    path: "/techstack": {
+      op: list: method: *GET
+    }
+  }
+
+}

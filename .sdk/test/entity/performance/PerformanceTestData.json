@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "performance": {
+      "PERFORMANCE00": {
+        "load_time": 60,
+        "page_size": "s3d",
+        "performance_score": "s3e",
+        "request": "s3f",
+        "success": true,
+        "url": "s41",
+        "id": "PERFORMANCE00"
+      },
+      "PERFORMANCE01": {
+        "load_time": 120,
+        "page_size": "s79",
+        "performance_score": "s7a",
+        "request": "s7b",
+        "success": true,
+        "url": "s7d",
+        "id": "PERFORMANCE01"
+      },
+      "PERFORMANCE02": {
+        "load_time": 180,
+        "page_size": "sb5",
+        "performance_score": "sb6",
+        "request": "sb7",
+        "success": true,
+        "url": "sb9",
+        "id": "PERFORMANCE02"
+      }
+    }
+  },
+  "new": {
+    "performance": {
+      "performance_ref01": {
+        "load_time": 240,
+        "page_size": "sf1",
+        "performance_score": "sf2",
+        "request": "sf3",
+        "success": true,
+        "url": "sf5"
+      }
+    }
+  }
+}

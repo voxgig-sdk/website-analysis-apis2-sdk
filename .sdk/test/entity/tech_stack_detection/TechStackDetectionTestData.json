@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "tech_stack_detection": {
+      "TECH_STACK_DETECTION00": {
+        "category": "s1e",
+        "name": "s1f",
+        "version": "s20"
+      },
+      "TECH_STACK_DETECTION01": {
+        "category": "s3c",
+        "name": "s3d",
+        "version": "s3e"
+      },
+      "TECH_STACK_DETECTION02": {
+        "category": "s5a",
+        "name": "s5b",
+        "version": "s5c"
+      }
+    }
+  },
+  "new": {
+    "tech_stack_detection": {
+      "tech_stack_detection_ref01": {
+        "category": "s78",
+        "name": "s79",
+        "version": "s7a"
+      }
+    }
+  }
+}

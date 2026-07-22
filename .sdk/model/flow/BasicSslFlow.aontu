@@ -1,0 +1,28 @@
+# BasicSslFlow
+
+main: kit: flow: BasicSslFlow:
+{
+  entity: "ssl",
+  kind: "basic",
+  name: "BasicSslFlow",
+  step: [
+    {
+      input: {
+        ref: "ssl_ref01",
+        srcdatavar: "ssl_ref01_data",
+        suffix: "_dt0"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ssl_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSslFlow"
+}

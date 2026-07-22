@@ -1,0 +1,22 @@
+# BasicDeadLinkCheckerFlow
+
+main: kit: flow: BasicDeadLinkCheckerFlow:
+{
+  entity: "dead_link_checker",
+  kind: "basic",
+  name: "BasicDeadLinkCheckerFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dead_link_checker_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeadLinkCheckerFlow"
+}
