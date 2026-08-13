@@ -38,18 +38,27 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = WebsiteAnalysisApis2SDK.test()
-const deadlinkcheckers = await client.DeadLinkChecker().list()
-// deadlinkcheckers is an array of bare DeadLinkChecker records populated with mock data
-console.log(deadlinkcheckers)
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = WebsiteAnalysisApis2SDK.test({
+  entity: {
+    performance: {
+      test01: { id: 'test01' },
+    },
+  },
+})
+const performance = await client.Performance().load()
+// performance is the Performance entity, populated with mock data
+// — call performance.data() for the record itself
+console.log(performance)
 ```
 
 ### Python
 
 ```python
 client = WebsiteAnalysisApis2SDK.test()
-deadlinkcheckers = client.DeadLinkChecker().list()
-print(deadlinkcheckers)
+performance = client.Performance().load()
+print(performance)
 ```
 
 ### PHP
@@ -57,16 +66,16 @@ print(deadlinkcheckers)
 ```php
 // Seed fixture data so offline calls resolve without a live server.
 $client = WebsiteAnalysisApis2SDK::test([
-    "entity" => ["deadlinkchecker" => ["test01" => []]],
+    "entity" => ["performance" => ["test01" => []]],
 ]);
-$deadlinkcheckers = $client->DeadLinkChecker()->list();
+$performance = $client->Performance()->load();
 ```
 
 ### Golang
 
 ```go
 client := sdk.Test()
-result, err := client.DeadLinkChecker(nil).List(
+result, err := client.Performance(nil).Load(
     nil, nil,
 )
 ```
@@ -76,16 +85,16 @@ result, err := client.DeadLinkChecker(nil).List(
 ```ruby
 # Seed fixture data so offline calls resolve without a live server.
 client = WebsiteAnalysisApis2SDK.test({
-  "entity" => { "deadlinkchecker" => { "test01" => {} } },
+  "entity" => { "performance" => { "test01" => {} } },
 })
-deadlinkcheckers = client.DeadLinkChecker.list()
+performance = client.Performance.load()
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local results, err = client:DeadLinkChecker():list()
+local result, err = client:Performance():load()
 ```
 
 ## Packages
@@ -110,7 +119,7 @@ import { WebsiteAnalysisApis2SDK } from '@voxgig-sdk/website-analysis-apis2'
 
 const client = new WebsiteAnalysisApis2SDK()
 
-// List all deadlinkcheckers (returns DeadLinkChecker[])
+// List all deadlinkcheckers (returns DeadLinkCheckerEntity[] — .data() for the record)
 const deadlinkcheckers = await client.DeadLinkChecker().list()
 for (const deadlinkchecker of deadlinkcheckers) {
   console.log(deadlinkchecker)
@@ -348,6 +357,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://51-68-119-197.sslip.io/api](https://51-68-119-197.sslip.io/api)
 

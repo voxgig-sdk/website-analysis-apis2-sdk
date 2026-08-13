@@ -6,29 +6,29 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface DeadLinkChecker {
-  status_code?: number
+  statusCode?: number
   url?: string
 }
 
 export interface DeadLinkCheckerListMatch {
-  status_code?: number
+  statusCode?: number
   url?: string
 }
 
 export interface Performance {
-  load_time?: number
-  page_size?: number
-  performance_score?: number
-  request?: number
+  loadTime?: number
+  pageSize?: number
+  performanceScore?: number
+  requests?: number
   success?: boolean
   url?: string
 }
 
 export interface PerformanceLoadMatch {
-  load_time?: number
-  page_size?: number
-  performance_score?: number
-  request?: number
+  loadTime?: number
+  pageSize?: number
+  performanceScore?: number
+  requests?: number
   success?: boolean
   url?: string
 }
@@ -47,9 +47,9 @@ export interface ScreenshotLoadMatch {
 
 export interface Seo {
   description?: string
-  heading?: Record<string, any>
-  keyword?: any[]
-  recommendation?: any[]
+  headings?: Record<string, any>
+  keywords?: any[]
+  recommendations?: any[]
   score?: number
   success?: boolean
   title?: string
@@ -58,9 +58,9 @@ export interface Seo {
 
 export interface SeoListMatch {
   description?: string
-  heading?: Record<string, any>
-  keyword?: any[]
-  recommendation?: any[]
+  headings?: Record<string, any>
+  keywords?: any[]
+  recommendations?: any[]
   score?: number
   success?: boolean
   title?: string
@@ -68,25 +68,25 @@ export interface SeoListMatch {
 }
 
 export interface Ssl {
-  days_remaining?: number
+  daysRemaining?: number
   issuer?: string
   subject?: string
   success?: boolean
   url?: string
   valid?: boolean
-  valid_from?: string
-  valid_to?: string
+  validFrom?: string
+  validTo?: string
 }
 
 export interface SslLoadMatch {
-  days_remaining?: number
+  daysRemaining?: number
   issuer?: string
   subject?: string
   success?: boolean
   url?: string
   valid?: boolean
-  valid_from?: string
-  valid_to?: string
+  validFrom?: string
+  validTo?: string
 }
 
 export interface TechStackDetection {

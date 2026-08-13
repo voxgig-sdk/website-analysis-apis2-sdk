@@ -176,7 +176,7 @@ const dead_link_checker = client.DeadLinkChecker()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status_code` | `number` | No |  |
+| `statusCode` | `number` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -227,10 +227,10 @@ const performance = client.Performance()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `number` | No |  |
-| `page_size` | `number` | No |  |
-| `performance_score` | `number` | No |  |
-| `request` | `number` | No |  |
+| `loadTime` | `number` | No |  |
+| `pageSize` | `number` | No |  |
+| `performanceScore` | `number` | No |  |
+| `requests` | `number` | No |  |
 | `success` | `boolean` | No |  |
 | `url` | `string` | No |  |
 
@@ -335,9 +335,9 @@ const seo = client.Seo()
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `heading` | `Record<string, any>` | No |  |
-| `keyword` | `any[]` | No |  |
-| `recommendation` | `any[]` | No |  |
+| `headings` | `Record<string, any>` | No |  |
+| `keywords` | `any[]` | No |  |
+| `recommendations` | `any[]` | No |  |
 | `score` | `number` | No |  |
 | `success` | `boolean` | No |  |
 | `title` | `string` | No |  |
@@ -391,14 +391,14 @@ const ssl = client.Ssl()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `number` | No |  |
+| `daysRemaining` | `number` | No |  |
 | `issuer` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `success` | `boolean` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `boolean` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

@@ -6,7 +6,7 @@ main: kit: entity: ssl: {
 
   fields: [
     {
-      name: "days_remaining"
+      name: "daysRemaining"
       req: false
       type: "`$INTEGER`"
     }
@@ -36,12 +36,12 @@ main: kit: entity: ssl: {
       type: "`$BOOLEAN`"
     }
     {
-      name: "valid_from"
+      name: "validFrom"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "valid_to"
+      name: "validTo"
       req: false
       type: "`$STRING`"
     }

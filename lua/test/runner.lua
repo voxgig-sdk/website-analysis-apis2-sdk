@@ -35,8 +35,8 @@ end
 
 
 function runner.env_override(m)
-  local live = runner.getenv("WEBSITEANALYSISAPIS2_TEST_LIVE")
-  local override = runner.getenv("WEBSITEANALYSISAPIS2_TEST_OVERRIDE")
+  local live = runner.getenv("WEBSITE_ANALYSIS_APIS2_TEST_LIVE")
+  local override = runner.getenv("WEBSITE_ANALYSIS_APIS2_TEST_OVERRIDE")
 
   if live == "TRUE" or override == "TRUE" then
     for key, _ in pairs(m) do
@@ -56,9 +56,9 @@ function runner.env_override(m)
     end
   end
 
-  local explain = runner.getenv("WEBSITEANALYSISAPIS2_TEST_EXPLAIN")
+  local explain = runner.getenv("WEBSITE_ANALYSIS_APIS2_TEST_EXPLAIN")
   if explain ~= nil and explain ~= "" then
-    m["WEBSITEANALYSISAPIS2_TEST_EXPLAIN"] = explain
+    m["WEBSITE_ANALYSIS_APIS2_TEST_EXPLAIN"] = explain
   end
 
   return m

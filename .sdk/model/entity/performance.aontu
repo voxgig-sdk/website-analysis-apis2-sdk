@@ -6,22 +6,22 @@ main: kit: entity: performance: {
 
   fields: [
     {
-      name: "load_time"
+      name: "loadTime"
       req: false
       type: "`$NUMBER`"
     }
     {
-      name: "page_size"
+      name: "pageSize"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "performance_score"
+      name: "performanceScore"
       req: false
       type: "`$INTEGER`"
     }
     {
-      name: "request"
+      name: "requests"
       req: false
       type: "`$INTEGER`"
     }

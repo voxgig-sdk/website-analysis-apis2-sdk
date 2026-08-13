@@ -37,7 +37,7 @@ begin
   # list returns an Array of DeadLinkChecker records — iterate directly.
   deadlinkcheckers = client.DeadLinkChecker.list
   deadlinkcheckers.each do |item|
-    puts "#{item["status_code"]}"
+    puts "#{item["statusCode"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -51,9 +51,9 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  deadlinkcheckers = client.DeadLinkChecker.list()
+  performance = client.Performance.load()
 rescue => err
-  warn "list failed: #{err}"
+  warn "load failed: #{err}"
 end
 ```
 
@@ -119,9 +119,10 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = WebsiteAnalysisApis2SDK.test
 
-# Entity ops return the bare mock record (raises on error).
-deadlinkchecker = client.DeadLinkChecker.list()
-puts deadlinkchecker
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+performance = client.Performance.load()
+puts performance
 ```
 
 ### Use a custom fetch function
@@ -242,7 +243,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `status_code` |  |
+| `statusCode` |  |
 | `url` |  |
 
 Operations: List.
@@ -253,10 +254,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `performance_score` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `performanceScore` |  |
+| `requests` |  |
 | `success` |  |
 | `url` |  |
 
@@ -281,9 +282,9 @@ API path: `/screenshot`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `heading` |  |
-| `keyword` |  |
-| `recommendation` |  |
+| `headings` |  |
+| `keywords` |  |
+| `recommendations` |  |
 | `score` |  |
 | `success` |  |
 | `title` |  |
@@ -297,14 +298,14 @@ API path: `/seo`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `subject` |  |
 | `success` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -341,7 +342,7 @@ Create an instance: `dead_link_checker = client.DeadLinkChecker`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status_code` | `Integer` |  |
+| `statusCode` | `Integer` |  |
 | `url` | `String` |  |
 
 #### Example: List
@@ -366,17 +367,17 @@ Create an instance: `performance = client.Performance`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `Float` |  |
-| `page_size` | `Integer` |  |
-| `performance_score` | `Integer` |  |
-| `request` | `Integer` |  |
+| `loadTime` | `Float` |  |
+| `pageSize` | `Integer` |  |
+| `performanceScore` | `Integer` |  |
+| `requests` | `Integer` |  |
 | `success` | `Boolean` |  |
 | `url` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Performance record (raises on error).
+# load returns the ENTITY — call data_get for the Performance record (raises on error).
 performance = client.Performance.load()
 ```
 
@@ -402,7 +403,7 @@ Create an instance: `screenshot = client.Screenshot`
 #### Example: Load
 
 ```ruby
-# load returns the bare Screenshot record (raises on error).
+# load returns the ENTITY — call data_get for the Screenshot record (raises on error).
 screenshot = client.Screenshot.load()
 ```
 
@@ -422,9 +423,9 @@ Create an instance: `seo = client.Seo`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `String` |  |
-| `heading` | `Hash` |  |
-| `keyword` | `Array` |  |
-| `recommendation` | `Array` |  |
+| `headings` | `Hash` |  |
+| `keywords` | `Array` |  |
+| `recommendations` | `Array` |  |
 | `score` | `Integer` |  |
 | `success` | `Boolean` |  |
 | `title` | `String` |  |
@@ -452,19 +453,19 @@ Create an instance: `ssl = client.Ssl`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `Integer` |  |
+| `daysRemaining` | `Integer` |  |
 | `issuer` | `String` |  |
 | `subject` | `String` |  |
 | `success` | `Boolean` |  |
 | `url` | `String` |  |
 | `valid` | `Boolean` |  |
-| `valid_from` | `String` |  |
-| `valid_to` | `String` |  |
+| `validFrom` | `String` |  |
+| `validTo` | `String` |  |
 
 #### Example: Load
 
 ```ruby
-# load returns the bare Ssl record (raises on error).
+# load returns the ENTITY — call data_get for the Ssl record (raises on error).
 ssl = client.Ssl.load()
 ```
 
@@ -567,15 +568,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-deadlinkchecker = client.DeadLinkChecker
-deadlinkchecker.list()
+performance = client.Performance
+performance.load()
 
-# deadlinkchecker.data_get now returns the deadlinkchecker data from the last list
-# deadlinkchecker.match_get returns the last match criteria
+# performance.data_get now returns the performance data from the last load
+# performance.match_get returns the last match criteria
 ```
 
 Call `make` to create a fresh instance with the same configuration

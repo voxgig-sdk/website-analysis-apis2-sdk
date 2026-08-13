@@ -118,7 +118,7 @@ fmt.Println(deadLinkChecker.GetName()) // "dead_link_checker"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status_code` | `int` | No |  |
+| `statusCode` | `int` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -170,10 +170,10 @@ fmt.Println(performance.GetName()) // "performance"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `float64` | No |  |
-| `page_size` | `int` | No |  |
-| `performance_score` | `int` | No |  |
-| `request` | `int` | No |  |
+| `loadTime` | `float64` | No |  |
+| `pageSize` | `int` | No |  |
+| `performanceScore` | `int` | No |  |
+| `requests` | `int` | No |  |
 | `success` | `bool` | No |  |
 | `url` | `string` | No |  |
 
@@ -280,9 +280,9 @@ fmt.Println(seo.GetName()) // "seo"
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `heading` | `map[string]any` | No |  |
-| `keyword` | `[]any` | No |  |
-| `recommendation` | `[]any` | No |  |
+| `headings` | `map[string]any` | No |  |
+| `keywords` | `[]any` | No |  |
+| `recommendations` | `[]any` | No |  |
 | `score` | `int` | No |  |
 | `success` | `bool` | No |  |
 | `title` | `string` | No |  |
@@ -337,14 +337,14 @@ fmt.Println(ssl.GetName()) // "ssl"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `int` | No |  |
+| `daysRemaining` | `int` | No |  |
 | `issuer` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `success` | `bool` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `bool` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

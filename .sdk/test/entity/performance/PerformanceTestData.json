@@ -2,28 +2,28 @@
   "existing": {
     "performance": {
       "PERFORMANCE00": {
-        "load_time": 60,
-        "page_size": "s3d",
-        "performance_score": "s3e",
-        "request": "s3f",
+        "loadTime": 60,
+        "pageSize": "s3d",
+        "performanceScore": "s3e",
+        "requests": "s3f",
         "success": true,
         "url": "s41",
         "id": "PERFORMANCE00"
       },
       "PERFORMANCE01": {
-        "load_time": 120,
-        "page_size": "s79",
-        "performance_score": "s7a",
-        "request": "s7b",
+        "loadTime": 120,
+        "pageSize": "s79",
+        "performanceScore": "s7a",
+        "requests": "s7b",
         "success": true,
         "url": "s7d",
         "id": "PERFORMANCE01"
       },
       "PERFORMANCE02": {
-        "load_time": 180,
-        "page_size": "sb5",
-        "performance_score": "sb6",
-        "request": "sb7",
+        "loadTime": 180,
+        "pageSize": "sb5",
+        "performanceScore": "sb6",
+        "requests": "sb7",
         "success": true,
         "url": "sb9",
         "id": "PERFORMANCE02"
@@ -33,10 +33,10 @@
   "new": {
     "performance": {
       "performance_ref01": {
-        "load_time": 240,
-        "page_size": "sf1",
-        "performance_score": "sf2",
-        "request": "sf3",
+        "loadTime": 240,
+        "pageSize": "sf1",
+        "performanceScore": "sf2",
+        "requests": "sf3",
         "success": true,
         "url": "sf5"
       }

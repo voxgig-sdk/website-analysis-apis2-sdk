@@ -37,7 +37,7 @@ class TechStackDetectionEntity extends WebsiteAnalysisApis2EntityBase<TechStackD
 
 
 
-  async list(this: any, reqmatch?: TechStackDetectionListMatch, ctrl?: Control): Promise<TechStackDetection[]> {
+  async list(this: any, reqmatch?: TechStackDetectionListMatch, ctrl?: Control): Promise<TechStackDetectionEntity[]> {
 
     const utility = this._utility
 

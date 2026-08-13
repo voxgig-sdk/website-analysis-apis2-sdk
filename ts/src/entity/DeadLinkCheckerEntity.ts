@@ -37,7 +37,7 @@ class DeadLinkCheckerEntity extends WebsiteAnalysisApis2EntityBase<DeadLinkCheck
 
 
 
-  async list(this: any, reqmatch?: DeadLinkCheckerListMatch, ctrl?: Control): Promise<DeadLinkChecker[]> {
+  async list(this: any, reqmatch?: DeadLinkCheckerListMatch, ctrl?: Control): Promise<DeadLinkCheckerEntity[]> {
 
     const utility = this._utility
 

@@ -52,7 +52,7 @@ main: kit: entity: tech_stack_detection: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.technologies`"
           }
         }
       ]

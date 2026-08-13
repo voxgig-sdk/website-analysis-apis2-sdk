@@ -41,7 +41,8 @@ func TestSslDirect(t *testing.T) {
 		if setup.live {
 			// Live mode is lenient: synthetic IDs frequently 4xx. Skip
 			// rather than fail when the load endpoint isn't reachable with
-			// the IDs we can construct from setup.idmap.
+			// the IDs we can construct from setup.idmap — unless the model
+			// sets main.kit.test.live.strict.
 			if err != nil {
 				t.Skipf("load call failed (likely synthetic IDs against live API): %v", err)
 			}
@@ -103,11 +104,11 @@ func sslDirectSetup(mockres any) *sslDirectSetupResult {
 	calls := &[]map[string]any{}
 
 	env := envOverride(map[string]any{
-		"WEBSITEANALYSISAPIS__TEST_SSL_ENTID": map[string]any{},
-		"WEBSITEANALYSISAPIS__TEST_LIVE":    "FALSE",
+		"WEBSITE_ANALYSIS_APIS2_TEST_SSL_ENTID": map[string]any{},
+		"WEBSITE_ANALYSIS_APIS2_TEST_LIVE":    "FALSE",
 	})
 
-	live := env["WEBSITEANALYSISAPIS__TEST_LIVE"] == "TRUE"
+	live := env["WEBSITE_ANALYSIS_APIS2_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
@@ -115,7 +116,7 @@ func sslDirectSetup(mockres any) *sslDirectSetupResult {
 		client := sdk.NewWebsiteAnalysisApis2SDK(mergedOpts)
 
 		idmap := map[string]any{}
-		if entidRaw, ok := env["WEBSITEANALYSISAPIS__TEST_SSL_ENTID"]; ok {
+		if entidRaw, ok := env["WEBSITE_ANALYSIS_APIS2_TEST_SSL_ENTID"]; ok {
 			if entidStr, ok := entidRaw.(string); ok && strings.HasPrefix(entidStr, "{") {
 				json.Unmarshal([]byte(entidStr), &idmap)
 			} else if entidMap, ok := entidRaw.(map[string]any); ok {

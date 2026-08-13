@@ -113,7 +113,7 @@ dead_link_checker = client.DeadLinkChecker
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status_code` | `Integer` | No |  |
+| `statusCode` | `Integer` | No |  |
 | `url` | `String` | No |  |
 
 ### Operations
@@ -166,10 +166,10 @@ performance = client.Performance
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `Float` | No |  |
-| `page_size` | `Integer` | No |  |
-| `performance_score` | `Integer` | No |  |
-| `request` | `Integer` | No |  |
+| `loadTime` | `Float` | No |  |
+| `pageSize` | `Integer` | No |  |
+| `performanceScore` | `Integer` | No |  |
+| `requests` | `Integer` | No |  |
 | `success` | `Boolean` | No |  |
 | `url` | `String` | No |  |
 
@@ -278,9 +278,9 @@ seo = client.Seo
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `String` | No |  |
-| `heading` | `Hash` | No |  |
-| `keyword` | `Array` | No |  |
-| `recommendation` | `Array` | No |  |
+| `headings` | `Hash` | No |  |
+| `keywords` | `Array` | No |  |
+| `recommendations` | `Array` | No |  |
 | `score` | `Integer` | No |  |
 | `success` | `Boolean` | No |  |
 | `title` | `String` | No |  |
@@ -336,14 +336,14 @@ ssl = client.Ssl
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `Integer` | No |  |
+| `daysRemaining` | `Integer` | No |  |
 | `issuer` | `String` | No |  |
 | `subject` | `String` | No |  |
 | `success` | `Boolean` | No |  |
 | `url` | `String` | No |  |
 | `valid` | `Boolean` | No |  |
-| `valid_from` | `String` | No |  |
-| `valid_to` | `String` | No |  |
+| `validFrom` | `String` | No |  |
+| `validTo` | `String` | No |  |
 
 ### Operations
 

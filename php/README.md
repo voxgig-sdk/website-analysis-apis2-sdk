@@ -38,7 +38,7 @@ try {
     // list() returns an array of DeadLinkChecker records — iterate directly.
     $deadlinkcheckers = $client->DeadLinkChecker()->list();
     foreach ($deadlinkcheckers as $item) {
-        echo $item["status_code"] . "\n";
+        echo $item["statusCode"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $deadlinkcheckers = $client->DeadLinkChecker()->list();
+    $performance = $client->Performance()->load();
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -125,9 +125,10 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = WebsiteAnalysisApis2SDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$deadlinkchecker = $client->DeadLinkChecker()->list();
-print_r($deadlinkchecker);
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$performance = $client->Performance()->load();
+print_r($performance);
 ```
 
 ### Use a custom fetch function
@@ -230,7 +231,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -252,7 +253,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `status_code` |  |
+| `statusCode` |  |
 | `url` |  |
 
 Operations: List.
@@ -263,10 +264,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `performance_score` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `performanceScore` |  |
+| `requests` |  |
 | `success` |  |
 | `url` |  |
 
@@ -291,9 +292,9 @@ API path: `/screenshot`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `heading` |  |
-| `keyword` |  |
-| `recommendation` |  |
+| `headings` |  |
+| `keywords` |  |
+| `recommendations` |  |
 | `score` |  |
 | `success` |  |
 | `title` |  |
@@ -307,14 +308,14 @@ API path: `/seo`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `subject` |  |
 | `success` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -351,7 +352,7 @@ Create an instance: `$dead_link_checker = $client->DeadLinkChecker();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status_code` | `int` |  |
+| `statusCode` | `int` |  |
 | `url` | `string` |  |
 
 #### Example: List
@@ -376,17 +377,17 @@ Create an instance: `$performance = $client->Performance();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `float` |  |
-| `page_size` | `int` |  |
-| `performance_score` | `int` |  |
-| `request` | `int` |  |
+| `loadTime` | `float` |  |
+| `pageSize` | `int` |  |
+| `performanceScore` | `int` |  |
+| `requests` | `int` |  |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Performance record (throws on error).
+// load() returns the ENTITY — call data_get() for the Performance record (throws on error).
 $performance = $client->Performance()->load();
 ```
 
@@ -412,7 +413,7 @@ Create an instance: `$screenshot = $client->Screenshot();`
 #### Example: Load
 
 ```php
-// load() returns the bare Screenshot record (throws on error).
+// load() returns the ENTITY — call data_get() for the Screenshot record (throws on error).
 $screenshot = $client->Screenshot()->load();
 ```
 
@@ -432,9 +433,9 @@ Create an instance: `$seo = $client->Seo();`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `heading` | `array` |  |
-| `keyword` | `array` |  |
-| `recommendation` | `array` |  |
+| `headings` | `array` |  |
+| `keywords` | `array` |  |
+| `recommendations` | `array` |  |
 | `score` | `int` |  |
 | `success` | `bool` |  |
 | `title` | `string` |  |
@@ -462,19 +463,19 @@ Create an instance: `$ssl = $client->Ssl();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `int` |  |
+| `daysRemaining` | `int` |  |
 | `issuer` | `string` |  |
 | `subject` | `string` |  |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 | `valid` | `bool` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
 ```php
-// load() returns the bare Ssl record (throws on error).
+// load() returns the ENTITY — call data_get() for the Ssl record (throws on error).
 $ssl = $client->Ssl()->load();
 ```
 
@@ -577,15 +578,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$deadlinkchecker = $client->DeadLinkChecker();
-$deadlinkchecker->list();
+$performance = $client->Performance();
+$performance->load();
 
-// $deadlinkchecker->data_get() now returns the deadlinkchecker data from the last list
-// $deadlinkchecker->match_get() returns the last match criteria
+// $performance->data_get() now returns the performance data from the last load
+// $performance->match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

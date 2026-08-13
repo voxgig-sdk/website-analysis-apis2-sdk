@@ -68,12 +68,12 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-deadlinkcheckers, err := client.DeadLinkChecker(nil).List(nil, nil)
+performance, err := client.Performance(nil).Load(nil, nil)
 if err != nil {
     // handle err
     return
 }
-_ = deadlinkcheckers
+_ = performance
 ```
 
 `Direct` follows the same `(value, error)` convention:
@@ -137,13 +137,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-deadLinkChecker, err := client.DeadLinkChecker(nil).List(
+performance, err := client.Performance(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(deadLinkChecker) // the returned mock data
+fmt.Println(performance) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -267,7 +267,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"status_code"` |  |
+| `"statusCode"` |  |
 | `"url"` |  |
 
 Operations: List.
@@ -278,10 +278,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `"load_time"` |  |
-| `"page_size"` |  |
-| `"performance_score"` |  |
-| `"request"` |  |
+| `"loadTime"` |  |
+| `"pageSize"` |  |
+| `"performanceScore"` |  |
+| `"requests"` |  |
 | `"success"` |  |
 | `"url"` |  |
 
@@ -306,9 +306,9 @@ API path: `/screenshot`
 | Field | Description |
 | --- | --- |
 | `"description"` |  |
-| `"heading"` |  |
-| `"keyword"` |  |
-| `"recommendation"` |  |
+| `"headings"` |  |
+| `"keywords"` |  |
+| `"recommendations"` |  |
 | `"score"` |  |
 | `"success"` |  |
 | `"title"` |  |
@@ -322,14 +322,14 @@ API path: `/seo`
 
 | Field | Description |
 | --- | --- |
-| `"days_remaining"` |  |
+| `"daysRemaining"` |  |
 | `"issuer"` |  |
 | `"subject"` |  |
 | `"success"` |  |
 | `"url"` |  |
 | `"valid"` |  |
-| `"valid_from"` |  |
-| `"valid_to"` |  |
+| `"validFrom"` |  |
+| `"validTo"` |  |
 
 Operations: Load.
 
@@ -366,7 +366,7 @@ Create an instance: `deadLinkChecker := client.DeadLinkChecker(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status_code` | `int` |  |
+| `statusCode` | `int` |  |
 | `url` | `string` |  |
 
 #### Example: List
@@ -394,10 +394,10 @@ Create an instance: `performance := client.Performance(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `float64` |  |
-| `page_size` | `int` |  |
-| `performance_score` | `int` |  |
-| `request` | `int` |  |
+| `loadTime` | `float64` |  |
+| `pageSize` | `int` |  |
+| `performanceScore` | `int` |  |
+| `requests` | `int` |  |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 
@@ -456,9 +456,9 @@ Create an instance: `seo := client.Seo(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `heading` | `map[string]any` |  |
-| `keyword` | `[]any` |  |
-| `recommendation` | `[]any` |  |
+| `headings` | `map[string]any` |  |
+| `keywords` | `[]any` |  |
+| `recommendations` | `[]any` |  |
 | `score` | `int` |  |
 | `success` | `bool` |  |
 | `title` | `string` |  |
@@ -489,14 +489,14 @@ Create an instance: `ssl := client.Ssl(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `int` |  |
+| `daysRemaining` | `int` |  |
 | `issuer` | `string` |  |
 | `subject` | `string` |  |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 | `valid` | `bool` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
@@ -607,15 +607,15 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `List`, the entity
+Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-deadlinkchecker := client.DeadLinkChecker(nil)
-deadlinkchecker.List(nil, nil)
+performance := client.Performance(nil)
+performance.Load(nil, nil)
 
-// deadlinkchecker.Data() now returns the deadlinkchecker data from the last list
-// deadlinkchecker.Match() returns the last match criteria
+// performance.Data() now returns the performance data from the last load
+// performance.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

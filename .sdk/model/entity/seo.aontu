@@ -11,17 +11,17 @@ main: kit: entity: seo: {
       type: "`$STRING`"
     }
     {
-      name: "heading"
+      name: "headings"
       req: false
       type: "`$OBJECT`"
     }
     {
-      name: "keyword"
+      name: "keywords"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "recommendation"
+      name: "recommendations"
       req: false
       type: "`$ARRAY`"
     }

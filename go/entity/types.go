@@ -6,36 +6,40 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
 
-import "encoding/json"
+import (
+	"encoding/json"
+
+	"github.com/voxgig-sdk/website-analysis-apis2-sdk/go/core"
+)
 
 // DeadLinkChecker is the typed data model for the dead_link_checker entity.
 type DeadLinkChecker struct {
-	StatusCode *int `json:"status_code,omitempty"`
+	StatusCode *int `json:"statusCode,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // DeadLinkCheckerListMatch is the typed request payload for DeadLinkChecker.ListTyped.
 type DeadLinkCheckerListMatch struct {
-	StatusCode *int `json:"status_code,omitempty"`
+	StatusCode *int `json:"statusCode,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // Performance is the typed data model for the performance entity.
 type Performance struct {
-	LoadTime *float64 `json:"load_time,omitempty"`
-	PageSize *int `json:"page_size,omitempty"`
-	PerformanceScore *int `json:"performance_score,omitempty"`
-	Request *int `json:"request,omitempty"`
+	LoadTime *float64 `json:"loadTime,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
+	PerformanceScore *int `json:"performanceScore,omitempty"`
+	Requests *int `json:"requests,omitempty"`
 	Success *bool `json:"success,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
 
 // PerformanceLoadMatch is the typed request payload for Performance.LoadTyped.
 type PerformanceLoadMatch struct {
-	LoadTime *float64 `json:"load_time,omitempty"`
-	PageSize *int `json:"page_size,omitempty"`
-	PerformanceScore *int `json:"performance_score,omitempty"`
-	Request *int `json:"request,omitempty"`
+	LoadTime *float64 `json:"loadTime,omitempty"`
+	PageSize *int `json:"pageSize,omitempty"`
+	PerformanceScore *int `json:"performanceScore,omitempty"`
+	Requests *int `json:"requests,omitempty"`
 	Success *bool `json:"success,omitempty"`
 	Url *string `json:"url,omitempty"`
 }
@@ -57,9 +61,9 @@ type ScreenshotLoadMatch struct {
 // Seo is the typed data model for the seo entity.
 type Seo struct {
 	Description *string `json:"description,omitempty"`
-	Heading *map[string]any `json:"heading,omitempty"`
-	Keyword *[]any `json:"keyword,omitempty"`
-	Recommendation *[]any `json:"recommendation,omitempty"`
+	Headings *map[string]any `json:"headings,omitempty"`
+	Keywords *[]any `json:"keywords,omitempty"`
+	Recommendations *[]any `json:"recommendations,omitempty"`
 	Score *int `json:"score,omitempty"`
 	Success *bool `json:"success,omitempty"`
 	Title *string `json:"title,omitempty"`
@@ -69,9 +73,9 @@ type Seo struct {
 // SeoListMatch is the typed request payload for Seo.ListTyped.
 type SeoListMatch struct {
 	Description *string `json:"description,omitempty"`
-	Heading *map[string]any `json:"heading,omitempty"`
-	Keyword *[]any `json:"keyword,omitempty"`
-	Recommendation *[]any `json:"recommendation,omitempty"`
+	Headings *map[string]any `json:"headings,omitempty"`
+	Keywords *[]any `json:"keywords,omitempty"`
+	Recommendations *[]any `json:"recommendations,omitempty"`
 	Score *int `json:"score,omitempty"`
 	Success *bool `json:"success,omitempty"`
 	Title *string `json:"title,omitempty"`
@@ -80,26 +84,26 @@ type SeoListMatch struct {
 
 // Ssl is the typed data model for the ssl entity.
 type Ssl struct {
-	DaysRemaining *int `json:"days_remaining,omitempty"`
+	DaysRemaining *int `json:"daysRemaining,omitempty"`
 	Issuer *string `json:"issuer,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Success *bool `json:"success,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Valid *bool `json:"valid,omitempty"`
-	ValidFrom *string `json:"valid_from,omitempty"`
-	ValidTo *string `json:"valid_to,omitempty"`
+	ValidFrom *string `json:"validFrom,omitempty"`
+	ValidTo *string `json:"validTo,omitempty"`
 }
 
 // SslLoadMatch is the typed request payload for Ssl.LoadTyped.
 type SslLoadMatch struct {
-	DaysRemaining *int `json:"days_remaining,omitempty"`
+	DaysRemaining *int `json:"daysRemaining,omitempty"`
 	Issuer *string `json:"issuer,omitempty"`
 	Subject *string `json:"subject,omitempty"`
 	Success *bool `json:"success,omitempty"`
 	Url *string `json:"url,omitempty"`
 	Valid *bool `json:"valid,omitempty"`
-	ValidFrom *string `json:"valid_from,omitempty"`
-	ValidTo *string `json:"valid_to,omitempty"`
+	ValidFrom *string `json:"validFrom,omitempty"`
+	ValidTo *string `json:"validTo,omitempty"`
 }
 
 // TechStackDetection is the typed data model for the tech_stack_detection entity.
@@ -128,12 +132,26 @@ func asMap(v any) map[string]any {
 	return out
 }
 
-// typedFrom decodes a runtime value (a map[string]any produced by the op
-// pipeline) into a typed model T via a JSON round-trip. On any error it
-// returns the zero value of T; the op's own (value, error) tuple carries the
-// real error.
+// entityData unwraps an entity to its data map.
+//
+// Operations resolve to the ENTITY, not the raw data (see AGENTS.md), and an
+// entity's fields are UNEXPORTED — marshalling one directly yields `{}`, so
+// every typed accessor would silently hand back a zero-valued struct. The
+// typed boundary therefore takes the data hop first.
+func entityData(v any) any {
+	if ent, ok := v.(core.Entity); ok {
+		return ent.Data()
+	}
+	return v
+}
+
+// typedFrom decodes a runtime value (an entity, or the map[string]any the op
+// pipeline produced) into a typed model T via a JSON round-trip. On any error
+// it returns the zero value of T; the op's own (value, error) tuple carries
+// the real error.
 func typedFrom[T any](v any) T {
 	var out T
+	v = entityData(v)
 	if v == nil {
 		return out
 	}
@@ -145,12 +163,20 @@ func typedFrom[T any](v any) T {
 	return out
 }
 
-// typedSliceFrom decodes a runtime list value ([]any of maps) into a typed
-// slice []T via a JSON round-trip, for list ops.
+// typedSliceFrom decodes a runtime list value into a typed slice []T via a
+// JSON round-trip, for list ops. `list` resolves to a slice of ENTITY
+// instances, so each element takes the data hop.
 func typedSliceFrom[T any](v any) []T {
 	var out []T
 	if v == nil {
 		return out
+	}
+	if list, ok := v.([]any); ok {
+		unwrapped := make([]any, 0, len(list))
+		for _, item := range list {
+			unwrapped = append(unwrapped, entityData(item))
+		}
+		v = unwrapped
 	}
 	b, err := json.Marshal(v)
 	if err != nil {

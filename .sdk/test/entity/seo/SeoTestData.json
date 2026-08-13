@@ -3,9 +3,9 @@
     "seo": {
       "SEO00": {
         "description": "s50",
-        "heading": {},
-        "keyword": [],
-        "recommendation": [],
+        "headings": {},
+        "keywords": [],
+        "recommendations": [],
         "score": "s54",
         "success": false,
         "title": "s56",
@@ -13,9 +13,9 @@
       },
       "SEO01": {
         "description": "sa0",
-        "heading": {},
-        "keyword": [],
-        "recommendation": [],
+        "headings": {},
+        "keywords": [],
+        "recommendations": [],
         "score": "sa4",
         "success": false,
         "title": "sa6",
@@ -23,9 +23,9 @@
       },
       "SEO02": {
         "description": "sf0",
-        "heading": {},
-        "keyword": [],
-        "recommendation": [],
+        "headings": {},
+        "keywords": [],
+        "recommendations": [],
         "score": "sf4",
         "success": false,
         "title": "sf6",
@@ -37,9 +37,9 @@
     "seo": {
       "seo_ref01": {
         "description": "s140",
-        "heading": {},
-        "keyword": [],
-        "recommendation": [],
+        "headings": {},
+        "keywords": [],
+        "recommendations": [],
         "score": "s144",
         "success": false,
         "title": "s146",

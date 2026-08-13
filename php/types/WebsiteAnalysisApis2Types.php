@@ -15,24 +15,24 @@ declare(strict_types=1);
 /** DeadLinkChecker entity data model. */
 class DeadLinkChecker
 {
-    public ?int $status_code = null;
+    public ?int $statusCode = null;
     public ?string $url = null;
 }
 
 /** Request payload for DeadLinkChecker#list. */
 class DeadLinkCheckerListMatch
 {
-    public ?int $status_code = null;
+    public ?int $statusCode = null;
     public ?string $url = null;
 }
 
 /** Performance entity data model. */
 class Performance
 {
-    public ?float $load_time = null;
-    public ?int $page_size = null;
-    public ?int $performance_score = null;
-    public ?int $request = null;
+    public ?float $loadTime = null;
+    public ?int $pageSize = null;
+    public ?int $performanceScore = null;
+    public ?int $requests = null;
     public ?bool $success = null;
     public ?string $url = null;
 }
@@ -40,10 +40,10 @@ class Performance
 /** Request payload for Performance#load. */
 class PerformanceLoadMatch
 {
-    public ?float $load_time = null;
-    public ?int $page_size = null;
-    public ?int $performance_score = null;
-    public ?int $request = null;
+    public ?float $loadTime = null;
+    public ?int $pageSize = null;
+    public ?int $performanceScore = null;
+    public ?int $requests = null;
     public ?bool $success = null;
     public ?string $url = null;
 }
@@ -68,9 +68,9 @@ class ScreenshotLoadMatch
 class Seo
 {
     public ?string $description = null;
-    public ?array $heading = null;
-    public ?array $keyword = null;
-    public ?array $recommendation = null;
+    public ?array $headings = null;
+    public ?array $keywords = null;
+    public ?array $recommendations = null;
     public ?int $score = null;
     public ?bool $success = null;
     public ?string $title = null;
@@ -81,9 +81,9 @@ class Seo
 class SeoListMatch
 {
     public ?string $description = null;
-    public ?array $heading = null;
-    public ?array $keyword = null;
-    public ?array $recommendation = null;
+    public ?array $headings = null;
+    public ?array $keywords = null;
+    public ?array $recommendations = null;
     public ?int $score = null;
     public ?bool $success = null;
     public ?string $title = null;
@@ -93,27 +93,27 @@ class SeoListMatch
 /** Ssl entity data model. */
 class Ssl
 {
-    public ?int $days_remaining = null;
+    public ?int $daysRemaining = null;
     public ?string $issuer = null;
     public ?string $subject = null;
     public ?bool $success = null;
     public ?string $url = null;
     public ?bool $valid = null;
-    public ?string $valid_from = null;
-    public ?string $valid_to = null;
+    public ?string $validFrom = null;
+    public ?string $validTo = null;
 }
 
 /** Request payload for Ssl#load. */
 class SslLoadMatch
 {
-    public ?int $days_remaining = null;
+    public ?int $daysRemaining = null;
     public ?string $issuer = null;
     public ?string $subject = null;
     public ?bool $success = null;
     public ?string $url = null;
     public ?bool $valid = null;
-    public ?string $valid_from = null;
-    public ?string $valid_to = null;
+    public ?string $validFrom = null;
+    public ?string $validTo = null;
 }
 
 /** TechStackDetection entity data model. */

@@ -66,11 +66,11 @@ function screenshot_direct_setup(mockres)
   local calls = {}
 
   local env = runner.env_override({
-    ["WEBSITEANALYSISAPIS__TEST_SCREENSHOT_ENTID"] = {},
-    ["WEBSITEANALYSISAPIS__TEST_LIVE"] = "FALSE",
+    ["WEBSITE_ANALYSIS_APIS2_TEST_SCREENSHOT_ENTID"] = {},
+    ["WEBSITE_ANALYSIS_APIS2_TEST_LIVE"] = "FALSE",
   })
 
-  local live = env["WEBSITEANALYSISAPIS__TEST_LIVE"] == "TRUE"
+  local live = env["WEBSITE_ANALYSIS_APIS2_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {

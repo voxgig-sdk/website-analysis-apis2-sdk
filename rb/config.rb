@@ -32,7 +32,7 @@ module WebsiteAnalysisApis2Config
           "fields" => [
             {
               "active" => true,
-              "name" => "status_code",
+              "name" => "statusCode",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -66,6 +66,7 @@ module WebsiteAnalysisApis2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/deadlinks",
                   "parts" => [
@@ -78,7 +79,7 @@ module WebsiteAnalysisApis2Config
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.deadLinks`",
                   },
                   "index$" => 0,
                 },
@@ -94,28 +95,28 @@ module WebsiteAnalysisApis2Config
           "fields" => [
             {
               "active" => true,
-              "name" => "load_time",
+              "name" => "loadTime",
               "req" => false,
               "type" => "`$NUMBER`",
               "index$" => 0,
             },
             {
               "active" => true,
-              "name" => "page_size",
+              "name" => "pageSize",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "performance_score",
+              "name" => "performanceScore",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "request",
+              "name" => "requests",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 3,
@@ -156,6 +157,7 @@ module WebsiteAnalysisApis2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/performance",
                   "parts" => [
@@ -225,6 +227,7 @@ module WebsiteAnalysisApis2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/screenshot",
                   "parts" => [
@@ -260,21 +263,21 @@ module WebsiteAnalysisApis2Config
             },
             {
               "active" => true,
-              "name" => "heading",
+              "name" => "headings",
               "req" => false,
               "type" => "`$OBJECT`",
               "index$" => 1,
             },
             {
               "active" => true,
-              "name" => "keyword",
+              "name" => "keywords",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 2,
             },
             {
               "active" => true,
-              "name" => "recommendation",
+              "name" => "recommendations",
               "req" => false,
               "type" => "`$ARRAY`",
               "index$" => 3,
@@ -329,6 +332,7 @@ module WebsiteAnalysisApis2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seo",
                   "parts" => [
@@ -357,7 +361,7 @@ module WebsiteAnalysisApis2Config
           "fields" => [
             {
               "active" => true,
-              "name" => "days_remaining",
+              "name" => "daysRemaining",
               "req" => false,
               "type" => "`$INTEGER`",
               "index$" => 0,
@@ -399,14 +403,14 @@ module WebsiteAnalysisApis2Config
             },
             {
               "active" => true,
-              "name" => "valid_from",
+              "name" => "validFrom",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 6,
             },
             {
               "active" => true,
-              "name" => "valid_to",
+              "name" => "validTo",
               "req" => false,
               "type" => "`$STRING`",
               "index$" => 7,
@@ -433,6 +437,7 @@ module WebsiteAnalysisApis2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ssl",
                   "parts" => [
@@ -502,6 +507,7 @@ module WebsiteAnalysisApis2Config
                       },
                     ],
                   },
+                  "kind" => "http",
                   "method" => "GET",
                   "orig" => "/techstack",
                   "parts" => [
@@ -514,7 +520,7 @@ module WebsiteAnalysisApis2Config
                   },
                   "transform" => {
                     "req" => "`reqdata`",
-                    "res" => "`body`",
+                    "res" => "`body.technologies`",
                   },
                   "index$" => 0,
                 },

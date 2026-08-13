@@ -37,7 +37,7 @@ class SeoEntity extends WebsiteAnalysisApis2EntityBase<Seo> {
 
 
 
-  async list(this: any, reqmatch?: SeoListMatch, ctrl?: Control): Promise<Seo[]> {
+  async list(this: any, reqmatch?: SeoListMatch, ctrl?: Control): Promise<SeoEntity[]> {
 
     const utility = this._utility
 

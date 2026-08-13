@@ -7,26 +7,26 @@
 -- edit by hand.
 
 ---@class DeadLinkChecker
----@field status_code? number
+---@field statusCode? number
 ---@field url? string
 
 ---@class DeadLinkCheckerListMatch
----@field status_code? number
+---@field statusCode? number
 ---@field url? string
 
 ---@class Performance
----@field load_time? number
----@field page_size? number
----@field performance_score? number
----@field request? number
+---@field loadTime? number
+---@field pageSize? number
+---@field performanceScore? number
+---@field requests? number
 ---@field success? boolean
 ---@field url? string
 
 ---@class PerformanceLoadMatch
----@field load_time? number
----@field page_size? number
----@field performance_score? number
----@field request? number
+---@field loadTime? number
+---@field pageSize? number
+---@field performanceScore? number
+---@field requests? number
 ---@field success? boolean
 ---@field url? string
 
@@ -42,9 +42,9 @@
 
 ---@class Seo
 ---@field description? string
----@field heading? table
----@field keyword? table
----@field recommendation? table
+---@field headings? table
+---@field keywords? table
+---@field recommendations? table
 ---@field score? number
 ---@field success? boolean
 ---@field title? string
@@ -52,33 +52,33 @@
 
 ---@class SeoListMatch
 ---@field description? string
----@field heading? table
----@field keyword? table
----@field recommendation? table
+---@field headings? table
+---@field keywords? table
+---@field recommendations? table
 ---@field score? number
 ---@field success? boolean
 ---@field title? string
 ---@field url? string
 
 ---@class Ssl
----@field days_remaining? number
+---@field daysRemaining? number
 ---@field issuer? string
 ---@field subject? string
 ---@field success? boolean
 ---@field url? string
 ---@field valid? boolean
----@field valid_from? string
----@field valid_to? string
+---@field validFrom? string
+---@field validTo? string
 
 ---@class SslLoadMatch
----@field days_remaining? number
+---@field daysRemaining? number
 ---@field issuer? string
 ---@field subject? string
 ---@field success? boolean
 ---@field url? string
 ---@field valid? boolean
----@field valid_from? string
----@field valid_to? string
+---@field validFrom? string
+---@field validTo? string
 
 ---@class TechStackDetection
 ---@field category? string

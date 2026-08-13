@@ -8,6 +8,7 @@ guide: {
   entity: dead_link_checker: {
     path: "/deadlinks": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.deadLinks`")|top
     }
   }
 
@@ -38,6 +39,7 @@ guide: {
   entity: tech_stack_detection: {
     path: "/techstack": {
       op: list: method: *GET
+      op: list: transform: res: *("`body.technologies`")|top
     }
   }
 

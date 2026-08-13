@@ -2,36 +2,36 @@
   "existing": {
     "ssl": {
       "SSL00": {
-        "days_remaining": "s50",
+        "daysRemaining": "s50",
         "issuer": "s51",
         "subject": "s52",
         "success": false,
         "url": "s54",
         "valid": false,
-        "valid_from": "s56",
-        "valid_to": "s57",
+        "validFrom": "s56",
+        "validTo": "s57",
         "id": "SSL00"
       },
       "SSL01": {
-        "days_remaining": "sa0",
+        "daysRemaining": "sa0",
         "issuer": "sa1",
         "subject": "sa2",
         "success": false,
         "url": "sa4",
         "valid": false,
-        "valid_from": "sa6",
-        "valid_to": "sa7",
+        "validFrom": "sa6",
+        "validTo": "sa7",
         "id": "SSL01"
       },
       "SSL02": {
-        "days_remaining": "sf0",
+        "daysRemaining": "sf0",
         "issuer": "sf1",
         "subject": "sf2",
         "success": false,
         "url": "sf4",
         "valid": false,
-        "valid_from": "sf6",
-        "valid_to": "sf7",
+        "validFrom": "sf6",
+        "validTo": "sf7",
         "id": "SSL02"
       }
     }
@@ -39,14 +39,14 @@
   "new": {
     "ssl": {
       "ssl_ref01": {
-        "days_remaining": "s140",
+        "daysRemaining": "s140",
         "issuer": "s141",
         "subject": "s142",
         "success": false,
         "url": "s144",
         "valid": false,
-        "valid_from": "s146",
-        "valid_to": "s147"
+        "validFrom": "s146",
+        "validTo": "s147"
       }
     }
   }

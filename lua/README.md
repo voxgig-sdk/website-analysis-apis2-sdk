@@ -54,7 +54,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local deadlinkcheckers, err = client:DeadLinkChecker():list()
+local performance, err = client:Performance():load()
 if err then error(err) end
 ```
 
@@ -112,7 +112,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:DeadLinkChecker():list()
+local result, err = client:Performance():load()
 -- result is the returned data; err is set on failure
 ```
 
@@ -225,9 +225,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local dead_link_checker, err = client:DeadLinkChecker():load()
+    local performance, err = client:Performance():load()
     if err then error(err) end
-    -- dead_link_checker is the loaded record
+    -- performance is the loaded record
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -238,7 +238,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `status_code` |  |
+| `statusCode` |  |
 | `url` |  |
 
 Operations: List.
@@ -249,10 +249,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `performance_score` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `performanceScore` |  |
+| `requests` |  |
 | `success` |  |
 | `url` |  |
 
@@ -277,9 +277,9 @@ API path: `/screenshot`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `heading` |  |
-| `keyword` |  |
-| `recommendation` |  |
+| `headings` |  |
+| `keywords` |  |
+| `recommendations` |  |
 | `score` |  |
 | `success` |  |
 | `title` |  |
@@ -293,14 +293,14 @@ API path: `/seo`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `subject` |  |
 | `success` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -337,7 +337,7 @@ Create an instance: `local dead_link_checker = client:DeadLinkChecker(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status_code` | `number` |  |
+| `statusCode` | `number` |  |
 | `url` | `string` |  |
 
 #### Example: List
@@ -361,10 +361,10 @@ Create an instance: `local performance = client:Performance(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `number` |  |
-| `page_size` | `number` |  |
-| `performance_score` | `number` |  |
-| `request` | `number` |  |
+| `loadTime` | `number` |  |
+| `pageSize` | `number` |  |
+| `performanceScore` | `number` |  |
+| `requests` | `number` |  |
 | `success` | `boolean` |  |
 | `url` | `string` |  |
 
@@ -415,9 +415,9 @@ Create an instance: `local seo = client:Seo(nil)`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `heading` | `table` |  |
-| `keyword` | `table` |  |
-| `recommendation` | `table` |  |
+| `headings` | `table` |  |
+| `keywords` | `table` |  |
+| `recommendations` | `table` |  |
 | `score` | `number` |  |
 | `success` | `boolean` |  |
 | `title` | `string` |  |
@@ -444,14 +444,14 @@ Create an instance: `local ssl = client:Ssl(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `number` |  |
+| `daysRemaining` | `number` |  |
 | `issuer` | `string` |  |
 | `subject` | `string` |  |
 | `success` | `boolean` |  |
 | `url` | `string` |  |
 | `valid` | `boolean` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
@@ -557,15 +557,15 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local deadlinkchecker = client:DeadLinkChecker()
-deadlinkchecker:list()
+local performance = client:Performance()
+performance:load()
 
--- deadlinkchecker:data_get() now returns the deadlinkchecker data from the last list
--- deadlinkchecker:match_get() returns the last match criteria
+-- performance:data_get() now returns the performance data from the last load
+-- performance:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

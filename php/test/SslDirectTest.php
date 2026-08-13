@@ -71,11 +71,11 @@ function ssl_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "WEBSITEANALYSISAPIS__TEST_SSL_ENTID" => [],
-        "WEBSITEANALYSISAPIS__TEST_LIVE" => "FALSE",
+        "WEBSITE_ANALYSIS_APIS2_TEST_SSL_ENTID" => [],
+        "WEBSITE_ANALYSIS_APIS2_TEST_LIVE" => "FALSE",
     ]);
 
-    $live = $env["WEBSITEANALYSISAPIS__TEST_LIVE"] === "TRUE";
+    $live = $env["WEBSITE_ANALYSIS_APIS2_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [

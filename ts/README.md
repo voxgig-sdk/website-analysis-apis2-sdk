@@ -35,7 +35,9 @@ const client = new WebsiteAnalysisApis2SDK()
 
 ### 2. List deadlinkchecker records
 
-`list()` resolves to an array of DeadLinkChecker objects — iterate it directly:
+`list()` resolves to an array of DeadLinkChecker ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const deadlinkcheckers = await client.DeadLinkChecker().list()
@@ -52,10 +54,10 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const deadlinkcheckers = await client.DeadLinkChecker().list()
-  console.log(deadlinkcheckers)
+  const performance = await client.Performance().load()
+  console.log(performance)
 } catch (err) {
-  console.error('list failed:', err)
+  console.error('load failed:', err)
 }
 ```
 
@@ -119,9 +121,10 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = WebsiteAnalysisApis2SDK.test()
 
-const deadlinkchecker = await client.DeadLinkChecker().list()
-// deadlinkchecker is a bare entity populated with mock response data
-console.log(deadlinkchecker)
+const performance = await client.Performance().load()
+// performance is the entity, populated with mock response data
+// — call performance.data() for the record itself
+console.log(performance)
 ```
 
 You can also use the instance method:
@@ -136,10 +139,10 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.DeadLinkChecker()
+const entity = client.Performance()
 
 // First call runs the operation and stores its result
-await entity.list()
+await entity.load()
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -291,7 +294,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `status_code` |  |
+| `statusCode` |  |
 | `url` |  |
 
 Operations: list.
@@ -302,10 +305,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `performance_score` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `performanceScore` |  |
+| `requests` |  |
 | `success` |  |
 | `url` |  |
 
@@ -330,9 +333,9 @@ API path: `/screenshot`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `heading` |  |
-| `keyword` |  |
-| `recommendation` |  |
+| `headings` |  |
+| `keywords` |  |
+| `recommendations` |  |
 | `score` |  |
 | `success` |  |
 | `title` |  |
@@ -346,14 +349,14 @@ API path: `/seo`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `subject` |  |
 | `success` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: load.
 
@@ -390,7 +393,7 @@ Create an instance: `const dead_link_checker = client.DeadLinkChecker()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status_code` | `number` |  |
+| `statusCode` | `number` |  |
 | `url` | `string` |  |
 
 #### Example: List
@@ -414,10 +417,10 @@ Create an instance: `const performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `number` |  |
-| `page_size` | `number` |  |
-| `performance_score` | `number` |  |
-| `request` | `number` |  |
+| `loadTime` | `number` |  |
+| `pageSize` | `number` |  |
+| `performanceScore` | `number` |  |
+| `requests` | `number` |  |
 | `success` | `boolean` |  |
 | `url` | `string` |  |
 
@@ -468,9 +471,9 @@ Create an instance: `const seo = client.Seo()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `string` |  |
-| `heading` | `Record<string, any>` |  |
-| `keyword` | `any[]` |  |
-| `recommendation` | `any[]` |  |
+| `headings` | `Record<string, any>` |  |
+| `keywords` | `any[]` |  |
+| `recommendations` | `any[]` |  |
 | `score` | `number` |  |
 | `success` | `boolean` |  |
 | `title` | `string` |  |
@@ -497,14 +500,14 @@ Create an instance: `const ssl = client.Ssl()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `number` |  |
+| `daysRemaining` | `number` |  |
 | `issuer` | `string` |  |
 | `subject` | `string` |  |
 | `success` | `boolean` |  |
 | `url` | `string` |  |
 | `valid` | `boolean` |  |
-| `valid_from` | `string` |  |
-| `valid_to` | `string` |  |
+| `validFrom` | `string` |  |
+| `validTo` | `string` |  |
 
 #### Example: Load
 
@@ -602,16 +605,16 @@ import { WebsiteAnalysisApis2SDK } from '@voxgig-sdk/website-analysis-apis2'
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const deadlinkchecker = client.DeadLinkChecker()
-await deadlinkchecker.list()
+const performance = client.Performance()
+await performance.load()
 
-// deadlinkchecker.data() now returns the deadlinkchecker data from the last `list`
-// deadlinkchecker.match() returns the last match criteria
+// performance.data() now returns the performance data from the last `load`
+// performance.match() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

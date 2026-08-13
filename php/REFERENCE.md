@@ -112,7 +112,7 @@ $dead_link_checker = $client->DeadLinkChecker();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status_code` | `int` | No |  |
+| `statusCode` | `int` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -165,10 +165,10 @@ $performance = $client->Performance();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `float` | No |  |
-| `page_size` | `int` | No |  |
-| `performance_score` | `int` | No |  |
-| `request` | `int` | No |  |
+| `loadTime` | `float` | No |  |
+| `pageSize` | `int` | No |  |
+| `performanceScore` | `int` | No |  |
+| `requests` | `int` | No |  |
 | `success` | `bool` | No |  |
 | `url` | `string` | No |  |
 
@@ -277,9 +277,9 @@ $seo = $client->Seo();
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `heading` | `array` | No |  |
-| `keyword` | `array` | No |  |
-| `recommendation` | `array` | No |  |
+| `headings` | `array` | No |  |
+| `keywords` | `array` | No |  |
+| `recommendations` | `array` | No |  |
 | `score` | `int` | No |  |
 | `success` | `bool` | No |  |
 | `title` | `string` | No |  |
@@ -335,14 +335,14 @@ $ssl = $client->Ssl();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `int` | No |  |
+| `daysRemaining` | `int` | No |  |
 | `issuer` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `success` | `bool` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `bool` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

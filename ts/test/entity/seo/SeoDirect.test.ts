@@ -19,11 +19,15 @@ import {
 describe('SeoDirect', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when WEBSITEANALYSISAPIS2_TEST_LIVE=TRUE.
-  afterEach(liveDelay('WEBSITEANALYSISAPIS2_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when WEBSITE_ANALYSIS_APIS2_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WEBSITE_ANALYSIS_APIS2_TEST_LIVE'))
 
   test('direct-exists', async () => {
     const sdk = new WebsiteAnalysisApis2SDK({
+      // Concrete base: a live construction must satisfy any server
+      // variables a templated base URL declares; overriding base with a
+      // literal (as the direct flow tests do) sidesteps the requirement.
+      base: 'http://localhost:8080',
       system: { fetch: async () => ({}) }
     })
     assert('function' === typeof sdk.direct)
@@ -80,17 +84,17 @@ function directSetup(mockres?: any) {
   const calls: any[] = []
 
   const env = envOverride({
-    'WEBSITEANALYSISAPIS__TEST_SEO_ENTID': {},
-    'WEBSITEANALYSISAPIS__TEST_LIVE': 'FALSE',
+    'WEBSITE_ANALYSIS_APIS2_TEST_SEO_ENTID': {},
+    'WEBSITE_ANALYSIS_APIS2_TEST_LIVE': 'FALSE',
   })
 
-  const live = 'TRUE' === env.WEBSITEANALYSISAPIS__TEST_LIVE
+  const live = 'TRUE' === env.WEBSITE_ANALYSIS_APIS2_TEST_LIVE
 
   if (live) {
     const client = new WebsiteAnalysisApis2SDK({
     })
 
-    let idmap: any = env['WEBSITEANALYSISAPIS__TEST_SEO_ENTID']
+    let idmap: any = env['WEBSITE_ANALYSIS_APIS2_TEST_SEO_ENTID']
     if ('string' === typeof idmap && idmap.startsWith('{')) {
       idmap = JSON.parse(idmap)
     }

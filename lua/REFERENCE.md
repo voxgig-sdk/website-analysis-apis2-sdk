@@ -110,7 +110,7 @@ local dead_link_checker = client:DeadLinkChecker(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `status_code` | `number` | No |  |
+| `statusCode` | `number` | No |  |
 | `url` | `string` | No |  |
 
 ### Operations
@@ -163,10 +163,10 @@ local performance = client:Performance(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `load_time` | `number` | No |  |
-| `page_size` | `number` | No |  |
-| `performance_score` | `number` | No |  |
-| `request` | `number` | No |  |
+| `loadTime` | `number` | No |  |
+| `pageSize` | `number` | No |  |
+| `performanceScore` | `number` | No |  |
+| `requests` | `number` | No |  |
 | `success` | `boolean` | No |  |
 | `url` | `string` | No |  |
 
@@ -275,9 +275,9 @@ local seo = client:Seo(nil)
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
 | `description` | `string` | No |  |
-| `heading` | `table` | No |  |
-| `keyword` | `table` | No |  |
-| `recommendation` | `table` | No |  |
+| `headings` | `table` | No |  |
+| `keywords` | `table` | No |  |
+| `recommendations` | `table` | No |  |
 | `score` | `number` | No |  |
 | `success` | `boolean` | No |  |
 | `title` | `string` | No |  |
@@ -333,14 +333,14 @@ local ssl = client:Ssl(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `days_remaining` | `number` | No |  |
+| `daysRemaining` | `number` | No |  |
 | `issuer` | `string` | No |  |
 | `subject` | `string` | No |  |
 | `success` | `boolean` | No |  |
 | `url` | `string` | No |  |
 | `valid` | `boolean` | No |  |
-| `valid_from` | `string` | No |  |
-| `valid_to` | `string` | No |  |
+| `validFrom` | `string` | No |  |
+| `validTo` | `string` | No |  |
 
 ### Operations
 

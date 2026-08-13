@@ -57,10 +57,10 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    deadlinkcheckers = client.DeadLinkChecker().list()
-    print(deadlinkcheckers)
+    performance = client.Performance().load()
+    print(performance)
 except Exception as err:
-    print(f"list failed: {err}")
+    print(f"load failed: {err}")
 ```
 
 `direct()` does **not** raise — it returns the result envelope. Branch
@@ -124,9 +124,10 @@ Create a mock client for unit testing — no server required:
 ```python
 client = WebsiteAnalysisApis2SDK.test()
 
-# Entity ops return the bare record and raise on error.
-deadlinkchecker = client.DeadLinkChecker().list()
-# deadlinkchecker contains the mock response record
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+performance = client.Performance().load()
+# performance contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -226,7 +227,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -248,7 +249,7 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `status_code` |  |
+| `statusCode` |  |
 | `url` |  |
 
 Operations: List.
@@ -259,10 +260,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `load_time` |  |
-| `page_size` |  |
-| `performance_score` |  |
-| `request` |  |
+| `loadTime` |  |
+| `pageSize` |  |
+| `performanceScore` |  |
+| `requests` |  |
 | `success` |  |
 | `url` |  |
 
@@ -287,9 +288,9 @@ API path: `/screenshot`
 | Field | Description |
 | --- | --- |
 | `description` |  |
-| `heading` |  |
-| `keyword` |  |
-| `recommendation` |  |
+| `headings` |  |
+| `keywords` |  |
+| `recommendations` |  |
 | `score` |  |
 | `success` |  |
 | `title` |  |
@@ -303,14 +304,14 @@ API path: `/seo`
 
 | Field | Description |
 | --- | --- |
-| `days_remaining` |  |
+| `daysRemaining` |  |
 | `issuer` |  |
 | `subject` |  |
 | `success` |  |
 | `url` |  |
 | `valid` |  |
-| `valid_from` |  |
-| `valid_to` |  |
+| `validFrom` |  |
+| `validTo` |  |
 
 Operations: Load.
 
@@ -347,7 +348,7 @@ Create an instance: `dead_link_checker = client.DeadLinkChecker()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `status_code` | `int` |  |
+| `statusCode` | `int` |  |
 | `url` | `str` |  |
 
 #### Example: List
@@ -371,10 +372,10 @@ Create an instance: `performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `load_time` | `float` |  |
-| `page_size` | `int` |  |
-| `performance_score` | `int` |  |
-| `request` | `int` |  |
+| `loadTime` | `float` |  |
+| `pageSize` | `int` |  |
+| `performanceScore` | `int` |  |
+| `requests` | `int` |  |
 | `success` | `bool` |  |
 | `url` | `str` |  |
 
@@ -425,9 +426,9 @@ Create an instance: `seo = client.Seo()`
 | Field | Type | Description |
 | --- | --- | --- |
 | `description` | `str` |  |
-| `heading` | `dict` |  |
-| `keyword` | `list` |  |
-| `recommendation` | `list` |  |
+| `headings` | `dict` |  |
+| `keywords` | `list` |  |
+| `recommendations` | `list` |  |
 | `score` | `int` |  |
 | `success` | `bool` |  |
 | `title` | `str` |  |
@@ -454,14 +455,14 @@ Create an instance: `ssl = client.Ssl()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `days_remaining` | `int` |  |
+| `daysRemaining` | `int` |  |
 | `issuer` | `str` |  |
 | `subject` | `str` |  |
 | `success` | `bool` |  |
 | `url` | `str` |  |
 | `valid` | `bool` |  |
-| `valid_from` | `str` |  |
-| `valid_to` | `str` |  |
+| `validFrom` | `str` |  |
+| `validTo` | `str` |  |
 
 #### Example: Load
 
@@ -566,15 +567,15 @@ Import entity or utility modules directly only when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `list`, the entity
+Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-deadlinkchecker = client.DeadLinkChecker()
-deadlinkchecker.list()
+performance = client.Performance()
+performance.load()
 
-# deadlinkchecker.data_get() now returns the deadlinkchecker data from the last list
-# deadlinkchecker.match_get() returns the last match criteria
+# performance.data_get() now returns the performance data from the last load
+# performance.match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
