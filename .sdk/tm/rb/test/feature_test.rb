@@ -15,7 +15,7 @@ require_relative "../WebsiteAnalysisApis2_sdk"
 module WebsiteAnalysisApis2FeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = WebsiteAnalysisApis2Config.make_config["feature"]
+    f = WebsiteAnalysisApis2Config.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

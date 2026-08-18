@@ -28,7 +28,7 @@ class WebsiteAnalysisApis2SDK
     utility = WebsiteAnalysisApis2Utility.new
     @_utility = utility
 
-    config = WebsiteAnalysisApis2Config.make_config
+    config = WebsiteAnalysisApis2Config.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

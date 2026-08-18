@@ -23,8 +23,8 @@ class WebsiteAnalysisApis2SDK:
         utility = WebsiteAnalysisApis2Utility()
         self._utility = utility
 
-        from websiteanalysisapis2_sdk.config import make_config
-        config = make_config()
+        from websiteanalysisapis2_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,
