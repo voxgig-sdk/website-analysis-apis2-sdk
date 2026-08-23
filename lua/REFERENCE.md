@@ -163,10 +163,10 @@ local performance = client:Performance(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `number` | No |  |
-| `pageSize` | `number` | No |  |
+| `loadTime` | `number` | No | Load time in milliseconds |
+| `pageSize` | `number` | No | Page size in bytes |
 | `performanceScore` | `number` | No |  |
-| `requests` | `number` | No |  |
+| `requests` | `number` | No | Number of HTTP requests |
 | `success` | `boolean` | No |  |
 | `url` | `string` | No |  |
 
@@ -220,7 +220,7 @@ local screenshot = client:Screenshot(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot` | `string` | No |  |
+| `screenshot` | `string` | No | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `boolean` | No |  |
 | `url` | `string` | No |  |
 

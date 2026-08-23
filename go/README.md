@@ -6,7 +6,7 @@ The Golang SDK for the WebsiteAnalysisApis2 API — an entity-oriented client us
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.DeadLinkChecker(nil)` — each with the same small set of operations (`List`, `Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -278,10 +278,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `"loadTime"` |  |
-| `"pageSize"` |  |
+| `"loadTime"` | Load time in milliseconds |
+| `"pageSize"` | Page size in bytes |
 | `"performanceScore"` |  |
-| `"requests"` |  |
+| `"requests"` | Number of HTTP requests |
 | `"success"` |  |
 | `"url"` |  |
 
@@ -293,7 +293,7 @@ API path: `/performance`
 
 | Field | Description |
 | --- | --- |
-| `"screenshot"` |  |
+| `"screenshot"` | Base64 encoded screenshot image or URL to the screenshot |
 | `"success"` |  |
 | `"url"` |  |
 
@@ -394,10 +394,10 @@ Create an instance: `performance := client.Performance(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `loadTime` | `float64` |  |
-| `pageSize` | `int` |  |
+| `loadTime` | `float64` | Load time in milliseconds |
+| `pageSize` | `int` | Page size in bytes |
 | `performanceScore` | `int` |  |
-| `requests` | `int` |  |
+| `requests` | `int` | Number of HTTP requests |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 
@@ -426,7 +426,7 @@ Create an instance: `screenshot := client.Screenshot(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot` | `string` |  |
+| `screenshot` | `string` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 

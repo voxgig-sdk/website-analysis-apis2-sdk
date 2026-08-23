@@ -264,10 +264,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `loadTime` |  |
-| `pageSize` |  |
+| `loadTime` | Load time in milliseconds |
+| `pageSize` | Page size in bytes |
 | `performanceScore` |  |
-| `requests` |  |
+| `requests` | Number of HTTP requests |
 | `success` |  |
 | `url` |  |
 
@@ -279,7 +279,7 @@ API path: `/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot` |  |
+| `screenshot` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` |  |
 | `url` |  |
 
@@ -377,10 +377,10 @@ Create an instance: `$performance = $client->Performance();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `loadTime` | `float` |  |
-| `pageSize` | `int` |  |
+| `loadTime` | `float` | Load time in milliseconds |
+| `pageSize` | `int` | Page size in bytes |
 | `performanceScore` | `int` |  |
-| `requests` | `int` |  |
+| `requests` | `int` | Number of HTTP requests |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 
@@ -406,7 +406,7 @@ Create an instance: `$screenshot = $client->Screenshot();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot` | `string` |  |
+| `screenshot` | `string` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `bool` |  |
 | `url` | `string` |  |
 

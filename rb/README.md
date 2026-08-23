@@ -254,10 +254,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `loadTime` |  |
-| `pageSize` |  |
+| `loadTime` | Load time in milliseconds |
+| `pageSize` | Page size in bytes |
 | `performanceScore` |  |
-| `requests` |  |
+| `requests` | Number of HTTP requests |
 | `success` |  |
 | `url` |  |
 
@@ -269,7 +269,7 @@ API path: `/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot` |  |
+| `screenshot` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` |  |
 | `url` |  |
 
@@ -367,10 +367,10 @@ Create an instance: `performance = client.Performance`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `loadTime` | `Float` |  |
-| `pageSize` | `Integer` |  |
+| `loadTime` | `Float` | Load time in milliseconds |
+| `pageSize` | `Integer` | Page size in bytes |
 | `performanceScore` | `Integer` |  |
-| `requests` | `Integer` |  |
+| `requests` | `Integer` | Number of HTTP requests |
 | `success` | `Boolean` |  |
 | `url` | `String` |  |
 
@@ -396,7 +396,7 @@ Create an instance: `screenshot = client.Screenshot`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot` | `String` |  |
+| `screenshot` | `String` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `Boolean` |  |
 | `url` | `String` |  |
 

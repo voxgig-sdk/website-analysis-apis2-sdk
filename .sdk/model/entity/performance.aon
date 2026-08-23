@@ -8,11 +8,13 @@ main: kit: entity: performance: {
     {
       name: "loadTime"
       req: false
+      short: "Load time in milliseconds"
       type: "`$NUMBER`"
     }
     {
       name: "pageSize"
       req: false
+      short: "Page size in bytes"
       type: "`$INTEGER`"
     }
     {
@@ -23,6 +25,7 @@ main: kit: entity: performance: {
     {
       name: "requests"
       req: false
+      short: "Number of HTTP requests"
       type: "`$INTEGER`"
     }
     {

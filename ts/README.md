@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -305,10 +305,10 @@ API path: `/deadlinks`
 
 | Field | Description |
 | --- | --- |
-| `loadTime` |  |
-| `pageSize` |  |
+| `loadTime` | Load time in milliseconds |
+| `pageSize` | Page size in bytes |
 | `performanceScore` |  |
-| `requests` |  |
+| `requests` | Number of HTTP requests |
 | `success` |  |
 | `url` |  |
 
@@ -320,7 +320,7 @@ API path: `/performance`
 
 | Field | Description |
 | --- | --- |
-| `screenshot` |  |
+| `screenshot` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` |  |
 | `url` |  |
 
@@ -417,10 +417,10 @@ Create an instance: `const performance = client.Performance()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `loadTime` | `number` |  |
-| `pageSize` | `number` |  |
+| `loadTime` | `number` | Load time in milliseconds |
+| `pageSize` | `number` | Page size in bytes |
 | `performanceScore` | `number` |  |
-| `requests` | `number` |  |
+| `requests` | `number` | Number of HTTP requests |
 | `success` | `boolean` |  |
 | `url` | `string` |  |
 
@@ -445,7 +445,7 @@ Create an instance: `const screenshot = client.Screenshot()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `screenshot` | `string` |  |
+| `screenshot` | `string` | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `boolean` |  |
 | `url` | `string` |  |
 

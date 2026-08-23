@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'WebsiteAnalysisApis2',
+        slug: "website-analysis-apis2",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -124,10 +135,12 @@ class Config {
       "fields": [
         {
           "name": "loadTime",
+          "short": "Load time in milliseconds",
           "type": "`$NUMBER`"
         },
         {
           "name": "pageSize",
+          "short": "Page size in bytes",
           "type": "`$INTEGER`"
         },
         {
@@ -136,6 +149,7 @@ class Config {
         },
         {
           "name": "requests",
+          "short": "Number of HTTP requests",
           "type": "`$INTEGER`"
         },
         {
@@ -193,6 +207,7 @@ class Config {
       "fields": [
         {
           "name": "screenshot",
+          "short": "Base64 encoded screenshot image or URL to the screenshot",
           "type": "`$STRING`"
         },
         {

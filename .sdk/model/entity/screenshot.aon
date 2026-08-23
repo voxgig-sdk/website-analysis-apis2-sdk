@@ -8,6 +8,7 @@ main: kit: entity: screenshot: {
     {
       name: "screenshot"
       req: false
+      short: "Base64 encoded screenshot image or URL to the screenshot"
       type: "`$STRING`"
     }
     {

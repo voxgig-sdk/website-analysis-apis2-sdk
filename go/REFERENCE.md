@@ -170,10 +170,10 @@ fmt.Println(performance.GetName()) // "performance"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `float64` | No |  |
-| `pageSize` | `int` | No |  |
+| `loadTime` | `float64` | No | Load time in milliseconds |
+| `pageSize` | `int` | No | Page size in bytes |
 | `performanceScore` | `int` | No |  |
-| `requests` | `int` | No |  |
+| `requests` | `int` | No | Number of HTTP requests |
 | `success` | `bool` | No |  |
 | `url` | `string` | No |  |
 
@@ -226,7 +226,7 @@ fmt.Println(screenshot.GetName()) // "screenshot"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot` | `string` | No |  |
+| `screenshot` | `string` | No | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `bool` | No |  |
 | `url` | `string` | No |  |
 

@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "WebsiteAnalysisApis2",
+			"slug": "website-analysis-apis2",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -91,10 +94,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "loadTime",
+						"short": "Load time in milliseconds",
 						"type": "`$NUMBER`",
 					},
 					map[string]any{
 						"name": "pageSize",
+						"short": "Page size in bytes",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -103,6 +108,7 @@ func MakeConfig() map[string]any {
 					},
 					map[string]any{
 						"name": "requests",
+						"short": "Number of HTTP requests",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
@@ -160,6 +166,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "screenshot",
+						"short": "Base64 encoded screenshot image or URL to the screenshot",
 						"type": "`$STRING`",
 					},
 					map[string]any{

@@ -166,10 +166,10 @@ performance = client.Performance
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `loadTime` | `Float` | No |  |
-| `pageSize` | `Integer` | No |  |
+| `loadTime` | `Float` | No | Load time in milliseconds |
+| `pageSize` | `Integer` | No | Page size in bytes |
 | `performanceScore` | `Integer` | No |  |
-| `requests` | `Integer` | No |  |
+| `requests` | `Integer` | No | Number of HTTP requests |
 | `success` | `Boolean` | No |  |
 | `url` | `String` | No |  |
 
@@ -223,7 +223,7 @@ screenshot = client.Screenshot
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `screenshot` | `String` | No |  |
+| `screenshot` | `String` | No | Base64 encoded screenshot image or URL to the screenshot |
 | `success` | `Boolean` | No |  |
 | `url` | `String` | No |  |
 

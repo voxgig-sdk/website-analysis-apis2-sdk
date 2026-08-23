@@ -1,8 +1,0 @@
-# Flows
-
-@"BasicDeadLinkCheckerFlow.aontu"
-@"BasicPerformanceFlow.aontu"
-@"BasicScreenshotFlow.aontu"
-@"BasicSeoFlow.aontu"
-@"BasicSslFlow.aontu"
-@"BasicTechStackDetectionFlow.aontu"

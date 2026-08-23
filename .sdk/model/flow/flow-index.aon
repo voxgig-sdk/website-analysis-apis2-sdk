@@ -1,0 +1,8 @@
+# Flows
+
+@"BasicDeadLinkCheckerFlow.aon"
+@"BasicPerformanceFlow.aon"
+@"BasicScreenshotFlow.aon"
+@"BasicSeoFlow.aon"
+@"BasicSslFlow.aon"
+@"BasicTechStackDetectionFlow.aon"

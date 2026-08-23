@@ -7,6 +7,9 @@ local function make_config()
   return {
     main = {
       name = "WebsiteAnalysisApis2",
+      slug = "website-analysis-apis2",
+      version = "0.0.1",
+      target = "lua",
     },
     feature = {
       ["test"] = {
@@ -87,10 +90,12 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "loadTime",
+            ["short"] = "Load time in milliseconds",
             ["type"] = "`$NUMBER`",
           },
           {
             ["name"] = "pageSize",
+            ["short"] = "Page size in bytes",
             ["type"] = "`$INTEGER`",
           },
           {
@@ -99,6 +104,7 @@ local function make_config()
           },
           {
             ["name"] = "requests",
+            ["short"] = "Number of HTTP requests",
             ["type"] = "`$INTEGER`",
           },
           {
@@ -156,6 +162,7 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "screenshot",
+            ["short"] = "Base64 encoded screenshot image or URL to the screenshot",
             ["type"] = "`$STRING`",
           },
           {

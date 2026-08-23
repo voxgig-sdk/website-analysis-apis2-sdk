@@ -19,6 +19,9 @@ module WebsiteAnalysisApis2Config
     {
       "main" => {
         "name" => "WebsiteAnalysisApis2",
+        "slug" => "website-analysis-apis2",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -99,10 +102,12 @@ module WebsiteAnalysisApis2Config
           "fields" => [
             {
               "name" => "loadTime",
+              "short" => "Load time in milliseconds",
               "type" => "`$NUMBER`",
             },
             {
               "name" => "pageSize",
+              "short" => "Page size in bytes",
               "type" => "`$INTEGER`",
             },
             {
@@ -111,6 +116,7 @@ module WebsiteAnalysisApis2Config
             },
             {
               "name" => "requests",
+              "short" => "Number of HTTP requests",
               "type" => "`$INTEGER`",
             },
             {
@@ -168,6 +174,7 @@ module WebsiteAnalysisApis2Config
           "fields" => [
             {
               "name" => "screenshot",
+              "short" => "Base64 encoded screenshot image or URL to the screenshot",
               "type" => "`$STRING`",
             },
             {

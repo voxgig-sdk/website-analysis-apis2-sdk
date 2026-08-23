@@ -33,6 +33,9 @@ class WebsiteAnalysisApis2Config
         return [
             "main" => [
                 "name" => "WebsiteAnalysisApis2",
+                "slug" => "website-analysis-apis2",
+                "version" => "0.0.1",
+                "target" => "php",
             ],
             "feature" => [
                 "test" => [
@@ -113,10 +116,12 @@ class WebsiteAnalysisApis2Config
           'fields' => [
             [
               'name' => 'loadTime',
+              'short' => 'Load time in milliseconds',
               'type' => '`$NUMBER`',
             ],
             [
               'name' => 'pageSize',
+              'short' => 'Page size in bytes',
               'type' => '`$INTEGER`',
             ],
             [
@@ -125,6 +130,7 @@ class WebsiteAnalysisApis2Config
             ],
             [
               'name' => 'requests',
+              'short' => 'Number of HTTP requests',
               'type' => '`$INTEGER`',
             ],
             [
@@ -182,6 +188,7 @@ class WebsiteAnalysisApis2Config
           'fields' => [
             [
               'name' => 'screenshot',
+              'short' => 'Base64 encoded screenshot image or URL to the screenshot',
               'type' => '`$STRING`',
             ],
             [
