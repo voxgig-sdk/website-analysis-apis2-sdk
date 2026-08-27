@@ -43,7 +43,8 @@ class PerformanceEntity extends WebsiteAnalysisApis2EntityBase<Performance> {
     const {
       makeContext,
       done,
-      error,
+      // The registry name is `makeError`; `error` is the local alias.
+      makeError: error,
       featureHook,
       makePoint,
       makeRequest,
