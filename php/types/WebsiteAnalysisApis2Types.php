@@ -22,8 +22,7 @@ class DeadLinkChecker
 /** Request payload for DeadLinkChecker#list. */
 class DeadLinkCheckerListMatch
 {
-    public ?int $statusCode = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Performance entity data model. */
@@ -40,12 +39,7 @@ class Performance
 /** Request payload for Performance#load. */
 class PerformanceLoadMatch
 {
-    public ?float $loadTime = null;
-    public ?int $pageSize = null;
-    public ?int $performanceScore = null;
-    public ?int $requests = null;
-    public ?bool $success = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Screenshot entity data model. */
@@ -59,9 +53,7 @@ class Screenshot
 /** Request payload for Screenshot#load. */
 class ScreenshotLoadMatch
 {
-    public ?string $screenshot = null;
-    public ?bool $success = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Seo entity data model. */
@@ -80,14 +72,7 @@ class Seo
 /** Request payload for Seo#list. */
 class SeoListMatch
 {
-    public ?string $description = null;
-    public ?array $headings = null;
-    public ?array $keywords = null;
-    public ?array $recommendations = null;
-    public ?int $score = null;
-    public ?bool $success = null;
-    public ?string $title = null;
-    public ?string $url = null;
+    public string $url;
 }
 
 /** Ssl entity data model. */
@@ -106,14 +91,7 @@ class Ssl
 /** Request payload for Ssl#load. */
 class SslLoadMatch
 {
-    public ?int $daysRemaining = null;
-    public ?string $issuer = null;
-    public ?string $subject = null;
-    public ?bool $success = null;
-    public ?string $url = null;
-    public ?bool $valid = null;
-    public ?string $validFrom = null;
-    public ?string $validTo = null;
+    public string $url;
 }
 
 /** TechStackDetection entity data model. */
@@ -127,8 +105,6 @@ class TechStackDetection
 /** Request payload for TechStackDetection#list. */
 class TechStackDetectionListMatch
 {
-    public ?string $category = null;
-    public ?string $name = null;
-    public ?string $version = null;
+    public string $url;
 }
 

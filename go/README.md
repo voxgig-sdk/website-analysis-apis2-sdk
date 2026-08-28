@@ -68,7 +68,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-performance, err := client.Performance(nil).Load(nil, nil)
+performance, err := client.Performance(nil).Load(map[string]any{"url": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -138,7 +138,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 performance, err := client.Performance(nil).Load(
-    nil, nil,
+    map[string]any{"url": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -404,7 +404,7 @@ Create an instance: `performance := client.Performance(nil)`
 #### Example: Load
 
 ```go
-performance, err := client.Performance(nil).Load(nil, nil)
+performance, err := client.Performance(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -433,7 +433,7 @@ Create an instance: `screenshot := client.Screenshot(nil)`
 #### Example: Load
 
 ```go
-screenshot, err := client.Screenshot(nil).Load(nil, nil)
+screenshot, err := client.Screenshot(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -501,7 +501,7 @@ Create an instance: `ssl := client.Ssl(nil)`
 #### Example: Load
 
 ```go
-ssl, err := client.Ssl(nil).Load(nil, nil)
+ssl, err := client.Ssl(nil).Load(map[string]any{"url": "url"}, nil)
 if err != nil {
     panic(err)
 }
@@ -536,6 +536,29 @@ if err != nil {
 }
 fmt.Println(techStackDetections) // the array of records
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -612,7 +635,7 @@ stores the returned data and match criteria internally.
 
 ```go
 performance := client.Performance(nil)
-performance.Load(nil, nil)
+performance.Load(map[string]any{"url": "example"}, nil)
 
 // performance.Data() now returns the performance data from the last load
 // performance.Match() returns the last match criteria

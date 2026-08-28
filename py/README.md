@@ -43,7 +43,7 @@ error — iterate it directly.
 
 ```python
 try:
-    deadlinkcheckers = client.DeadLinkChecker().list()
+    deadlinkcheckers = client.DeadLinkChecker().list({"url": "example"})
     for deadlinkchecker in deadlinkcheckers:
         print(deadlinkchecker)
 except Exception as err:
@@ -57,7 +57,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    performance = client.Performance().load()
+    performance = client.Performance().load({"url": "example"})
     print(performance)
 except Exception as err:
     print(f"load failed: {err}")
@@ -126,7 +126,7 @@ client = WebsiteAnalysisApis2SDK.test()
 
 # Entity ops return the ENTITY and raises on error;
 # call data_get() for the record.
-performance = client.Performance().load()
+performance = client.Performance().load({"url": "example"})
 # performance contains the mock response record
 ```
 
@@ -354,7 +354,7 @@ Create an instance: `dead_link_checker = client.DeadLinkChecker()`
 #### Example: List
 
 ```python
-dead_link_checkers = client.DeadLinkChecker().list()
+dead_link_checkers = client.DeadLinkChecker().list({"url": "example"})
 ```
 
 
@@ -382,7 +382,7 @@ Create an instance: `performance = client.Performance()`
 #### Example: Load
 
 ```python
-performance = client.Performance().load()
+performance = client.Performance().load({"url": "url"})
 ```
 
 
@@ -407,7 +407,7 @@ Create an instance: `screenshot = client.Screenshot()`
 #### Example: Load
 
 ```python
-screenshot = client.Screenshot().load()
+screenshot = client.Screenshot().load({"url": "url"})
 ```
 
 
@@ -437,7 +437,7 @@ Create an instance: `seo = client.Seo()`
 #### Example: List
 
 ```python
-seos = client.Seo().list()
+seos = client.Seo().list({"url": "example"})
 ```
 
 
@@ -467,7 +467,7 @@ Create an instance: `ssl = client.Ssl()`
 #### Example: Load
 
 ```python
-ssl = client.Ssl().load()
+ssl = client.Ssl().load({"url": "url"})
 ```
 
 
@@ -492,8 +492,31 @@ Create an instance: `tech_stack_detection = client.TechStackDetection()`
 #### Example: List
 
 ```python
-tech_stack_detections = client.TechStackDetection().list()
+tech_stack_detections = client.TechStackDetection().list({"url": "example"})
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -572,7 +595,7 @@ stores the returned data and match criteria internally.
 
 ```python
 performance = client.Performance()
-performance.load()
+performance.load({"url": "example"})
 
 # performance.data_get() now returns the performance data from the last load
 # performance.match_get() returns the last match criteria

@@ -23,13 +23,9 @@ DeadLinkChecker = Struct.new(
 
 # Request payload for DeadLinkChecker#list.
 #
-# @!attribute [rw] statusCode
-#   @return [Integer, nil]
-#
 # @!attribute [rw] url
-#   @return [String, nil]
+#   @return [String]
 DeadLinkCheckerListMatch = Struct.new(
-  :statusCode,
   :url,
   keyword_init: true
 )
@@ -65,29 +61,9 @@ Performance = Struct.new(
 
 # Request payload for Performance#load.
 #
-# @!attribute [rw] loadTime
-#   @return [Float, nil]
-#
-# @!attribute [rw] pageSize
-#   @return [Integer, nil]
-#
-# @!attribute [rw] performanceScore
-#   @return [Integer, nil]
-#
-# @!attribute [rw] requests
-#   @return [Integer, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
 # @!attribute [rw] url
-#   @return [String, nil]
+#   @return [String]
 PerformanceLoadMatch = Struct.new(
-  :loadTime,
-  :pageSize,
-  :performanceScore,
-  :requests,
-  :success,
   :url,
   keyword_init: true
 )
@@ -111,17 +87,9 @@ Screenshot = Struct.new(
 
 # Request payload for Screenshot#load.
 #
-# @!attribute [rw] screenshot
-#   @return [String, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
 # @!attribute [rw] url
-#   @return [String, nil]
+#   @return [String]
 ScreenshotLoadMatch = Struct.new(
-  :screenshot,
-  :success,
   :url,
   keyword_init: true
 )
@@ -165,37 +133,9 @@ Seo = Struct.new(
 
 # Request payload for Seo#list.
 #
-# @!attribute [rw] description
-#   @return [String, nil]
-#
-# @!attribute [rw] headings
-#   @return [Hash, nil]
-#
-# @!attribute [rw] keywords
-#   @return [Array, nil]
-#
-# @!attribute [rw] recommendations
-#   @return [Array, nil]
-#
-# @!attribute [rw] score
-#   @return [Integer, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] title
-#   @return [String, nil]
-#
 # @!attribute [rw] url
-#   @return [String, nil]
+#   @return [String]
 SeoListMatch = Struct.new(
-  :description,
-  :headings,
-  :keywords,
-  :recommendations,
-  :score,
-  :success,
-  :title,
   :url,
   keyword_init: true
 )
@@ -239,38 +179,10 @@ Ssl = Struct.new(
 
 # Request payload for Ssl#load.
 #
-# @!attribute [rw] daysRemaining
-#   @return [Integer, nil]
-#
-# @!attribute [rw] issuer
-#   @return [String, nil]
-#
-# @!attribute [rw] subject
-#   @return [String, nil]
-#
-# @!attribute [rw] success
-#   @return [Boolean, nil]
-#
 # @!attribute [rw] url
-#   @return [String, nil]
-#
-# @!attribute [rw] valid
-#   @return [Boolean, nil]
-#
-# @!attribute [rw] validFrom
-#   @return [String, nil]
-#
-# @!attribute [rw] validTo
-#   @return [String, nil]
+#   @return [String]
 SslLoadMatch = Struct.new(
-  :daysRemaining,
-  :issuer,
-  :subject,
-  :success,
   :url,
-  :valid,
-  :validFrom,
-  :validTo,
   keyword_init: true
 )
 
@@ -293,18 +205,10 @@ TechStackDetection = Struct.new(
 
 # Request payload for TechStackDetection#list.
 #
-# @!attribute [rw] category
-#   @return [String, nil]
-#
-# @!attribute [rw] name
-#   @return [String, nil]
-#
-# @!attribute [rw] version
-#   @return [String, nil]
+# @!attribute [rw] url
+#   @return [String]
 TechStackDetectionListMatch = Struct.new(
-  :category,
-  :name,
-  :version,
+  :url,
   keyword_init: true
 )
 

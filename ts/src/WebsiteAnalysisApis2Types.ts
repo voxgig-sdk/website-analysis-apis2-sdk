@@ -11,8 +11,7 @@ export interface DeadLinkChecker {
 }
 
 export interface DeadLinkCheckerListMatch {
-  statusCode?: number
-  url?: string
+  url: string
 }
 
 export interface Performance {
@@ -25,12 +24,7 @@ export interface Performance {
 }
 
 export interface PerformanceLoadMatch {
-  loadTime?: number
-  pageSize?: number
-  performanceScore?: number
-  requests?: number
-  success?: boolean
-  url?: string
+  url: string
 }
 
 export interface Screenshot {
@@ -40,9 +34,7 @@ export interface Screenshot {
 }
 
 export interface ScreenshotLoadMatch {
-  screenshot?: string
-  success?: boolean
-  url?: string
+  url: string
 }
 
 export interface Seo {
@@ -57,14 +49,7 @@ export interface Seo {
 }
 
 export interface SeoListMatch {
-  description?: string
-  headings?: Record<string, any>
-  keywords?: any[]
-  recommendations?: any[]
-  score?: number
-  success?: boolean
-  title?: string
-  url?: string
+  url: string
 }
 
 export interface Ssl {
@@ -79,14 +64,7 @@ export interface Ssl {
 }
 
 export interface SslLoadMatch {
-  daysRemaining?: number
-  issuer?: string
-  subject?: string
-  success?: boolean
-  url?: string
-  valid?: boolean
-  validFrom?: string
-  validTo?: string
+  url: string
 }
 
 export interface TechStackDetection {
@@ -96,8 +74,6 @@ export interface TechStackDetection {
 }
 
 export interface TechStackDetectionListMatch {
-  category?: string
-  name?: string
-  version?: string
+  url: string
 }
 

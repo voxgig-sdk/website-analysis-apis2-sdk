@@ -20,8 +20,7 @@ type DeadLinkChecker struct {
 
 // DeadLinkCheckerListMatch is the typed request payload for DeadLinkChecker.ListTyped.
 type DeadLinkCheckerListMatch struct {
-	StatusCode *int `json:"statusCode,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 }
 
 // Performance is the typed data model for the performance entity.
@@ -36,12 +35,7 @@ type Performance struct {
 
 // PerformanceLoadMatch is the typed request payload for Performance.LoadTyped.
 type PerformanceLoadMatch struct {
-	LoadTime *float64 `json:"loadTime,omitempty"`
-	PageSize *int `json:"pageSize,omitempty"`
-	PerformanceScore *int `json:"performanceScore,omitempty"`
-	Requests *int `json:"requests,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 }
 
 // Screenshot is the typed data model for the screenshot entity.
@@ -53,9 +47,7 @@ type Screenshot struct {
 
 // ScreenshotLoadMatch is the typed request payload for Screenshot.LoadTyped.
 type ScreenshotLoadMatch struct {
-	Screenshot *string `json:"screenshot,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 }
 
 // Seo is the typed data model for the seo entity.
@@ -72,14 +64,7 @@ type Seo struct {
 
 // SeoListMatch is the typed request payload for Seo.ListTyped.
 type SeoListMatch struct {
-	Description *string `json:"description,omitempty"`
-	Headings *map[string]any `json:"headings,omitempty"`
-	Keywords *[]any `json:"keywords,omitempty"`
-	Recommendations *[]any `json:"recommendations,omitempty"`
-	Score *int `json:"score,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Url *string `json:"url,omitempty"`
+	Url string `json:"url"`
 }
 
 // Ssl is the typed data model for the ssl entity.
@@ -96,14 +81,7 @@ type Ssl struct {
 
 // SslLoadMatch is the typed request payload for Ssl.LoadTyped.
 type SslLoadMatch struct {
-	DaysRemaining *int `json:"daysRemaining,omitempty"`
-	Issuer *string `json:"issuer,omitempty"`
-	Subject *string `json:"subject,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Valid *bool `json:"valid,omitempty"`
-	ValidFrom *string `json:"validFrom,omitempty"`
-	ValidTo *string `json:"validTo,omitempty"`
+	Url string `json:"url"`
 }
 
 // TechStackDetection is the typed data model for the tech_stack_detection entity.
@@ -115,9 +93,7 @@ type TechStackDetection struct {
 
 // TechStackDetectionListMatch is the typed request payload for TechStackDetection.ListTyped.
 type TechStackDetectionListMatch struct {
-	Category *string `json:"category,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Version *string `json:"version,omitempty"`
+	Url string `json:"url"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

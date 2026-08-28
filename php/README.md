@@ -53,7 +53,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $performance = $client->Performance()->load();
+    $performance = $client->Performance()->load(["url" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -127,7 +127,7 @@ $client = WebsiteAnalysisApis2SDK::test();
 
 // Entity ops return the ENTITY (throws on error);
 // call data_get() for the mock record.
-$performance = $client->Performance()->load();
+$performance = $client->Performance()->load(["url" => "example"]);
 print_r($performance);
 ```
 
@@ -388,7 +388,7 @@ Create an instance: `$performance = $client->Performance();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Performance record (throws on error).
-$performance = $client->Performance()->load();
+$performance = $client->Performance()->load(["url" => "url"]);
 ```
 
 
@@ -414,7 +414,7 @@ Create an instance: `$screenshot = $client->Screenshot();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Screenshot record (throws on error).
-$screenshot = $client->Screenshot()->load();
+$screenshot = $client->Screenshot()->load(["url" => "url"]);
 ```
 
 
@@ -476,7 +476,7 @@ Create an instance: `$ssl = $client->Ssl();`
 
 ```php
 // load() returns the ENTITY — call data_get() for the Ssl record (throws on error).
-$ssl = $client->Ssl()->load();
+$ssl = $client->Ssl()->load(["url" => "url"]);
 ```
 
 
@@ -504,6 +504,29 @@ Create an instance: `$tech_stack_detection = $client->TechStackDetection();`
 // list() returns an array of TechStackDetection records (throws on error).
 $tech_stack_detections = $client->TechStackDetection()->list();
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -583,7 +606,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $performance = $client->Performance();
-$performance->load();
+$performance->load(["url" => "example"]);
 
 // $performance->data_get() now returns the performance data from the last load
 // $performance->match_get() returns the last match criteria

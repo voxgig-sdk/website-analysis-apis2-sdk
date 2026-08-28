@@ -11,8 +11,7 @@
 ---@field url? string
 
 ---@class DeadLinkCheckerListMatch
----@field statusCode? number
----@field url? string
+---@field url string
 
 ---@class Performance
 ---@field loadTime? number
@@ -23,12 +22,7 @@
 ---@field url? string
 
 ---@class PerformanceLoadMatch
----@field loadTime? number
----@field pageSize? number
----@field performanceScore? number
----@field requests? number
----@field success? boolean
----@field url? string
+---@field url string
 
 ---@class Screenshot
 ---@field screenshot? string
@@ -36,9 +30,7 @@
 ---@field url? string
 
 ---@class ScreenshotLoadMatch
----@field screenshot? string
----@field success? boolean
----@field url? string
+---@field url string
 
 ---@class Seo
 ---@field description? string
@@ -51,14 +43,7 @@
 ---@field url? string
 
 ---@class SeoListMatch
----@field description? string
----@field headings? table
----@field keywords? table
----@field recommendations? table
----@field score? number
----@field success? boolean
----@field title? string
----@field url? string
+---@field url string
 
 ---@class Ssl
 ---@field daysRemaining? number
@@ -71,14 +56,7 @@
 ---@field validTo? string
 
 ---@class SslLoadMatch
----@field daysRemaining? number
----@field issuer? string
----@field subject? string
----@field success? boolean
----@field url? string
----@field valid? boolean
----@field validFrom? string
----@field validTo? string
+---@field url string
 
 ---@class TechStackDetection
 ---@field category? string
@@ -86,9 +64,7 @@
 ---@field version? string
 
 ---@class TechStackDetectionListMatch
----@field category? string
----@field name? string
----@field version? string
+---@field url string
 
 local M = {}
 

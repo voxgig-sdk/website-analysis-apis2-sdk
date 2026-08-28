@@ -40,7 +40,7 @@ resolves to entities, not raw records. Iterate them directly, and call
 `.data()` on one for the record it holds:
 
 ```ts
-const deadlinkcheckers = await client.DeadLinkChecker().list()
+const deadlinkcheckers = await client.DeadLinkChecker().list({ url: "example" })
 
 for (const deadlinkchecker of deadlinkcheckers) {
   console.log(deadlinkchecker)
@@ -54,7 +54,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const performance = await client.Performance().load()
+  const performance = await client.Performance().load({ url: "example" })
   console.log(performance)
 } catch (err) {
   console.error('load failed:', err)
@@ -121,7 +121,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = WebsiteAnalysisApis2SDK.test()
 
-const performance = await client.Performance().load()
+const performance = await client.Performance().load({ url: 'example_url' })
 // performance is the entity, populated with mock response data
 // — call performance.data() for the record itself
 console.log(performance)
@@ -142,7 +142,7 @@ Entity instances remember their last match and data:
 const entity = client.Performance()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ url: 'example_url' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -399,7 +399,7 @@ Create an instance: `const dead_link_checker = client.DeadLinkChecker()`
 #### Example: List
 
 ```ts
-const dead_link_checkers = await client.DeadLinkChecker().list()
+const dead_link_checkers = await client.DeadLinkChecker().list({ url: "example" })
 ```
 
 
@@ -427,7 +427,7 @@ Create an instance: `const performance = client.Performance()`
 #### Example: Load
 
 ```ts
-const performance = await client.Performance().load()
+const performance = await client.Performance().load({ url: 'url' })
 ```
 
 
@@ -452,7 +452,7 @@ Create an instance: `const screenshot = client.Screenshot()`
 #### Example: Load
 
 ```ts
-const screenshot = await client.Screenshot().load()
+const screenshot = await client.Screenshot().load({ url: 'url' })
 ```
 
 
@@ -482,7 +482,7 @@ Create an instance: `const seo = client.Seo()`
 #### Example: List
 
 ```ts
-const seos = await client.Seo().list()
+const seos = await client.Seo().list({ url: "example" })
 ```
 
 
@@ -512,7 +512,7 @@ Create an instance: `const ssl = client.Ssl()`
 #### Example: Load
 
 ```ts
-const ssl = await client.Ssl().load()
+const ssl = await client.Ssl().load({ url: 'url' })
 ```
 
 
@@ -537,8 +537,31 @@ Create an instance: `const tech_stack_detection = client.TechStackDetection()`
 #### Example: List
 
 ```ts
-const tech_stack_detections = await client.TechStackDetection().list()
+const tech_stack_detections = await client.TechStackDetection().list({ url: "example" })
 ```
+
+## Features
+
+This SDK ships 1 optional features. Each is **inactive until you
+switch it on**, so an SDK you have not configured behaves exactly as if none of
+them existed — no retries, no cache, no logging, no measurable overhead.
+
+Activate a feature by name in the client options, alongside the options shown
+above:
+
+| Feature | What it does |
+|---|---|
+| [`test`](#test) | In-memory mock transport for testing without a live server |
+
+### test
+
+In-memory mock transport for testing without a live server.
+
+| Option | Default |
+|---|---|
+| `active` | `false` |
+
+Set `feature.test.active` to enable it, then override any of the options above.
 
 
 ## Advanced
@@ -611,7 +634,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const performance = client.Performance()
-await performance.load()
+await performance.load({ url: "example" })
 
 // performance.data() now returns the performance data from the last `load`
 // performance.match() returns the last match criteria

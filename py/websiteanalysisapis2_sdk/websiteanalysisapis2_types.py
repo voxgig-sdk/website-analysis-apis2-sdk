@@ -21,8 +21,7 @@ class DeadLinkChecker(TypedDict, total=False):
     url: str
 
 
-class DeadLinkCheckerListMatch(TypedDict, total=False):
-    statusCode: int
+class DeadLinkCheckerListMatch(TypedDict):
     url: str
 
 
@@ -35,12 +34,7 @@ class Performance(TypedDict, total=False):
     url: str
 
 
-class PerformanceLoadMatch(TypedDict, total=False):
-    loadTime: float
-    pageSize: int
-    performanceScore: int
-    requests: int
-    success: bool
+class PerformanceLoadMatch(TypedDict):
     url: str
 
 
@@ -50,9 +44,7 @@ class Screenshot(TypedDict, total=False):
     url: str
 
 
-class ScreenshotLoadMatch(TypedDict, total=False):
-    screenshot: str
-    success: bool
+class ScreenshotLoadMatch(TypedDict):
     url: str
 
 
@@ -67,14 +59,7 @@ class Seo(TypedDict, total=False):
     url: str
 
 
-class SeoListMatch(TypedDict, total=False):
-    description: str
-    headings: dict
-    keywords: list
-    recommendations: list
-    score: int
-    success: bool
-    title: str
+class SeoListMatch(TypedDict):
     url: str
 
 
@@ -89,15 +74,8 @@ class Ssl(TypedDict, total=False):
     validTo: str
 
 
-class SslLoadMatch(TypedDict, total=False):
-    daysRemaining: int
-    issuer: str
-    subject: str
-    success: bool
+class SslLoadMatch(TypedDict):
     url: str
-    valid: bool
-    validFrom: str
-    validTo: str
 
 
 class TechStackDetection(TypedDict, total=False):
@@ -106,7 +84,5 @@ class TechStackDetection(TypedDict, total=False):
     version: str
 
 
-class TechStackDetectionListMatch(TypedDict, total=False):
-    category: str
-    name: str
-    version: str
+class TechStackDetectionListMatch(TypedDict):
+    url: str
