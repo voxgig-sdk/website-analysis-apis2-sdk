@@ -34,6 +34,7 @@ main: kit: entity: performance: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -60,8 +61,10 @@ main: kit: entity: performance: {
           }
           method: "GET"
           orig: "/performance"
-          parts: [
-            "performance"
+          segments: [
+            {
+              lit: "performance"
+            }
           ]
           select: {
             exist: [

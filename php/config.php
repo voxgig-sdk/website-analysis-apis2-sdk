@@ -67,6 +67,7 @@ class WebsiteAnalysisApis2Config
               'type' => '`$INTEGER`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'type' => '`$STRING`',
             ],
@@ -93,8 +94,10 @@ class WebsiteAnalysisApis2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/deadlinks',
-                  'parts' => [
-                    'deadlinks',
+                  'segments' => [
+                    [
+                      'lit' => 'deadlinks',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -104,6 +107,9 @@ class WebsiteAnalysisApis2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.deadLinks`',
+                  ],
+                  'parts' => [
+                    'deadlinks',
                   ],
                 ],
               ],
@@ -139,6 +145,7 @@ class WebsiteAnalysisApis2Config
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'type' => '`$STRING`',
             ],
@@ -165,8 +172,10 @@ class WebsiteAnalysisApis2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/performance',
-                  'parts' => [
-                    'performance',
+                  'segments' => [
+                    [
+                      'lit' => 'performance',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -176,6 +185,9 @@ class WebsiteAnalysisApis2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'performance',
                   ],
                 ],
               ],
@@ -197,6 +209,7 @@ class WebsiteAnalysisApis2Config
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'type' => '`$STRING`',
             ],
@@ -223,8 +236,10 @@ class WebsiteAnalysisApis2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/screenshot',
-                  'parts' => [
-                    'screenshot',
+                  'segments' => [
+                    [
+                      'lit' => 'screenshot',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -234,6 +249,9 @@ class WebsiteAnalysisApis2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'screenshot',
                   ],
                 ],
               ],
@@ -274,6 +292,7 @@ class WebsiteAnalysisApis2Config
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'type' => '`$STRING`',
             ],
@@ -300,8 +319,10 @@ class WebsiteAnalysisApis2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/seo',
-                  'parts' => [
-                    'seo',
+                  'segments' => [
+                    [
+                      'lit' => 'seo',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -311,6 +332,9 @@ class WebsiteAnalysisApis2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'seo',
                   ],
                 ],
               ],
@@ -339,6 +363,7 @@ class WebsiteAnalysisApis2Config
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'uri',
               'name' => 'url',
               'type' => '`$STRING`',
             ],
@@ -347,10 +372,12 @@ class WebsiteAnalysisApis2Config
               'type' => '`$BOOLEAN`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'validFrom',
               'type' => '`$STRING`',
             ],
             [
+              'format' => 'date-time',
               'name' => 'validTo',
               'type' => '`$STRING`',
             ],
@@ -377,8 +404,10 @@ class WebsiteAnalysisApis2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/ssl',
-                  'parts' => [
-                    'ssl',
+                  'segments' => [
+                    [
+                      'lit' => 'ssl',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -388,6 +417,9 @@ class WebsiteAnalysisApis2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'ssl',
                   ],
                 ],
               ],
@@ -434,8 +466,10 @@ class WebsiteAnalysisApis2Config
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/techstack',
-                  'parts' => [
-                    'techstack',
+                  'segments' => [
+                    [
+                      'lit' => 'techstack',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -445,6 +479,9 @@ class WebsiteAnalysisApis2Config
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.technologies`',
+                  ],
+                  'parts' => [
+                    'techstack',
                   ],
                 ],
               ],

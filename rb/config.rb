@@ -53,6 +53,7 @@ module WebsiteAnalysisApis2Config
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "type" => "`$STRING`",
             },
@@ -79,8 +80,10 @@ module WebsiteAnalysisApis2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/deadlinks",
-                  "parts" => [
-                    "deadlinks",
+                  "segments" => [
+                    {
+                      "lit" => "deadlinks",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -91,6 +94,9 @@ module WebsiteAnalysisApis2Config
                     "req" => "`reqdata`",
                     "res" => "`body.deadLinks`",
                   },
+                  "parts" => [
+                    "deadlinks",
+                  ],
                 },
               ],
             },
@@ -125,6 +131,7 @@ module WebsiteAnalysisApis2Config
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "type" => "`$STRING`",
             },
@@ -151,8 +158,10 @@ module WebsiteAnalysisApis2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/performance",
-                  "parts" => [
-                    "performance",
+                  "segments" => [
+                    {
+                      "lit" => "performance",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -163,6 +172,9 @@ module WebsiteAnalysisApis2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "performance",
+                  ],
                 },
               ],
             },
@@ -183,6 +195,7 @@ module WebsiteAnalysisApis2Config
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "type" => "`$STRING`",
             },
@@ -209,8 +222,10 @@ module WebsiteAnalysisApis2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/screenshot",
-                  "parts" => [
-                    "screenshot",
+                  "segments" => [
+                    {
+                      "lit" => "screenshot",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -221,6 +236,9 @@ module WebsiteAnalysisApis2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "screenshot",
+                  ],
                 },
               ],
             },
@@ -260,6 +278,7 @@ module WebsiteAnalysisApis2Config
               "type" => "`$STRING`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "type" => "`$STRING`",
             },
@@ -286,8 +305,10 @@ module WebsiteAnalysisApis2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/seo",
-                  "parts" => [
-                    "seo",
+                  "segments" => [
+                    {
+                      "lit" => "seo",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -298,6 +319,9 @@ module WebsiteAnalysisApis2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "seo",
+                  ],
                 },
               ],
             },
@@ -325,6 +349,7 @@ module WebsiteAnalysisApis2Config
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "uri",
               "name" => "url",
               "type" => "`$STRING`",
             },
@@ -333,10 +358,12 @@ module WebsiteAnalysisApis2Config
               "type" => "`$BOOLEAN`",
             },
             {
+              "format" => "date-time",
               "name" => "validFrom",
               "type" => "`$STRING`",
             },
             {
+              "format" => "date-time",
               "name" => "validTo",
               "type" => "`$STRING`",
             },
@@ -363,8 +390,10 @@ module WebsiteAnalysisApis2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/ssl",
-                  "parts" => [
-                    "ssl",
+                  "segments" => [
+                    {
+                      "lit" => "ssl",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -375,6 +404,9 @@ module WebsiteAnalysisApis2Config
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "ssl",
+                  ],
                 },
               ],
             },
@@ -420,8 +452,10 @@ module WebsiteAnalysisApis2Config
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/techstack",
-                  "parts" => [
-                    "techstack",
+                  "segments" => [
+                    {
+                      "lit" => "techstack",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -432,6 +466,9 @@ module WebsiteAnalysisApis2Config
                     "req" => "`reqdata`",
                     "res" => "`body.technologies`",
                   },
+                  "parts" => [
+                    "techstack",
+                  ],
                 },
               ],
             },

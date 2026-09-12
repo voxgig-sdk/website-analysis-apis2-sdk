@@ -41,6 +41,7 @@ main: kit: entity: seo: {
       type: "`$STRING`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -67,8 +68,10 @@ main: kit: entity: seo: {
           }
           method: "GET"
           orig: "/seo"
-          parts: [
-            "seo"
+          segments: [
+            {
+              lit: "seo"
+            }
           ]
           select: {
             exist: [

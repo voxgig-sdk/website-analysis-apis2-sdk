@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -86,6 +97,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uri",
           "name": "url",
           "type": "`$STRING`"
         }
@@ -112,8 +124,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/deadlinks",
-              "parts": [
-                "deadlinks"
+              "segments": [
+                {
+                  "lit": "deadlinks"
+                }
               ],
               "select": {
                 "exist": [
@@ -123,7 +137,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.deadLinks`"
-              }
+              },
+              "parts": [
+                "deadlinks"
+              ]
             }
           ]
         }
@@ -158,6 +175,7 @@ class Config {
           "type": "`$BOOLEAN`"
         },
         {
+          "format": "uri",
           "name": "url",
           "type": "`$STRING`"
         }
@@ -184,8 +202,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/performance",
-              "parts": [
-                "performance"
+              "segments": [
+                {
+                  "lit": "performance"
+                }
               ],
               "select": {
                 "exist": [
@@ -195,7 +215,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "performance"
+              ]
             }
           ]
         }
@@ -216,6 +239,7 @@ class Config {
           "type": "`$BOOLEAN`"
         },
         {
+          "format": "uri",
           "name": "url",
           "type": "`$STRING`"
         }
@@ -242,8 +266,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/screenshot",
-              "parts": [
-                "screenshot"
+              "segments": [
+                {
+                  "lit": "screenshot"
+                }
               ],
               "select": {
                 "exist": [
@@ -253,7 +279,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "screenshot"
+              ]
             }
           ]
         }
@@ -293,6 +322,7 @@ class Config {
           "type": "`$STRING`"
         },
         {
+          "format": "uri",
           "name": "url",
           "type": "`$STRING`"
         }
@@ -319,8 +349,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/seo",
-              "parts": [
-                "seo"
+              "segments": [
+                {
+                  "lit": "seo"
+                }
               ],
               "select": {
                 "exist": [
@@ -330,7 +362,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "seo"
+              ]
             }
           ]
         }
@@ -358,6 +393,7 @@ class Config {
           "type": "`$BOOLEAN`"
         },
         {
+          "format": "uri",
           "name": "url",
           "type": "`$STRING`"
         },
@@ -366,10 +402,12 @@ class Config {
           "type": "`$BOOLEAN`"
         },
         {
+          "format": "date-time",
           "name": "validFrom",
           "type": "`$STRING`"
         },
         {
+          "format": "date-time",
           "name": "validTo",
           "type": "`$STRING`"
         }
@@ -396,8 +434,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/ssl",
-              "parts": [
-                "ssl"
+              "segments": [
+                {
+                  "lit": "ssl"
+                }
               ],
               "select": {
                 "exist": [
@@ -407,7 +447,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "ssl"
+              ]
             }
           ]
         }
@@ -453,8 +496,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/techstack",
-              "parts": [
-                "techstack"
+              "segments": [
+                {
+                  "lit": "techstack"
+                }
               ],
               "select": {
                 "exist": [
@@ -464,7 +509,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.technologies`"
-              }
+              },
+              "parts": [
+                "techstack"
+              ]
             }
           ]
         }
@@ -480,6 +528,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

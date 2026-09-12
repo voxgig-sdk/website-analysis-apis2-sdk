@@ -11,6 +11,7 @@ main: kit: entity: dead_link_checker: {
       type: "`$INTEGER`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -37,8 +38,10 @@ main: kit: entity: dead_link_checker: {
           }
           method: "GET"
           orig: "/deadlinks"
-          parts: [
-            "deadlinks"
+          segments: [
+            {
+              lit: "deadlinks"
+            }
           ]
           select: {
             exist: [

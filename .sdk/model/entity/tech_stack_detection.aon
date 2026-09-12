@@ -42,8 +42,10 @@ main: kit: entity: tech_stack_detection: {
           }
           method: "GET"
           orig: "/techstack"
-          parts: [
-            "techstack"
+          segments: [
+            {
+              lit: "techstack"
+            }
           ]
           select: {
             exist: [

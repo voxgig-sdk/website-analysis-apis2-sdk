@@ -26,6 +26,7 @@ main: kit: entity: ssl: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -36,11 +37,13 @@ main: kit: entity: ssl: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "date-time"
       name: "validFrom"
       req: false
       type: "`$STRING`"
     }
     {
+      format: "date-time"
       name: "validTo"
       req: false
       type: "`$STRING`"
@@ -67,8 +70,10 @@ main: kit: entity: ssl: {
           }
           method: "GET"
           orig: "/ssl"
-          parts: [
-            "ssl"
+          segments: [
+            {
+              lit: "ssl"
+            }
           ]
           select: {
             exist: [

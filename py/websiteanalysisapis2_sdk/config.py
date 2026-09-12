@@ -1,6 +1,14 @@
 # WebsiteAnalysisApis2 SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -62,6 +70,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uri",
             "name": "url",
             "type": "`$STRING`",
           },
@@ -88,8 +97,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/deadlinks",
-                "parts": [
-                  "deadlinks",
+                "segments": [
+                  {
+                    "lit": "deadlinks",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -100,6 +111,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.deadLinks`",
                 },
+                "parts": [
+                  "deadlinks",
+                ],
               },
             ],
           },
@@ -134,6 +148,7 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "uri",
             "name": "url",
             "type": "`$STRING`",
           },
@@ -160,8 +175,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/performance",
-                "parts": [
-                  "performance",
+                "segments": [
+                  {
+                    "lit": "performance",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -172,6 +189,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "performance",
+                ],
               },
             ],
           },
@@ -192,6 +212,7 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "uri",
             "name": "url",
             "type": "`$STRING`",
           },
@@ -218,8 +239,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/screenshot",
-                "parts": [
-                  "screenshot",
+                "segments": [
+                  {
+                    "lit": "screenshot",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -230,6 +253,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "screenshot",
+                ],
               },
             ],
           },
@@ -269,6 +295,7 @@ def make_config():
             "type": "`$STRING`",
           },
           {
+            "format": "uri",
             "name": "url",
             "type": "`$STRING`",
           },
@@ -295,8 +322,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seo",
-                "parts": [
-                  "seo",
+                "segments": [
+                  {
+                    "lit": "seo",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -307,6 +336,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "seo",
+                ],
               },
             ],
           },
@@ -334,6 +366,7 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "uri",
             "name": "url",
             "type": "`$STRING`",
           },
@@ -342,10 +375,12 @@ def make_config():
             "type": "`$BOOLEAN`",
           },
           {
+            "format": "date-time",
             "name": "validFrom",
             "type": "`$STRING`",
           },
           {
+            "format": "date-time",
             "name": "validTo",
             "type": "`$STRING`",
           },
@@ -372,8 +407,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/ssl",
-                "parts": [
-                  "ssl",
+                "segments": [
+                  {
+                    "lit": "ssl",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -384,6 +421,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "ssl",
+                ],
               },
             ],
           },
@@ -429,8 +469,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/techstack",
-                "parts": [
-                  "techstack",
+                "segments": [
+                  {
+                    "lit": "techstack",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -441,6 +483,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.technologies`",
                 },
+                "parts": [
+                  "techstack",
+                ],
               },
             ],
           },

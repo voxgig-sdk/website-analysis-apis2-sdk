@@ -17,6 +17,7 @@ main: kit: entity: screenshot: {
       type: "`$BOOLEAN`"
     }
     {
+      format: "uri"
       name: "url"
       req: false
       type: "`$STRING`"
@@ -43,8 +44,10 @@ main: kit: entity: screenshot: {
           }
           method: "GET"
           orig: "/screenshot"
-          parts: [
-            "screenshot"
+          segments: [
+            {
+              lit: "screenshot"
+            }
           ]
           select: {
             exist: [

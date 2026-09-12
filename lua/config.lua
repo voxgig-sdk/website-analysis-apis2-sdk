@@ -41,6 +41,7 @@ local function make_config()
             ["type"] = "`$INTEGER`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
@@ -67,8 +68,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/deadlinks",
-                ["parts"] = {
-                  "deadlinks",
+                ["segments"] = {
+                  {
+                    ["lit"] = "deadlinks",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -78,6 +81,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.deadLinks`",
+                },
+                ["parts"] = {
+                  "deadlinks",
                 },
               },
             },
@@ -113,6 +119,7 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
@@ -139,8 +146,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/performance",
-                ["parts"] = {
-                  "performance",
+                ["segments"] = {
+                  {
+                    ["lit"] = "performance",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -150,6 +159,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "performance",
                 },
               },
             },
@@ -171,6 +183,7 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
@@ -197,8 +210,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/screenshot",
-                ["parts"] = {
-                  "screenshot",
+                ["segments"] = {
+                  {
+                    ["lit"] = "screenshot",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -208,6 +223,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "screenshot",
                 },
               },
             },
@@ -248,6 +266,7 @@ local function make_config()
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
@@ -274,8 +293,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/seo",
-                ["parts"] = {
-                  "seo",
+                ["segments"] = {
+                  {
+                    ["lit"] = "seo",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -285,6 +306,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "seo",
                 },
               },
             },
@@ -313,6 +337,7 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "uri",
             ["name"] = "url",
             ["type"] = "`$STRING`",
           },
@@ -321,10 +346,12 @@ local function make_config()
             ["type"] = "`$BOOLEAN`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "validFrom",
             ["type"] = "`$STRING`",
           },
           {
+            ["format"] = "date-time",
             ["name"] = "validTo",
             ["type"] = "`$STRING`",
           },
@@ -351,8 +378,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ssl",
-                ["parts"] = {
-                  "ssl",
+                ["segments"] = {
+                  {
+                    ["lit"] = "ssl",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -362,6 +391,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
+                },
+                ["parts"] = {
+                  "ssl",
                 },
               },
             },
@@ -408,8 +440,10 @@ local function make_config()
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/techstack",
-                ["parts"] = {
-                  "techstack",
+                ["segments"] = {
+                  {
+                    ["lit"] = "techstack",
+                  },
                 },
                 ["select"] = {
                   ["exist"] = {
@@ -419,6 +453,9 @@ local function make_config()
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.technologies`",
+                },
+                ["parts"] = {
+                  "techstack",
                 },
               },
             },
