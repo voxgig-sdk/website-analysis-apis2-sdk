@@ -105,7 +105,7 @@ local result, err = client:Performance():load({ url = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/website-analysis-apis2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases) |
+| TypeScript | `@voxgig-sdk/website-analysis-apis2-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases) |
 | Python | `voxgig-sdk-website-analysis-apis2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases) |
 | PHP | `voxgig-sdk/website-analysis-apis2` | publish pending — [install from git tag](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/website-analysis-apis2-sdk/go` | `go get github.com/voxgig-sdk/website-analysis-apis2-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:Performance():load({ url = "example" })
 ### TypeScript
 
 ```ts
-import { WebsiteAnalysisApis2SDK } from '@voxgig-sdk/website-analysis-apis2'
+import { WebsiteAnalysisApis2SDK } from '@voxgig-sdk/website-analysis-apis2-sdk'
 
 const client = new WebsiteAnalysisApis2SDK()
 
