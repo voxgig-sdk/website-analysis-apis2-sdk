@@ -4,7 +4,10 @@ declare(strict_types=1);
 // WebsiteAnalysisApis2 SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class WebsiteAnalysisApis2Features
@@ -14,8 +17,14 @@ class WebsiteAnalysisApis2Features
         switch ($name) {
             case "base":
                 return new WebsiteAnalysisApis2BaseFeature();
+            case "ratelimit":
+                return new WebsiteAnalysisApis2RatelimitFeature();
+            case "retry":
+                return new WebsiteAnalysisApis2RetryFeature();
             case "test":
                 return new WebsiteAnalysisApis2TestFeature();
+            case "timeout":
+                return new WebsiteAnalysisApis2TimeoutFeature();
             default:
                 return new WebsiteAnalysisApis2BaseFeature();
         }
@@ -31,7 +40,10 @@ class WebsiteAnalysisApis2Features
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

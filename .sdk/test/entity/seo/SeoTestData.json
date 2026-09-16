@@ -6,7 +6,7 @@
         "headings": {},
         "keywords": [],
         "recommendations": [],
-        "score": "s54",
+        "score": 84,
         "success": false,
         "title": "s56",
         "url": "s57"
@@ -16,7 +16,7 @@
         "headings": {},
         "keywords": [],
         "recommendations": [],
-        "score": "sa4",
+        "score": 164,
         "success": false,
         "title": "sa6",
         "url": "sa7"
@@ -26,7 +26,7 @@
         "headings": {},
         "keywords": [],
         "recommendations": [],
-        "score": "sf4",
+        "score": 244,
         "success": false,
         "title": "sf6",
         "url": "sf7"
@@ -40,10 +40,144 @@
         "headings": {},
         "keywords": [],
         "recommendations": [],
-        "score": "s144",
+        "score": 324,
         "success": false,
         "title": "s146",
         "url": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /seo": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "performSeoAudit",
+        "parameters": [
+          {
+            "description": "The URL of the website to audit for SEO",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "description": {
+                      "type": "string"
+                    },
+                    "headings": {
+                      "properties": {
+                        "h1": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        },
+                        "h2": {
+                          "items": {
+                            "type": "string"
+                          },
+                          "type": "array"
+                        }
+                      },
+                      "type": "object"
+                    },
+                    "keywords": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "recommendations": {
+                      "items": {
+                        "type": "string"
+                      },
+                      "type": "array"
+                    },
+                    "score": {
+                      "maximum": 100,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "success": {
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "title": {
+                      "type": "string"
+                    },
+                    "url": {
+                      "example": "https://example.com",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "SEO audit completed successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid or missing URL parameter"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

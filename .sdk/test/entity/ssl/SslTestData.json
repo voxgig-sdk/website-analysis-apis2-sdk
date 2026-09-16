@@ -2,7 +2,7 @@
   "existing": {
     "ssl": {
       "SSL00": {
-        "daysRemaining": "s50",
+        "daysRemaining": 80,
         "issuer": "s51",
         "subject": "s52",
         "success": false,
@@ -13,7 +13,7 @@
         "id": "SSL00"
       },
       "SSL01": {
-        "daysRemaining": "sa0",
+        "daysRemaining": 160,
         "issuer": "sa1",
         "subject": "sa2",
         "success": false,
@@ -24,7 +24,7 @@
         "id": "SSL01"
       },
       "SSL02": {
-        "daysRemaining": "sf0",
+        "daysRemaining": 240,
         "issuer": "sf1",
         "subject": "sf2",
         "success": false,
@@ -39,7 +39,7 @@
   "new": {
     "ssl": {
       "ssl_ref01": {
-        "daysRemaining": "s140",
+        "daysRemaining": 320,
         "issuer": "s141",
         "subject": "s142",
         "success": false,
@@ -47,6 +47,120 @@
         "valid": false,
         "validFrom": "s146",
         "validTo": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /ssl": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "checkSslCertificate",
+        "parameters": [
+          {
+            "description": "The URL of the website to check SSL certificate",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "daysRemaining": {
+                      "type": "integer"
+                    },
+                    "issuer": {
+                      "type": "string"
+                    },
+                    "subject": {
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "example": "https://example.com",
+                      "format": "uri",
+                      "type": "string"
+                    },
+                    "valid": {
+                      "type": "boolean"
+                    },
+                    "validFrom": {
+                      "format": "date-time",
+                      "type": "string"
+                    },
+                    "validTo": {
+                      "format": "date-time",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "SSL certificate check completed successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid or missing URL parameter"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

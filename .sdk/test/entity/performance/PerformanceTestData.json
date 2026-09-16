@@ -3,27 +3,27 @@
     "performance": {
       "PERFORMANCE00": {
         "loadTime": 60,
-        "pageSize": "s3d",
-        "performanceScore": "s3e",
-        "requests": "s3f",
+        "pageSize": 61,
+        "performanceScore": 62,
+        "requests": 63,
         "success": true,
         "url": "s41",
         "id": "PERFORMANCE00"
       },
       "PERFORMANCE01": {
         "loadTime": 120,
-        "pageSize": "s79",
-        "performanceScore": "s7a",
-        "requests": "s7b",
+        "pageSize": 121,
+        "performanceScore": 122,
+        "requests": 123,
         "success": true,
         "url": "s7d",
         "id": "PERFORMANCE01"
       },
       "PERFORMANCE02": {
         "loadTime": 180,
-        "pageSize": "sb5",
-        "performanceScore": "sb6",
-        "requests": "sb7",
+        "pageSize": 181,
+        "performanceScore": 182,
+        "requests": 183,
         "success": true,
         "url": "sb9",
         "id": "PERFORMANCE02"
@@ -34,11 +34,122 @@
     "performance": {
       "performance_ref01": {
         "loadTime": 240,
-        "pageSize": "sf1",
-        "performanceScore": "sf2",
-        "requests": "sf3",
+        "pageSize": 241,
+        "performanceScore": 242,
+        "requests": 243,
         "success": true,
         "url": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /performance": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "measurePerformance",
+        "parameters": [
+          {
+            "description": "The URL of the website to measure performance",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "loadTime": {
+                      "description": "Load time in milliseconds",
+                      "type": "number"
+                    },
+                    "pageSize": {
+                      "description": "Page size in bytes",
+                      "type": "integer"
+                    },
+                    "performanceScore": {
+                      "maximum": 100,
+                      "minimum": 0,
+                      "type": "integer"
+                    },
+                    "requests": {
+                      "description": "Number of HTTP requests",
+                      "type": "integer"
+                    },
+                    "success": {
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "url": {
+                      "example": "https://example.com",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Performance measurement completed successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid or missing URL parameter"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }

@@ -2,15 +2,15 @@
   "existing": {
     "dead_link_checker": {
       "DEAD_LINK_CHECKER00": {
-        "statusCode": "s14",
+        "statusCode": 20,
         "url": "s15"
       },
       "DEAD_LINK_CHECKER01": {
-        "statusCode": "s28",
+        "statusCode": 40,
         "url": "s29"
       },
       "DEAD_LINK_CHECKER02": {
-        "statusCode": "s3c",
+        "statusCode": 60,
         "url": "s3d"
       }
     }
@@ -18,8 +18,120 @@
   "new": {
     "dead_link_checker": {
       "dead_link_checker_ref01": {
-        "statusCode": "s50",
+        "statusCode": 80,
         "url": "s51"
+      }
+    }
+  },
+  "requests": {
+    "GET /deadlinks": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "checkDeadLinks",
+        "parameters": [
+          {
+            "description": "The URL of the website to check for dead links",
+            "in": "query",
+            "name": "url",
+            "required": true,
+            "schema": {
+              "example": "https://example.com",
+              "format": "uri",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "deadLinks": {
+                      "items": {
+                        "properties": {
+                          "statusCode": {
+                            "type": "integer"
+                          },
+                          "url": {
+                            "format": "uri",
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "success": {
+                      "example": true,
+                      "type": "boolean"
+                    },
+                    "totalLinks": {
+                      "type": "integer"
+                    },
+                    "url": {
+                      "example": "https://example.com",
+                      "format": "uri",
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Dead links check completed successfully"
+          },
+          "400": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Bad request - invalid or missing URL parameter"
+          },
+          "500": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "error": {
+                      "example": "Invalid URL parameter",
+                      "type": "string"
+                    },
+                    "message": {
+                      "example": "The provided URL is not valid or is missing",
+                      "type": "string"
+                    },
+                    "success": {
+                      "example": false,
+                      "type": "boolean"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Internal server error"
+          }
+        },
+        "securitySource": "unspecified"
       }
     }
   }
