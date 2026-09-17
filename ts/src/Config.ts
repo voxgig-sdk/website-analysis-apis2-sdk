@@ -127,24 +127,24 @@ class Config {
 
     entity: {
       
-      dead_link_checker: {
-      },
-
-      performance: {
-      },
-
-      screenshot: {
-      },
-
-      seo: {
-      },
-
-      ssl: {
-      },
-
-      tech_stack_detection: {
-      },
-
+        dead_link_checker: {
+        },
+  
+        performance: {
+        },
+  
+        screenshot: {
+        },
+  
+        seo: {
+        },
+  
+        ssl: {
+        },
+  
+        tech_stack_detection: {
+        },
+  
     }
   }
 

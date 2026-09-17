@@ -1,8 +1,8 @@
 # Entity Models
 
-@"dead_link_checker.aon"
-@"performance.aon"
-@"screenshot.aon"
-@"seo.aon"
-@"ssl.aon"
-@"tech_stack_detection.aon"
+@"./dead_link_checker.aon"
+@"./performance.aon"
+@"./screenshot.aon"
+@"./seo.aon"
+@"./ssl.aon"
+@"./tech_stack_detection.aon"
