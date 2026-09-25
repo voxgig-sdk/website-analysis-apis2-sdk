@@ -1,0 +1,96 @@
+# Entity: performance
+
+main: kit: entity: performance: {
+
+  alias: field: {}
+
+  fields: {
+    loadTime: {
+      h: "Load Time"
+      n: "loadTime"
+      r: false
+      sh: "Load time in milliseconds"
+      t: "`$NUMBER`"
+    }
+    pageSize: {
+      h: "Page Size"
+      n: "pageSize"
+      r: false
+      sh: "Page size in bytes"
+      t: "`$INTEGER`"
+    }
+    performanceScore: {
+      h: "Performance Score"
+      n: "performanceScore"
+      r: false
+      t: "`$INTEGER`"
+    }
+    requests: {
+      h: "Requests"
+      n: "requests"
+      r: false
+      sh: "Number of HTTP requests"
+      t: "`$INTEGER`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "performance"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /performance"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/performance"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "performance"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

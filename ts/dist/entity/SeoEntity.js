@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SeoEntity = void 0;
 const WebsiteAnalysisApis2EntityBase_1 = require("../WebsiteAnalysisApis2EntityBase");
-// TODO: needs Entity superclass
 class SeoEntity extends WebsiteAnalysisApis2EntityBase_1.WebsiteAnalysisApis2EntityBase {
     constructor(client, entopts) {
         super(client, entopts);

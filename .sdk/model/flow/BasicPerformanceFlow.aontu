@@ -1,0 +1,28 @@
+# BasicPerformanceFlow
+
+main: kit: flow: BasicPerformanceFlow:
+{
+  entity: "performance",
+  kind: "basic",
+  name: "BasicPerformanceFlow",
+  step: [
+    {
+      i: {
+        ref: "performance_ref01",
+        srcdatavar: "performance_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-performance_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPerformanceFlow"
+}

@@ -43,7 +43,7 @@ local deadlinkcheckers, err = client:DeadLinkChecker():list()
 if err then error(err) end
 
 for _, item in ipairs(deadlinkcheckers) do
-  print(item["url"])
+  print(item)
 end
 ```
 

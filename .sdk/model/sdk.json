@@ -24,27 +24,95 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "dead_link_checker": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "statusCode",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "statusCode": {
+              "a": true,
+              "h": "Status Code",
+              "n": "statusCode",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "dead_link_checker",
           "op": {
             "list": {
@@ -52,40 +120,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /deadlinks",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /deadlinks",
-                    "json": "{\"operationId\":\"checkDeadLinks\",\"parameters\":[{\"description\":\"The URL of the website to check for dead links\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"deadLinks\":{\"items\":{\"properties\":{\"statusCode\":{\"type\":\"integer\"},\"url\":{\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"success\":{\"example\":true,\"type\":\"boolean\"},\"totalLinks\":{\"type\":\"integer\"},\"url\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Dead links check completed successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid or missing URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/deadlinks",
-                  "segments": [
-                    {
-                      "lit": "deadlinks"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/deadlinks",
+                  "q": {
                     "exist": [
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "deadlinks"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.deadLinks`"
                   }
@@ -102,48 +170,54 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "loadTime",
-              "req": false,
-              "short": "Load time in milliseconds",
-              "type": "`$NUMBER`"
+          "fields": {
+            "loadTime": {
+              "a": true,
+              "h": "Load Time",
+              "n": "loadTime",
+              "r": false,
+              "sh": "Load time in milliseconds",
+              "t": "`$NUMBER`"
             },
-            {
-              "active": true,
-              "name": "pageSize",
-              "req": false,
-              "short": "Page size in bytes",
-              "type": "`$INTEGER`"
+            "pageSize": {
+              "a": true,
+              "h": "Page Size",
+              "n": "pageSize",
+              "r": false,
+              "sh": "Page size in bytes",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "performanceScore",
-              "req": false,
-              "type": "`$INTEGER`"
+            "performanceScore": {
+              "a": true,
+              "h": "Performance Score",
+              "n": "performanceScore",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "requests",
-              "req": false,
-              "short": "Number of HTTP requests",
-              "type": "`$INTEGER`"
+            "requests": {
+              "a": true,
+              "h": "Requests",
+              "n": "requests",
+              "r": false,
+              "sh": "Number of HTTP requests",
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "success",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "success": {
+              "a": true,
+              "h": "Success",
+              "n": "success",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "performance",
           "op": {
             "load": {
@@ -151,40 +225,40 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /performance",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /performance",
-                    "json": "{\"operationId\":\"measurePerformance\",\"parameters\":[{\"description\":\"The URL of the website to measure performance\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"loadTime\":{\"description\":\"Load time in milliseconds\",\"type\":\"number\"},\"pageSize\":{\"description\":\"Page size in bytes\",\"type\":\"integer\"},\"performanceScore\":{\"maximum\":100,\"minimum\":0,\"type\":\"integer\"},\"requests\":{\"description\":\"Number of HTTP requests\",\"type\":\"integer\"},\"success\":{\"example\":true,\"type\":\"boolean\"},\"url\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Performance measurement completed successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid or missing URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/performance",
-                  "segments": [
-                    {
-                      "lit": "performance"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/performance",
+                  "q": {
                     "exist": [
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "performance"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -201,28 +275,31 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "screenshot",
-              "req": false,
-              "short": "Base64 encoded screenshot image or URL to the screenshot",
-              "type": "`$STRING`"
+          "fields": {
+            "screenshot": {
+              "a": true,
+              "h": "Screenshot",
+              "n": "screenshot",
+              "r": false,
+              "sh": "Base64 encoded screenshot image or URL to the screenshot",
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "success",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "success": {
+              "a": true,
+              "h": "Success",
+              "n": "success",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "screenshot",
           "op": {
             "load": {
@@ -230,40 +307,40 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /screenshot",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /screenshot",
-                    "json": "{\"operationId\":\"captureScreenshot\",\"parameters\":[{\"description\":\"The URL of the website to capture a screenshot of\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"screenshot\":{\"description\":\"Base64 encoded screenshot image or URL to the screenshot\",\"example\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==\",\"type\":\"string\"},\"success\":{\"example\":true,\"type\":\"boolean\"},\"url\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Screenshot captured successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid or missing URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/screenshot",
-                  "segments": [
-                    {
-                      "lit": "screenshot"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/screenshot",
+                  "q": {
                     "exist": [
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "screenshot"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -280,57 +357,65 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "description",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "description": {
+              "a": true,
+              "h": "Description",
+              "n": "description",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "headings",
-              "req": false,
-              "type": "`$OBJECT`"
+            "headings": {
+              "a": true,
+              "h": "Headings",
+              "n": "headings",
+              "r": false,
+              "t": "`$OBJECT`"
             },
-            {
-              "active": true,
-              "name": "keywords",
-              "req": false,
-              "type": "`$ARRAY`"
+            "keywords": {
+              "a": true,
+              "h": "Keywords",
+              "n": "keywords",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "recommendations",
-              "req": false,
-              "type": "`$ARRAY`"
+            "recommendations": {
+              "a": true,
+              "h": "Recommendations",
+              "n": "recommendations",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "score",
-              "req": false,
-              "type": "`$INTEGER`"
+            "score": {
+              "a": true,
+              "h": "Score",
+              "n": "score",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "success",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "success": {
+              "a": true,
+              "h": "Success",
+              "n": "success",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "name": "title",
-              "req": false,
-              "type": "`$STRING`"
+            "title": {
+              "a": true,
+              "h": "Title",
+              "n": "title",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "seo",
           "op": {
             "list": {
@@ -338,40 +423,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /seo",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /seo",
-                    "json": "{\"operationId\":\"performSeoAudit\",\"parameters\":[{\"description\":\"The URL of the website to audit for SEO\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"description\":{\"type\":\"string\"},\"headings\":{\"properties\":{\"h1\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"h2\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"keywords\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"recommendations\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"},\"score\":{\"maximum\":100,\"minimum\":0,\"type\":\"integer\"},\"success\":{\"example\":true,\"type\":\"boolean\"},\"title\":{\"type\":\"string\"},\"url\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"SEO audit completed successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid or missing URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/seo",
-                  "segments": [
-                    {
-                      "lit": "seo"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/seo",
+                  "q": {
                     "exist": [
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "seo"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -388,59 +473,67 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "daysRemaining",
-              "req": false,
-              "type": "`$INTEGER`"
+          "fields": {
+            "daysRemaining": {
+              "a": true,
+              "h": "Days Remaining",
+              "n": "daysRemaining",
+              "r": false,
+              "t": "`$INTEGER`"
             },
-            {
-              "active": true,
-              "name": "issuer",
-              "req": false,
-              "type": "`$STRING`"
+            "issuer": {
+              "a": true,
+              "h": "Issuer",
+              "n": "issuer",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "subject",
-              "req": false,
-              "type": "`$STRING`"
+            "subject": {
+              "a": true,
+              "h": "Subject",
+              "n": "subject",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "success",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "success": {
+              "a": true,
+              "h": "Success",
+              "n": "success",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "format": "uri",
-              "name": "url",
-              "req": false,
-              "type": "`$STRING`"
+            "url": {
+              "a": true,
+              "fo": "uri",
+              "h": "Url",
+              "n": "url",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "valid",
-              "req": false,
-              "type": "`$BOOLEAN`"
+            "valid": {
+              "a": true,
+              "h": "Valid",
+              "n": "valid",
+              "r": false,
+              "t": "`$BOOLEAN`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "validFrom",
-              "req": false,
-              "type": "`$STRING`"
+            "validFrom": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Valid From",
+              "n": "validFrom",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "format": "date-time",
-              "name": "validTo",
-              "req": false,
-              "type": "`$STRING`"
+            "validTo": {
+              "a": true,
+              "fo": "date-time",
+              "h": "Valid To",
+              "n": "validTo",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "ssl",
           "op": {
             "load": {
@@ -448,40 +541,40 @@
               "name": "load",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /ssl",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /ssl",
-                    "json": "{\"operationId\":\"checkSslCertificate\",\"parameters\":[{\"description\":\"The URL of the website to check SSL certificate\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"daysRemaining\":{\"type\":\"integer\"},\"issuer\":{\"type\":\"string\"},\"subject\":{\"type\":\"string\"},\"success\":{\"example\":true,\"type\":\"boolean\"},\"url\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"},\"valid\":{\"type\":\"boolean\"},\"validFrom\":{\"format\":\"date-time\",\"type\":\"string\"},\"validTo\":{\"format\":\"date-time\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"SSL certificate check completed successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid or missing URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/ssl",
-                  "segments": [
-                    {
-                      "lit": "ssl"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/ssl",
+                  "q": {
                     "exist": [
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "ssl"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -498,26 +591,29 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "category",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "category": {
+              "a": true,
+              "h": "Category",
+              "n": "category",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "name",
-              "req": false,
-              "type": "`$STRING`"
+            "name": {
+              "a": true,
+              "h": "Name",
+              "n": "name",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "version",
-              "req": false,
-              "type": "`$STRING`"
+            "version": {
+              "a": true,
+              "h": "Version",
+              "n": "version",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "tech_stack_detection",
           "op": {
             "list": {
@@ -525,40 +621,40 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /techstack",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "https://example.com",
-                        "kind": "query",
-                        "name": "url",
-                        "orig": "url",
-                        "reqd": true,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "https://example.com",
+                        "k": "query",
+                        "n": "url",
+                        "or": "url",
+                        "r": true,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /techstack",
-                    "json": "{\"operationId\":\"detectTechStack\",\"parameters\":[{\"description\":\"The URL of the website to detect tech stack\",\"in\":\"query\",\"name\":\"url\",\"required\":true,\"schema\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"success\":{\"example\":true,\"type\":\"boolean\"},\"technologies\":{\"items\":{\"properties\":{\"category\":{\"type\":\"string\"},\"name\":{\"type\":\"string\"},\"version\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"url\":{\"example\":\"https://example.com\",\"format\":\"uri\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Tech stack detection completed successfully\"},\"400\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Bad request - invalid or missing URL parameter\"},\"500\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"example\":\"Invalid URL parameter\",\"type\":\"string\"},\"message\":{\"example\":\"The provided URL is not valid or is missing\",\"type\":\"string\"},\"success\":{\"example\":false,\"type\":\"boolean\"}},\"type\":\"object\"}}},\"description\":\"Internal server error\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/techstack",
-                  "segments": [
-                    {
-                      "lit": "techstack"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/techstack",
+                  "q": {
                     "exist": [
                       "url"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "techstack"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.technologies`"
                   }
@@ -987,13 +1083,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1013,17 +1109,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "performance_ref01",
                 "srcdatavar": "performance_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1043,17 +1139,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "screenshot_ref01",
                 "srcdatavar": "screenshot_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1073,13 +1169,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1099,17 +1195,17 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {
+              "a": true,
+              "d": {},
+              "i": {
                 "ref": "ssl_ref01",
                 "srcdatavar": "ssl_ref01_data",
                 "suffix": "_dt0"
               },
-              "match": {},
-              "op": "load",
-              "spec": [],
-              "valid": [
+              "m": {},
+              "o": "load",
+              "s": [],
+              "v": [
                 {
                   "apply": "TextFieldMark",
                   "def": {
@@ -1129,13 +1225,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

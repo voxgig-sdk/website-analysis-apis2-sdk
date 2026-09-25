@@ -1,0 +1,105 @@
+# Entity: seo
+
+main: kit: entity: seo: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      t: "`$STRING`"
+    }
+    headings: {
+      h: "Headings"
+      n: "headings"
+      r: false
+      t: "`$OBJECT`"
+    }
+    keywords: {
+      h: "Keywords"
+      n: "keywords"
+      r: false
+      t: "`$ARRAY`"
+    }
+    recommendations: {
+      h: "Recommendations"
+      n: "recommendations"
+      r: false
+      t: "`$ARRAY`"
+    }
+    score: {
+      h: "Score"
+      n: "score"
+      r: false
+      t: "`$INTEGER`"
+    }
+    success: {
+      h: "Success"
+      n: "success"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      t: "`$STRING`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "seo"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /seo"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/seo"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "seo"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

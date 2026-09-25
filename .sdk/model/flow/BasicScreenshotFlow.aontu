@@ -1,0 +1,28 @@
+# BasicScreenshotFlow
+
+main: kit: flow: BasicScreenshotFlow:
+{
+  entity: "screenshot",
+  kind: "basic",
+  name: "BasicScreenshotFlow",
+  step: [
+    {
+      i: {
+        ref: "screenshot_ref01",
+        srcdatavar: "screenshot_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-screenshot_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicScreenshotFlow"
+}

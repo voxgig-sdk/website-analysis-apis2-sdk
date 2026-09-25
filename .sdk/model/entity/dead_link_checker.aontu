@@ -1,0 +1,69 @@
+# Entity: dead_link_checker
+
+main: kit: entity: dead_link_checker: {
+
+  alias: field: {}
+
+  fields: {
+    statusCode: {
+      h: "Status Code"
+      n: "statusCode"
+      r: false
+      t: "`$INTEGER`"
+    }
+    url: {
+      fo: "uri"
+      h: "Url"
+      n: "url"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "dead_link_checker"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /deadlinks"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/deadlinks"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "deadlinks"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.deadLinks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

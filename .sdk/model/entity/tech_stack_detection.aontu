@@ -1,0 +1,74 @@
+# Entity: tech_stack_detection
+
+main: kit: entity: tech_stack_detection: {
+
+  alias: field: {}
+
+  fields: {
+    category: {
+      h: "Category"
+      n: "category"
+      r: false
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      t: "`$STRING`"
+    }
+    version: {
+      h: "Version"
+      n: "version"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "tech_stack_detection"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /techstack"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "https://example.com"
+                k: "query"
+                n: "url"
+                or: "url"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/techstack"
+          q: {
+            exist: [
+              "url"
+            ]
+          }
+          s: [
+            {
+              lit: "techstack"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.technologies`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

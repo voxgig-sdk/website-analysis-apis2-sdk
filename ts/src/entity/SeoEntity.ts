@@ -19,7 +19,6 @@ import type {
   SeoListMatch,
 } from '../WebsiteAnalysisApis2Types'
 
-// TODO: needs Entity superclass
 class SeoEntity extends WebsiteAnalysisApis2EntityBase<Seo> {
 
   constructor(client: WebsiteAnalysisApis2SDK, entopts: any) {

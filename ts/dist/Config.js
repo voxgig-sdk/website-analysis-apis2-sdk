@@ -11,19 +11,12 @@ const FEATURE_CLASS = {
     test: TestFeature_1.TestFeature,
     timeout: TimeoutFeature_1.TimeoutFeature,
 };
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS = {};
 exports.FEATURE_PLUGINS = FEATURE_PLUGINS;
 class Config {
     makeFeature(fn) {
         const fc = FEATURE_CLASS[fn];
         const fi = new fc();
-        // TODO: errors etc
         return fi;
     }
     // False for a feature added at runtime via options.extend (station's
@@ -119,12 +112,14 @@ class Config {
             "fields": [
                 {
                     "name": "statusCode",
+                    "title": "Status Code",
                     "type": "`$INTEGER`"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
-                    "type": "`$STRING`"
+                    "title": "Url",
+                    "type": "`$STRING`",
+                    "format": "uri"
                 }
             ],
             "name": "dead_link_checker",
@@ -134,18 +129,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/deadlinks",
@@ -154,18 +137,31 @@ class Config {
                                     "lit": "deadlinks"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "deadlinks"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.deadLinks`"
                             },
-                            "parts": [
-                                "deadlinks"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -178,31 +174,37 @@ class Config {
             "fields": [
                 {
                     "name": "loadTime",
-                    "short": "Load time in milliseconds",
-                    "type": "`$NUMBER`"
+                    "title": "Load Time",
+                    "type": "`$NUMBER`",
+                    "short": "Load time in milliseconds"
                 },
                 {
                     "name": "pageSize",
-                    "short": "Page size in bytes",
-                    "type": "`$INTEGER`"
+                    "title": "Page Size",
+                    "type": "`$INTEGER`",
+                    "short": "Page size in bytes"
                 },
                 {
                     "name": "performanceScore",
+                    "title": "Performance Score",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "requests",
-                    "short": "Number of HTTP requests",
-                    "type": "`$INTEGER`"
+                    "title": "Requests",
+                    "type": "`$INTEGER`",
+                    "short": "Number of HTTP requests"
                 },
                 {
                     "name": "success",
+                    "title": "Success",
                     "type": "`$BOOLEAN`"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
-                    "type": "`$STRING`"
+                    "title": "Url",
+                    "type": "`$STRING`",
+                    "format": "uri"
                 }
             ],
             "name": "performance",
@@ -212,18 +214,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/performance",
@@ -232,18 +222,31 @@ class Config {
                                     "lit": "performance"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "performance"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "performance"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -256,17 +259,20 @@ class Config {
             "fields": [
                 {
                     "name": "screenshot",
-                    "short": "Base64 encoded screenshot image or URL to the screenshot",
-                    "type": "`$STRING`"
+                    "title": "Screenshot",
+                    "type": "`$STRING`",
+                    "short": "Base64 encoded screenshot image or URL to the screenshot"
                 },
                 {
                     "name": "success",
+                    "title": "Success",
                     "type": "`$BOOLEAN`"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
-                    "type": "`$STRING`"
+                    "title": "Url",
+                    "type": "`$STRING`",
+                    "format": "uri"
                 }
             ],
             "name": "screenshot",
@@ -276,18 +282,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/screenshot",
@@ -296,18 +290,31 @@ class Config {
                                     "lit": "screenshot"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "screenshot"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "screenshot"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -320,36 +327,44 @@ class Config {
             "fields": [
                 {
                     "name": "description",
+                    "title": "Description",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "headings",
+                    "title": "Headings",
                     "type": "`$OBJECT`"
                 },
                 {
                     "name": "keywords",
+                    "title": "Keywords",
                     "type": "`$ARRAY`"
                 },
                 {
                     "name": "recommendations",
+                    "title": "Recommendations",
                     "type": "`$ARRAY`"
                 },
                 {
                     "name": "score",
+                    "title": "Score",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "success",
+                    "title": "Success",
                     "type": "`$BOOLEAN`"
                 },
                 {
                     "name": "title",
+                    "title": "Title",
                     "type": "`$STRING`"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
-                    "type": "`$STRING`"
+                    "title": "Url",
+                    "type": "`$STRING`",
+                    "format": "uri"
                 }
             ],
             "name": "seo",
@@ -359,18 +374,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/seo",
@@ -379,18 +382,31 @@ class Config {
                                     "lit": "seo"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "seo"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "seo"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -403,38 +419,46 @@ class Config {
             "fields": [
                 {
                     "name": "daysRemaining",
+                    "title": "Days Remaining",
                     "type": "`$INTEGER`"
                 },
                 {
                     "name": "issuer",
+                    "title": "Issuer",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "subject",
+                    "title": "Subject",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "success",
+                    "title": "Success",
                     "type": "`$BOOLEAN`"
                 },
                 {
-                    "format": "uri",
                     "name": "url",
-                    "type": "`$STRING`"
+                    "title": "Url",
+                    "type": "`$STRING`",
+                    "format": "uri"
                 },
                 {
                     "name": "valid",
+                    "title": "Valid",
                     "type": "`$BOOLEAN`"
                 },
                 {
-                    "format": "date-time",
                     "name": "validFrom",
-                    "type": "`$STRING`"
+                    "title": "Valid From",
+                    "type": "`$STRING`",
+                    "format": "date-time"
                 },
                 {
-                    "format": "date-time",
                     "name": "validTo",
-                    "type": "`$STRING`"
+                    "title": "Valid To",
+                    "type": "`$STRING`",
+                    "format": "date-time"
                 }
             ],
             "name": "ssl",
@@ -444,18 +468,6 @@ class Config {
                     "name": "load",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/ssl",
@@ -464,18 +476,31 @@ class Config {
                                     "lit": "ssl"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "ssl"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body`"
                             },
-                            "parts": [
-                                "ssl"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }
@@ -488,14 +513,17 @@ class Config {
             "fields": [
                 {
                     "name": "category",
+                    "title": "Category",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "name",
+                    "title": "Name",
                     "type": "`$STRING`"
                 },
                 {
                     "name": "version",
+                    "title": "Version",
                     "type": "`$STRING`"
                 }
             ],
@@ -506,18 +534,6 @@ class Config {
                     "name": "list",
                     "points": [
                         {
-                            "args": {
-                                "query": [
-                                    {
-                                        "example": "https://example.com",
-                                        "kind": "query",
-                                        "name": "url",
-                                        "orig": "url",
-                                        "reqd": true,
-                                        "type": "`$STRING`"
-                                    }
-                                ]
-                            },
                             "kind": "http",
                             "method": "GET",
                             "orig": "/techstack",
@@ -526,18 +542,31 @@ class Config {
                                     "lit": "techstack"
                                 }
                             ],
-                            "select": {
-                                "exist": [
-                                    "url"
-                                ]
-                            },
+                            "parts": [
+                                "techstack"
+                            ],
+                            "rename": {},
                             "transform": {
                                 "req": "`reqdata`",
                                 "res": "`body.technologies`"
                             },
-                            "parts": [
-                                "techstack"
-                            ]
+                            "args": {
+                                "query": [
+                                    {
+                                        "name": "url",
+                                        "orig": "url",
+                                        "type": "`$STRING`",
+                                        "kind": "query",
+                                        "reqd": true,
+                                        "example": "https://example.com"
+                                    }
+                                ]
+                            },
+                            "select": {
+                                "exist": [
+                                    "url"
+                                ]
+                            }
                         }
                     ]
                 }

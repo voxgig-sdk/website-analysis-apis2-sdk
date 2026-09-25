@@ -92,12 +92,14 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "statusCode",
+            ["title"] = "Status Code",
             ["type"] = "`$INTEGER`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "dead_link_checker",
@@ -107,18 +109,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "https://example.com",
-                      ["kind"] = "query",
-                      ["name"] = "url",
-                      ["orig"] = "url",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/deadlinks",
@@ -127,17 +117,30 @@ local function make_config()
                     ["lit"] = "deadlinks",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "url",
-                  },
+                ["parts"] = {
+                  "deadlinks",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.deadLinks`",
                 },
-                ["parts"] = {
-                  "deadlinks",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "url",
+                      ["orig"] = "url",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "https://example.com",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "url",
+                  },
                 },
               },
             },
@@ -151,31 +154,37 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "loadTime",
-            ["short"] = "Load time in milliseconds",
+            ["title"] = "Load Time",
             ["type"] = "`$NUMBER`",
+            ["short"] = "Load time in milliseconds",
           },
           {
             ["name"] = "pageSize",
-            ["short"] = "Page size in bytes",
+            ["title"] = "Page Size",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Page size in bytes",
           },
           {
             ["name"] = "performanceScore",
+            ["title"] = "Performance Score",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "requests",
-            ["short"] = "Number of HTTP requests",
+            ["title"] = "Requests",
             ["type"] = "`$INTEGER`",
+            ["short"] = "Number of HTTP requests",
           },
           {
             ["name"] = "success",
+            ["title"] = "Success",
             ["type"] = "`$BOOLEAN`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "performance",
@@ -185,18 +194,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "https://example.com",
-                      ["kind"] = "query",
-                      ["name"] = "url",
-                      ["orig"] = "url",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/performance",
@@ -205,17 +202,30 @@ local function make_config()
                     ["lit"] = "performance",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "url",
-                  },
+                ["parts"] = {
+                  "performance",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "performance",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "url",
+                      ["orig"] = "url",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "https://example.com",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "url",
+                  },
                 },
               },
             },
@@ -229,17 +239,20 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "screenshot",
-            ["short"] = "Base64 encoded screenshot image or URL to the screenshot",
+            ["title"] = "Screenshot",
             ["type"] = "`$STRING`",
+            ["short"] = "Base64 encoded screenshot image or URL to the screenshot",
           },
           {
             ["name"] = "success",
+            ["title"] = "Success",
             ["type"] = "`$BOOLEAN`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "screenshot",
@@ -249,18 +262,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "https://example.com",
-                      ["kind"] = "query",
-                      ["name"] = "url",
-                      ["orig"] = "url",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/screenshot",
@@ -269,17 +270,30 @@ local function make_config()
                     ["lit"] = "screenshot",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "url",
-                  },
+                ["parts"] = {
+                  "screenshot",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "screenshot",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "url",
+                      ["orig"] = "url",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "https://example.com",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "url",
+                  },
                 },
               },
             },
@@ -293,36 +307,44 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "description",
+            ["title"] = "Description",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "headings",
+            ["title"] = "Headings",
             ["type"] = "`$OBJECT`",
           },
           {
             ["name"] = "keywords",
+            ["title"] = "Keywords",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "recommendations",
+            ["title"] = "Recommendations",
             ["type"] = "`$ARRAY`",
           },
           {
             ["name"] = "score",
+            ["title"] = "Score",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "success",
+            ["title"] = "Success",
             ["type"] = "`$BOOLEAN`",
           },
           {
             ["name"] = "title",
+            ["title"] = "Title",
             ["type"] = "`$STRING`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
         },
         ["name"] = "seo",
@@ -332,18 +354,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "https://example.com",
-                      ["kind"] = "query",
-                      ["name"] = "url",
-                      ["orig"] = "url",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/seo",
@@ -352,17 +362,30 @@ local function make_config()
                     ["lit"] = "seo",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "url",
-                  },
+                ["parts"] = {
+                  "seo",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "seo",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "url",
+                      ["orig"] = "url",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "https://example.com",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "url",
+                  },
                 },
               },
             },
@@ -376,38 +399,46 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "daysRemaining",
+            ["title"] = "Days Remaining",
             ["type"] = "`$INTEGER`",
           },
           {
             ["name"] = "issuer",
+            ["title"] = "Issuer",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "subject",
+            ["title"] = "Subject",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "success",
+            ["title"] = "Success",
             ["type"] = "`$BOOLEAN`",
           },
           {
-            ["format"] = "uri",
             ["name"] = "url",
+            ["title"] = "Url",
             ["type"] = "`$STRING`",
+            ["format"] = "uri",
           },
           {
             ["name"] = "valid",
+            ["title"] = "Valid",
             ["type"] = "`$BOOLEAN`",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "validFrom",
+            ["title"] = "Valid From",
             ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
           {
-            ["format"] = "date-time",
             ["name"] = "validTo",
+            ["title"] = "Valid To",
             ["type"] = "`$STRING`",
+            ["format"] = "date-time",
           },
         },
         ["name"] = "ssl",
@@ -417,18 +448,6 @@ local function make_config()
             ["name"] = "load",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "https://example.com",
-                      ["kind"] = "query",
-                      ["name"] = "url",
-                      ["orig"] = "url",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/ssl",
@@ -437,17 +456,30 @@ local function make_config()
                     ["lit"] = "ssl",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "url",
-                  },
+                ["parts"] = {
+                  "ssl",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body`",
                 },
-                ["parts"] = {
-                  "ssl",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "url",
+                      ["orig"] = "url",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "https://example.com",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "url",
+                  },
                 },
               },
             },
@@ -461,14 +493,17 @@ local function make_config()
         ["fields"] = {
           {
             ["name"] = "category",
+            ["title"] = "Category",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "name",
+            ["title"] = "Name",
             ["type"] = "`$STRING`",
           },
           {
             ["name"] = "version",
+            ["title"] = "Version",
             ["type"] = "`$STRING`",
           },
         },
@@ -479,18 +514,6 @@ local function make_config()
             ["name"] = "list",
             ["points"] = {
               {
-                ["args"] = {
-                  ["query"] = {
-                    {
-                      ["example"] = "https://example.com",
-                      ["kind"] = "query",
-                      ["name"] = "url",
-                      ["orig"] = "url",
-                      ["reqd"] = true,
-                      ["type"] = "`$STRING`",
-                    },
-                  },
-                },
                 ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/techstack",
@@ -499,17 +522,30 @@ local function make_config()
                     ["lit"] = "techstack",
                   },
                 },
-                ["select"] = {
-                  ["exist"] = {
-                    "url",
-                  },
+                ["parts"] = {
+                  "techstack",
                 },
+                ["rename"] = {},
                 ["transform"] = {
                   ["req"] = "`reqdata`",
                   ["res"] = "`body.technologies`",
                 },
-                ["parts"] = {
-                  "techstack",
+                ["args"] = {
+                  ["query"] = {
+                    {
+                      ["name"] = "url",
+                      ["orig"] = "url",
+                      ["type"] = "`$STRING`",
+                      ["kind"] = "query",
+                      ["reqd"] = true,
+                      ["example"] = "https://example.com",
+                    },
+                  },
+                },
+                ["select"] = {
+                  ["exist"] = {
+                    "url",
+                  },
                 },
               },
             },

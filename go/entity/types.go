@@ -1,7 +1,7 @@
 // Typed models for the WebsiteAnalysisApis2 SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,8 +14,6 @@ import (
 
 // DeadLinkChecker is the typed data model for the dead_link_checker entity.
 type DeadLinkChecker struct {
-	StatusCode *int `json:"statusCode,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // DeadLinkCheckerListMatch is the typed request payload for DeadLinkChecker.ListTyped.
@@ -25,12 +23,6 @@ type DeadLinkCheckerListMatch struct {
 
 // Performance is the typed data model for the performance entity.
 type Performance struct {
-	LoadTime *float64 `json:"loadTime,omitempty"`
-	PageSize *int `json:"pageSize,omitempty"`
-	PerformanceScore *int `json:"performanceScore,omitempty"`
-	Requests *int `json:"requests,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // PerformanceLoadMatch is the typed request payload for Performance.LoadTyped.
@@ -40,9 +32,6 @@ type PerformanceLoadMatch struct {
 
 // Screenshot is the typed data model for the screenshot entity.
 type Screenshot struct {
-	Screenshot *string `json:"screenshot,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // ScreenshotLoadMatch is the typed request payload for Screenshot.LoadTyped.
@@ -52,14 +41,6 @@ type ScreenshotLoadMatch struct {
 
 // Seo is the typed data model for the seo entity.
 type Seo struct {
-	Description *string `json:"description,omitempty"`
-	Headings *map[string]any `json:"headings,omitempty"`
-	Keywords *[]any `json:"keywords,omitempty"`
-	Recommendations *[]any `json:"recommendations,omitempty"`
-	Score *int `json:"score,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Title *string `json:"title,omitempty"`
-	Url *string `json:"url,omitempty"`
 }
 
 // SeoListMatch is the typed request payload for Seo.ListTyped.
@@ -69,14 +50,6 @@ type SeoListMatch struct {
 
 // Ssl is the typed data model for the ssl entity.
 type Ssl struct {
-	DaysRemaining *int `json:"daysRemaining,omitempty"`
-	Issuer *string `json:"issuer,omitempty"`
-	Subject *string `json:"subject,omitempty"`
-	Success *bool `json:"success,omitempty"`
-	Url *string `json:"url,omitempty"`
-	Valid *bool `json:"valid,omitempty"`
-	ValidFrom *string `json:"validFrom,omitempty"`
-	ValidTo *string `json:"validTo,omitempty"`
 }
 
 // SslLoadMatch is the typed request payload for Ssl.LoadTyped.
@@ -86,9 +59,6 @@ type SslLoadMatch struct {
 
 // TechStackDetection is the typed data model for the tech_stack_detection entity.
 type TechStackDetection struct {
-	Category *string `json:"category,omitempty"`
-	Name *string `json:"name,omitempty"`
-	Version *string `json:"version,omitempty"`
 }
 
 // TechStackDetectionListMatch is the typed request payload for TechStackDetection.ListTyped.

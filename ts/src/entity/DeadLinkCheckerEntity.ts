@@ -19,7 +19,6 @@ import type {
   DeadLinkCheckerListMatch,
 } from '../WebsiteAnalysisApis2Types'
 
-// TODO: needs Entity superclass
 class DeadLinkCheckerEntity extends WebsiteAnalysisApis2EntityBase<DeadLinkChecker> {
 
   constructor(client: WebsiteAnalysisApis2SDK, entopts: any) {

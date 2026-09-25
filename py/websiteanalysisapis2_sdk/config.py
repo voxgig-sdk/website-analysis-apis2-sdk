@@ -121,12 +121,14 @@ def make_config():
         "fields": [
           {
             "name": "statusCode",
+            "title": "Status Code",
             "type": "`$INTEGER`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
             "type": "`$STRING`",
+            "format": "uri",
           },
         ],
         "name": "dead_link_checker",
@@ -136,18 +138,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/deadlinks",
@@ -156,18 +146,31 @@ def make_config():
                     "lit": "deadlinks",
                   },
                 ],
+                "parts": [
+                  "deadlinks",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.deadLinks`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.deadLinks`",
-                },
-                "parts": [
-                  "deadlinks",
-                ],
               },
             ],
           },
@@ -180,31 +183,37 @@ def make_config():
         "fields": [
           {
             "name": "loadTime",
-            "short": "Load time in milliseconds",
+            "title": "Load Time",
             "type": "`$NUMBER`",
+            "short": "Load time in milliseconds",
           },
           {
             "name": "pageSize",
-            "short": "Page size in bytes",
+            "title": "Page Size",
             "type": "`$INTEGER`",
+            "short": "Page size in bytes",
           },
           {
             "name": "performanceScore",
+            "title": "Performance Score",
             "type": "`$INTEGER`",
           },
           {
             "name": "requests",
-            "short": "Number of HTTP requests",
+            "title": "Requests",
             "type": "`$INTEGER`",
+            "short": "Number of HTTP requests",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
             "type": "`$STRING`",
+            "format": "uri",
           },
         ],
         "name": "performance",
@@ -214,18 +223,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/performance",
@@ -234,18 +231,31 @@ def make_config():
                     "lit": "performance",
                   },
                 ],
+                "parts": [
+                  "performance",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "performance",
-                ],
               },
             ],
           },
@@ -258,17 +268,20 @@ def make_config():
         "fields": [
           {
             "name": "screenshot",
-            "short": "Base64 encoded screenshot image or URL to the screenshot",
+            "title": "Screenshot",
             "type": "`$STRING`",
+            "short": "Base64 encoded screenshot image or URL to the screenshot",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
             "type": "`$STRING`",
+            "format": "uri",
           },
         ],
         "name": "screenshot",
@@ -278,18 +291,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/screenshot",
@@ -298,18 +299,31 @@ def make_config():
                     "lit": "screenshot",
                   },
                 ],
+                "parts": [
+                  "screenshot",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "screenshot",
-                ],
               },
             ],
           },
@@ -322,36 +336,44 @@ def make_config():
         "fields": [
           {
             "name": "description",
+            "title": "Description",
             "type": "`$STRING`",
           },
           {
             "name": "headings",
+            "title": "Headings",
             "type": "`$OBJECT`",
           },
           {
             "name": "keywords",
+            "title": "Keywords",
             "type": "`$ARRAY`",
           },
           {
             "name": "recommendations",
+            "title": "Recommendations",
             "type": "`$ARRAY`",
           },
           {
             "name": "score",
+            "title": "Score",
             "type": "`$INTEGER`",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
           {
             "name": "title",
+            "title": "Title",
             "type": "`$STRING`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
             "type": "`$STRING`",
+            "format": "uri",
           },
         ],
         "name": "seo",
@@ -361,18 +383,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/seo",
@@ -381,18 +391,31 @@ def make_config():
                     "lit": "seo",
                   },
                 ],
+                "parts": [
+                  "seo",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "seo",
-                ],
               },
             ],
           },
@@ -405,38 +428,46 @@ def make_config():
         "fields": [
           {
             "name": "daysRemaining",
+            "title": "Days Remaining",
             "type": "`$INTEGER`",
           },
           {
             "name": "issuer",
+            "title": "Issuer",
             "type": "`$STRING`",
           },
           {
             "name": "subject",
+            "title": "Subject",
             "type": "`$STRING`",
           },
           {
             "name": "success",
+            "title": "Success",
             "type": "`$BOOLEAN`",
           },
           {
-            "format": "uri",
             "name": "url",
+            "title": "Url",
             "type": "`$STRING`",
+            "format": "uri",
           },
           {
             "name": "valid",
+            "title": "Valid",
             "type": "`$BOOLEAN`",
           },
           {
-            "format": "date-time",
             "name": "validFrom",
+            "title": "Valid From",
             "type": "`$STRING`",
+            "format": "date-time",
           },
           {
-            "format": "date-time",
             "name": "validTo",
+            "title": "Valid To",
             "type": "`$STRING`",
+            "format": "date-time",
           },
         ],
         "name": "ssl",
@@ -446,18 +477,6 @@ def make_config():
             "name": "load",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/ssl",
@@ -466,18 +485,31 @@ def make_config():
                     "lit": "ssl",
                   },
                 ],
+                "parts": [
+                  "ssl",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body`",
-                },
-                "parts": [
-                  "ssl",
-                ],
               },
             ],
           },
@@ -490,14 +522,17 @@ def make_config():
         "fields": [
           {
             "name": "category",
+            "title": "Category",
             "type": "`$STRING`",
           },
           {
             "name": "name",
+            "title": "Name",
             "type": "`$STRING`",
           },
           {
             "name": "version",
+            "title": "Version",
             "type": "`$STRING`",
           },
         ],
@@ -508,18 +543,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "args": {
-                  "query": [
-                    {
-                      "example": "https://example.com",
-                      "kind": "query",
-                      "name": "url",
-                      "orig": "url",
-                      "reqd": True,
-                      "type": "`$STRING`",
-                    },
-                  ],
-                },
                 "kind": "http",
                 "method": "GET",
                 "orig": "/techstack",
@@ -528,18 +551,31 @@ def make_config():
                     "lit": "techstack",
                   },
                 ],
+                "parts": [
+                  "techstack",
+                ],
+                "rename": {},
+                "transform": {
+                  "req": "`reqdata`",
+                  "res": "`body.technologies`",
+                },
+                "args": {
+                  "query": [
+                    {
+                      "name": "url",
+                      "orig": "url",
+                      "type": "`$STRING`",
+                      "kind": "query",
+                      "reqd": True,
+                      "example": "https://example.com",
+                    },
+                  ],
+                },
                 "select": {
                   "exist": [
                     "url",
                   ],
                 },
-                "transform": {
-                  "req": "`reqdata`",
-                  "res": "`body.technologies`",
-                },
-                "parts": [
-                  "techstack",
-                ],
               },
             ],
           },
