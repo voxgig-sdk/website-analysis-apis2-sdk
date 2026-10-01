@@ -12,9 +12,18 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `c
 
 ## Install
 This package is not yet published to RubyGems. Install it from the
-GitHub release tag (`rb/vX.Y.Z`):
+GitHub release tag (`rb/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases)), or
+from a clone:
 
-- Releases: [https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases)
+```bash
+git clone https://github.com/voxgig-sdk/website-analysis-apis2-sdk
+```
+
+Then add it to your `Gemfile` by path, and run `bundle install`:
+
+```ruby
+gem "voxgig-sdk-website-analysis-apis2-sdk", path: "./website-analysis-apis2-sdk/rb"
+```
 
 
 ## Tutorial: your first API call

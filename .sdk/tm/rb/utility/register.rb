@@ -33,6 +33,8 @@ require_relative 'transform_response'
 
 WebsiteAnalysisApis2Utility.registrar = ->(u) {
   u.clean = WebsiteAnalysisApis2Utilities::Clean
+  u.clean_add = WebsiteAnalysisApis2Utilities::CleanAdd
+  u.clean_explain = WebsiteAnalysisApis2Utilities::CleanExplain
   u.done = WebsiteAnalysisApis2Utilities::Done
   u.make_error = WebsiteAnalysisApis2Utilities::MakeError
   u.feature_add = WebsiteAnalysisApis2Utilities::FeatureAdd

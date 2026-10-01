@@ -37,6 +37,8 @@ require_once __DIR__ . '/TransformResponse.php';
 
 WebsiteAnalysisApis2Utility::setRegistrar(function (WebsiteAnalysisApis2Utility $u): void {
     $u->clean = [WebsiteAnalysisApis2Clean::class, 'call'];
+    $u->clean_add = [WebsiteAnalysisApis2Clean::class, 'add'];
+    $u->clean_explain = [WebsiteAnalysisApis2Done::class, 'clean_explain'];
     $u->done = [WebsiteAnalysisApis2Done::class, 'call'];
     $u->make_error = [WebsiteAnalysisApis2MakeError::class, 'call'];
     $u->feature_add = [WebsiteAnalysisApis2FeatureAdd::class, 'call'];
