@@ -50,6 +50,10 @@ main: kit: entity: dead_link_checker: {
               "url"
             ]
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "deadlinks"

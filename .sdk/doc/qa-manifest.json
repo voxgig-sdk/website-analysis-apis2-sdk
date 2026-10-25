@@ -3,5 +3,21 @@
     "SUMMARY.md"
   ],
   "config": ".sdk/doc/qa/vale.ini",
-  "routes": {}
+  "routes": {},
+  "quoted": {
+    "SUMMARY.md": [
+      "Base64 encoded screenshot image or URL to the screenshot",
+      "Dead links check completed successfully",
+      "Load time in milliseconds",
+      "Number of HTTP requests",
+      "Page size in bytes",
+      "Performance measurement completed successfully",
+      "Production server",
+      "SEO audit completed successfully",
+      "SSL certificate check completed successfully",
+      "Screenshot captured successfully",
+      "Tech stack detection completed successfully",
+      "This API suite provides six free RESTful services for analyzing websites, including dead link checking, SEO auditing, screenshot capturing, performance measuring, tech stack detection, and SSL certificate checking. Users can access JSON responses without requiring an API key for basic functionalities."
+    ]
+  }
 }

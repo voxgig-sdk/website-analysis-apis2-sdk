@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Ssl();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.WebsiteAnalysisApis2SDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Ssl().load({ "url": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WEBSITE_ANALYSIS_APIS2_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "daysRemaining": { "a": true, "h": "Days Remaining", "n": "daysRemaining", "r": false, "t": "`$INTEGER`", "key$": "daysRemaining", "index$": 0 }, "issuer": { "a": true, "h": "Issuer", "n": "issuer", "r": false, "t": "`$STRING`", "key$": "issuer", "index$": 1 }, "subject": { "a": true, "h": "Subject", "n": "subject", "r": false, "t": "`$STRING`", "key$": "subject", "index$": 2 }, "success": { "a": true, "h": "Success", "n": "success", "r": false, "t": "`$BOOLEAN`", "key$": "success", "index$": 3 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": false, "t": "`$STRING`", "key$": "url", "index$": 4 }, "valid": { "a": true, "h": "Valid", "n": "valid", "r": false, "t": "`$BOOLEAN`", "key$": "valid", "index$": 5 }, "validFrom": { "a": true, "fo": "date-time", "h": "Valid From", "n": "validFrom", "r": false, "t": "`$STRING`", "key$": "validFrom", "index$": 6 }, "validTo": { "a": true, "fo": "date-time", "h": "Valid To", "n": "validTo", "r": false, "t": "`$STRING`", "key$": "validTo", "index$": 7 } }, "name": "ssl", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /ssl", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "https://example.com", "k": "query", "n": "url", "or": "url", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/ssl", "q": { "exist": ["url"] }, "r": {}, "s": [{ "lit": "ssl" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "ssl", "name__orig": "ssl", "Name": "Ssl", "name_": "ssl", "name-": "ssl", "NAME": "SSL", "index$": 4 }, { "active": true, "entity": "ssl", "key$": "BasicSslFlow", "kind": "basic", "name": "BasicSslFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "ssl_ref01", "srcdatavar": "ssl_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-ssl_ref01" } }], "index$": 0 }] }, 'Ssl', { "GET /ssl": { "protocol": "http", "parameters": [{ "name": "url", "in": "query", "description": "The URL of the website to check SSL certificate", "required": true, "schema": { "type": "string", "format": "uri", "example": "https://example.com" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "daysRemaining": { "a": true, "h": "Days Remaining", "n": "daysRemaining", "r": false, "t": "`$INTEGER`", "key$": "daysRemaining", "index$": 0 }, "issuer": { "a": true, "h": "Issuer", "n": "issuer", "r": false, "t": "`$STRING`", "key$": "issuer", "index$": 1 }, "subject": { "a": true, "h": "Subject", "n": "subject", "r": false, "t": "`$STRING`", "key$": "subject", "index$": 2 }, "success": { "a": true, "h": "Success", "n": "success", "r": false, "t": "`$BOOLEAN`", "key$": "success", "index$": 3 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": false, "t": "`$STRING`", "key$": "url", "index$": 4 }, "valid": { "a": true, "h": "Valid", "n": "valid", "r": false, "t": "`$BOOLEAN`", "key$": "valid", "index$": 5 }, "validFrom": { "a": true, "fo": "date-time", "h": "Valid From", "n": "validFrom", "r": false, "t": "`$STRING`", "key$": "validFrom", "index$": 6 }, "validTo": { "a": true, "fo": "date-time", "h": "Valid To", "n": "validTo", "r": false, "t": "`$STRING`", "key$": "validTo", "index$": 7 } }, "name": "ssl", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /ssl", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "https://example.com", "k": "query", "n": "url", "or": "url", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/ssl", "q": { "exist": ["url"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "ssl" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "ssl", "name__orig": "ssl", "Name": "Ssl", "name_": "ssl", "name-": "ssl", "NAME": "SSL", "index$": 4 }, { "active": true, "entity": "ssl", "key$": "BasicSslFlow", "kind": "basic", "name": "BasicSslFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "ssl_ref01", "srcdatavar": "ssl_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-ssl_ref01" } }], "index$": 0 }] }, 'Ssl', { "GET /ssl": { "protocol": "http", "parameters": [{ "name": "url", "in": "query", "description": "The URL of the website to check SSL certificate", "required": true, "schema": { "type": "string", "format": "uri", "example": "https://example.com" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != ssl_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

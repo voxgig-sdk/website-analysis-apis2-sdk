@@ -54,6 +54,14 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Performance();
         (0, node_assert_1.default)(null != ent);
     });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.WebsiteAnalysisApis2SDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Performance().load({ "url": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WEBSITE_ANALYSIS_APIS2_TEST_LIVE;
         for (const op of ['load']) {
@@ -62,7 +70,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "loadTime": { "a": true, "h": "Load Time", "n": "loadTime", "r": false, "sh": "Load time in milliseconds", "t": "`$NUMBER`", "key$": "loadTime", "index$": 0 }, "pageSize": { "a": true, "h": "Page Size", "n": "pageSize", "r": false, "sh": "Page size in bytes", "t": "`$INTEGER`", "key$": "pageSize", "index$": 1 }, "performanceScore": { "a": true, "h": "Performance Score", "n": "performanceScore", "r": false, "t": "`$INTEGER`", "key$": "performanceScore", "index$": 2 }, "requests": { "a": true, "h": "Requests", "n": "requests", "r": false, "sh": "Number of HTTP requests", "t": "`$INTEGER`", "key$": "requests", "index$": 3 }, "success": { "a": true, "h": "Success", "n": "success", "r": false, "t": "`$BOOLEAN`", "key$": "success", "index$": 4 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": false, "t": "`$STRING`", "key$": "url", "index$": 5 } }, "name": "performance", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /performance", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "https://example.com", "k": "query", "n": "url", "or": "url", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/performance", "q": { "exist": ["url"] }, "r": {}, "s": [{ "lit": "performance" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "performance", "name__orig": "performance", "Name": "Performance", "name_": "performance", "name-": "performance", "NAME": "PERFORMANCE", "index$": 1 }, { "active": true, "entity": "performance", "key$": "BasicPerformanceFlow", "kind": "basic", "name": "BasicPerformanceFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "performance_ref01", "srcdatavar": "performance_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-performance_ref01" } }], "index$": 0 }] }, 'Performance', { "GET /performance": { "protocol": "http", "parameters": [{ "name": "url", "in": "query", "description": "The URL of the website to measure performance", "required": true, "schema": { "type": "string", "format": "uri", "example": "https://example.com" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "loadTime": { "a": true, "h": "Load Time", "n": "loadTime", "r": false, "sh": "Load time in milliseconds", "t": "`$NUMBER`", "key$": "loadTime", "index$": 0 }, "pageSize": { "a": true, "h": "Page Size", "n": "pageSize", "r": false, "sh": "Page size in bytes", "t": "`$INTEGER`", "key$": "pageSize", "index$": 1 }, "performanceScore": { "a": true, "h": "Performance Score", "n": "performanceScore", "r": false, "t": "`$INTEGER`", "key$": "performanceScore", "index$": 2 }, "requests": { "a": true, "h": "Requests", "n": "requests", "r": false, "sh": "Number of HTTP requests", "t": "`$INTEGER`", "key$": "requests", "index$": 3 }, "success": { "a": true, "h": "Success", "n": "success", "r": false, "t": "`$BOOLEAN`", "key$": "success", "index$": 4 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": false, "t": "`$STRING`", "key$": "url", "index$": 5 } }, "name": "performance", "op": { "load": { "input": "data", "name": "load", "points": [{ "a": true, "co": { "id": "GET /performance", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "https://example.com", "k": "query", "n": "url", "or": "url", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/performance", "q": { "exist": ["url"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "performance" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "load" } }, "relations": { "ancestors": [] }, "key$": "performance", "name__orig": "performance", "Name": "Performance", "name_": "performance", "name-": "performance", "NAME": "PERFORMANCE", "index$": 1 }, { "active": true, "entity": "performance", "key$": "BasicPerformanceFlow", "kind": "basic", "name": "BasicPerformanceFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "performance_ref01", "srcdatavar": "performance_ref01_data", "suffix": "_dt0" }, "m": {}, "o": "load", "s": [], "v": [{ "apply": "TextFieldMark", "def": { "mark": "Mark01-performance_ref01" } }], "index$": 0 }] }, 'Performance', { "GET /performance": { "protocol": "http", "parameters": [{ "name": "url", "in": "query", "description": "The URL of the website to measure performance", "required": true, "schema": { "type": "string", "format": "uri", "example": "https://example.com" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -76,6 +84,11 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)(null != performance_ref01_data_dt0);
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

@@ -71,6 +71,7 @@ func MakeConfig() map[string]any {
 				},
 				"optspec": map[string]any{
 					"clearTimer": "`$FUNCTION`",
+					"now": "`$FUNCTION`",
 					"setTimer": "`$FUNCTION`",
 				},
 				"strict": false,
@@ -138,6 +139,7 @@ func MakeConfig() map[string]any {
 											"kind": "query",
 											"reqd": true,
 											"example": "https://example.com",
+											"field": true,
 										},
 									},
 								},
@@ -145,6 +147,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"url",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -223,6 +229,7 @@ func MakeConfig() map[string]any {
 											"kind": "query",
 											"reqd": true,
 											"example": "https://example.com",
+											"field": true,
 										},
 									},
 								},
@@ -230,6 +237,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"url",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -291,6 +302,7 @@ func MakeConfig() map[string]any {
 											"kind": "query",
 											"reqd": true,
 											"example": "https://example.com",
+											"field": true,
 										},
 									},
 								},
@@ -298,6 +310,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"url",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -383,6 +399,7 @@ func MakeConfig() map[string]any {
 											"kind": "query",
 											"reqd": true,
 											"example": "https://example.com",
+											"field": true,
 										},
 									},
 								},
@@ -390,6 +407,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"url",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -477,6 +498,7 @@ func MakeConfig() map[string]any {
 											"kind": "query",
 											"reqd": true,
 											"example": "https://example.com",
+											"field": true,
 										},
 									},
 								},
@@ -484,6 +506,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"url",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},
@@ -550,6 +576,10 @@ func MakeConfig() map[string]any {
 									"exist": []any{
 										"url",
 									},
+								},
+								"response": map[string]any{
+									"kind": "json",
+									"media": "application/json",
 								},
 							},
 						},

@@ -54,6 +54,53 @@ const utility_1 = require("../../utility");
         const ent = testsdk.Seo();
         (0, node_assert_1.default)(null != ent);
     });
+    class FailHook extends __1.BaseFeature {
+        name = 'failhook';
+        version = '0.0.1';
+        active = true;
+        unexpected = 0;
+        init() { }
+        PreSpec() { throw new Error('seo hook failed'); }
+        PreUnexpected() { this.unexpected++; }
+    }
+    (0, node_test_1.test)('stream-error', async () => {
+        const offline = { net: { offline: true } };
+        await node_assert_1.default.rejects(async () => {
+            for await (const _item of __1.WebsiteAnalysisApis2SDK.test(offline).Seo().stream('list')) { }
+        }, /offline/);
+        for await (const _item of __1.WebsiteAnalysisApis2SDK.test(offline).Seo()
+            .stream('list', undefined, { ctrl: { throw: false } })) { }
+        if (null != __1.config.feature?.rbac) {
+            const denied = __1.WebsiteAnalysisApis2SDK.test(undefined, { feature: { rbac: { active: true, deny: true } } });
+            await node_assert_1.default.rejects(async () => {
+                for await (const _item of denied.Seo().stream('list')) { }
+            }, (err) => 'rbac_denied' === err.code);
+        }
+    });
+    (0, node_test_1.test)('stream-ctrl', async () => {
+        const explain = {};
+        const ctrl = { explain };
+        for await (const _item of __1.WebsiteAnalysisApis2SDK.test().Seo().stream('list', undefined, { ctrl })) { }
+        node_assert_1.default.deepStrictEqual(Object.keys(ctrl), ['explain']);
+        (0, node_assert_1.default)(explain === ctrl.explain && 0 < Object.keys(explain).length);
+    });
+    (0, node_test_1.test)('unexpected', async () => {
+        const hook = new FailHook();
+        const client = new __1.WebsiteAnalysisApis2SDK({ feature: { test: { active: true } }, extend: [hook] });
+        await node_assert_1.default.rejects(client.Seo().list(), /hook failed/);
+        (0, node_assert_1.default)(0 < hook.unexpected);
+        const fired = hook.unexpected;
+        node_assert_1.default.strictEqual(await client.Seo().list(undefined, { throw: false }), undefined);
+        (0, node_assert_1.default)(fired < hook.unexpected);
+    });
+    (0, node_test_1.test)('validate', async (t) => {
+        if (null == __1.config.feature?.validate) {
+            t.skip('feature not present in this SDK: validate');
+            return;
+        }
+        const client = __1.WebsiteAnalysisApis2SDK.test(undefined, { feature: { validate: { active: true } } });
+        await node_assert_1.default.rejects(client.Seo().list({ "url": 1 }), (err) => 'validate_failed' === err.code);
+    });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WEBSITE_ANALYSIS_APIS2_TEST_LIVE;
         for (const op of ['list']) {
@@ -62,7 +109,7 @@ const utility_1 = require("../../utility");
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 0 }, "headings": { "a": true, "h": "Headings", "n": "headings", "r": false, "t": "`$OBJECT`", "key$": "headings", "index$": 1 }, "keywords": { "a": true, "h": "Keywords", "n": "keywords", "r": false, "t": "`$ARRAY`", "key$": "keywords", "index$": 2 }, "recommendations": { "a": true, "h": "Recommendations", "n": "recommendations", "r": false, "t": "`$ARRAY`", "key$": "recommendations", "index$": 3 }, "score": { "a": true, "h": "Score", "n": "score", "r": false, "t": "`$INTEGER`", "key$": "score", "index$": 4 }, "success": { "a": true, "h": "Success", "n": "success", "r": false, "t": "`$BOOLEAN`", "key$": "success", "index$": 5 }, "title": { "a": true, "h": "Title", "n": "title", "r": false, "t": "`$STRING`", "key$": "title", "index$": 6 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": false, "t": "`$STRING`", "key$": "url", "index$": 7 } }, "name": "seo", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /seo", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "https://example.com", "k": "query", "n": "url", "or": "url", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/seo", "q": { "exist": ["url"] }, "r": {}, "s": [{ "lit": "seo" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "seo", "name__orig": "seo", "Name": "Seo", "name_": "seo", "name-": "seo", "NAME": "SEO", "index$": 3 }, { "active": true, "entity": "seo", "key$": "BasicSeoFlow", "kind": "basic", "name": "BasicSeoFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "seo_ref01" } }], "index$": 0 }] }, 'Seo', { "GET /seo": { "protocol": "http", "parameters": [{ "name": "url", "in": "query", "description": "The URL of the website to audit for SEO", "required": true, "schema": { "type": "string", "format": "uri", "example": "https://example.com" }, "index$": 0 }] } });
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "description": { "a": true, "h": "Description", "n": "description", "r": false, "t": "`$STRING`", "key$": "description", "index$": 0 }, "headings": { "a": true, "h": "Headings", "n": "headings", "r": false, "t": "`$OBJECT`", "key$": "headings", "index$": 1 }, "keywords": { "a": true, "h": "Keywords", "n": "keywords", "r": false, "t": "`$ARRAY`", "key$": "keywords", "index$": 2 }, "recommendations": { "a": true, "h": "Recommendations", "n": "recommendations", "r": false, "t": "`$ARRAY`", "key$": "recommendations", "index$": 3 }, "score": { "a": true, "h": "Score", "n": "score", "r": false, "t": "`$INTEGER`", "key$": "score", "index$": 4 }, "success": { "a": true, "h": "Success", "n": "success", "r": false, "t": "`$BOOLEAN`", "key$": "success", "index$": 5 }, "title": { "a": true, "h": "Title", "n": "title", "r": false, "t": "`$STRING`", "key$": "title", "index$": 6 }, "url": { "a": true, "fo": "uri", "h": "Url", "n": "url", "r": false, "t": "`$STRING`", "key$": "url", "index$": 7 } }, "name": "seo", "op": { "list": { "input": "data", "name": "list", "points": [{ "a": true, "co": { "id": "GET /seo", "source": "openapi3", "version": 2 }, "g": { "query": [{ "a": true, "ex": "https://example.com", "k": "query", "n": "url", "or": "url", "r": true, "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "GET", "o": "/seo", "q": { "exist": ["url"] }, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "seo" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "list" } }, "relations": { "ancestors": [] }, "key$": "seo", "name__orig": "seo", "Name": "Seo", "name_": "seo", "name-": "seo", "NAME": "SEO", "index$": 3 }, { "active": true, "entity": "seo", "key$": "BasicSeoFlow", "kind": "basic", "name": "BasicSeoFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": {}, "m": {}, "o": "list", "s": [], "v": [{ "apply": "ItemExists", "def": { "ref": "seo_ref01" } }], "index$": 0 }] }, 'Seo', { "GET /seo": { "protocol": "http", "parameters": [{ "name": "url", "in": "query", "description": "The URL of the website to audit for SEO", "required": true, "schema": { "type": "string", "format": "uri", "example": "https://example.com" }, "index$": 0 }] } }, { strict: LIVE_STRICT, t });
         }
         const client = setup.client;
         const struct = setup.struct;
@@ -75,6 +122,11 @@ const utility_1 = require("../../utility");
         const seo_ref01_list = (await seo_ref01_ent.list(seo_ref01_match)).map((e) => e.data());
     });
 });
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true;
 function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null

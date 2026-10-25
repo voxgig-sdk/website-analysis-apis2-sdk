@@ -117,10 +117,10 @@ local dead_link_checker = client:DeadLinkChecker(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:DeadLinkChecker():list()
+local results, err = client:DeadLinkChecker():list({ url = "example" })
 ```
 
 ### Common Methods
@@ -174,7 +174,7 @@ local performance = client:Performance(nil)
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Performance():load({ url = "url" })
@@ -228,7 +228,7 @@ local screenshot = client:Screenshot(nil)
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Screenshot():load({ url = "url" })
@@ -287,10 +287,10 @@ local seo = client:Seo(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:Seo():list()
+local results, err = client:Seo():list({ url = "example" })
 ```
 
 ### Common Methods
@@ -346,7 +346,7 @@ local ssl = client:Ssl(nil)
 
 #### `load(reqmatch, ctrl) -> any, err`
 
-Load a single entity matching the given criteria.
+Load a single entity matching the given criteria. Returns the entity, whose record `data_get()` reads, or `nil` and an error on failure.
 
 ```lua
 local result, err = client:Ssl():load({ url = "url" })
@@ -400,10 +400,10 @@ local tech_stack_detection = client:TechStackDetection(nil)
 
 #### `list(reqmatch, ctrl) -> any, err`
 
-List entities matching the given criteria. Returns an array.
+List entities matching the given criteria. Returns an array of entities, one per record, or `nil` and an error on failure.
 
 ```lua
-local results, err = client:TechStackDetection():list()
+local results, err = client:TechStackDetection():list({ url = "example" })
 ```
 
 ### Common Methods
@@ -593,6 +593,7 @@ Timeout.
 | Option | Type |
 |---|---|
 | `clearTimer` | function |
+| `now` | function |
 | `setTimer` | function |
 
 These take no default: the feature behaves one way when you supply them and

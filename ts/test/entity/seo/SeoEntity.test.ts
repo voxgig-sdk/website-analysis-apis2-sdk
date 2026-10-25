@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { WebsiteAnalysisApis2SDK, BaseFeature, stdutil } from '../../..'
+import { WebsiteAnalysisApis2SDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('SeoEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('seo hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of WebsiteAnalysisApis2SDK.test(offline).Seo().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of WebsiteAnalysisApis2SDK.test(offline).Seo()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = WebsiteAnalysisApis2SDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.Seo().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of WebsiteAnalysisApis2SDK.test().Seo().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new WebsiteAnalysisApis2SDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.Seo().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.Seo().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = WebsiteAnalysisApis2SDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.Seo().list({"url":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.WEBSITE_ANALYSIS_APIS2_TEST_LIVE
@@ -51,7 +109,7 @@ describe('SeoEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"t":"`$STRING`","key$":"description","index$":0},"headings":{"a":true,"h":"Headings","n":"headings","r":false,"t":"`$OBJECT`","key$":"headings","index$":1},"keywords":{"a":true,"h":"Keywords","n":"keywords","r":false,"t":"`$ARRAY`","key$":"keywords","index$":2},"recommendations":{"a":true,"h":"Recommendations","n":"recommendations","r":false,"t":"`$ARRAY`","key$":"recommendations","index$":3},"score":{"a":true,"h":"Score","n":"score","r":false,"t":"`$INTEGER`","key$":"score","index$":4},"success":{"a":true,"h":"Success","n":"success","r":false,"t":"`$BOOLEAN`","key$":"success","index$":5},"title":{"a":true,"h":"Title","n":"title","r":false,"t":"`$STRING`","key$":"title","index$":6},"url":{"a":true,"fo":"uri","h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":7}},"name":"seo","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /seo","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"https://example.com","k":"query","n":"url","or":"url","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/seo","q":{"exist":["url"]},"r":{},"s":[{"lit":"seo"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"seo","name__orig":"seo","Name":"Seo","name_":"seo","name-":"seo","NAME":"SEO","index$":3}, {"active":true,"entity":"seo","key$":"BasicSeoFlow","kind":"basic","name":"BasicSeoFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"seo_ref01"}}],"index$":0}]}, 'Seo', {"GET /seo":{"protocol":"http","parameters":[{"name":"url","in":"query","description":"The URL of the website to audit for SEO","required":true,"schema":{"type":"string","format":"uri","example":"https://example.com"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"description":{"a":true,"h":"Description","n":"description","r":false,"t":"`$STRING`","key$":"description","index$":0},"headings":{"a":true,"h":"Headings","n":"headings","r":false,"t":"`$OBJECT`","key$":"headings","index$":1},"keywords":{"a":true,"h":"Keywords","n":"keywords","r":false,"t":"`$ARRAY`","key$":"keywords","index$":2},"recommendations":{"a":true,"h":"Recommendations","n":"recommendations","r":false,"t":"`$ARRAY`","key$":"recommendations","index$":3},"score":{"a":true,"h":"Score","n":"score","r":false,"t":"`$INTEGER`","key$":"score","index$":4},"success":{"a":true,"h":"Success","n":"success","r":false,"t":"`$BOOLEAN`","key$":"success","index$":5},"title":{"a":true,"h":"Title","n":"title","r":false,"t":"`$STRING`","key$":"title","index$":6},"url":{"a":true,"fo":"uri","h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":7}},"name":"seo","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /seo","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"https://example.com","k":"query","n":"url","or":"url","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/seo","q":{"exist":["url"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"seo"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"seo","name__orig":"seo","Name":"Seo","name_":"seo","name-":"seo","NAME":"SEO","index$":3}, {"active":true,"entity":"seo","key$":"BasicSeoFlow","kind":"basic","name":"BasicSeoFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"seo_ref01"}}],"index$":0}]}, 'Seo', {"GET /seo":{"protocol":"http","parameters":[{"name":"url","in":"query","description":"The URL of the website to audit for SEO","required":true,"schema":{"type":"string","format":"uri","example":"https://example.com"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('SeoEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

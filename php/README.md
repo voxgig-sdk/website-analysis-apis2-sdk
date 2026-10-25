@@ -12,7 +12,7 @@ The SDK exposes the API as capitalised, semantic **Entities** — for example `$
 
 ## Install
 This package is not yet published to Packagist. Install it from the
-GitHub release tag (`php/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/releases)), or
+GitHub release tag (`php/vX.Y.Z`, see [Tags](https://github.com/voxgig-sdk/website-analysis-apis2-sdk/tags)), or
 from a clone as a Composer path repository:
 
 ```bash
@@ -41,7 +41,7 @@ $client = new WebsiteAnalysisApis2SDK();
 ```php
 try {
     // list() returns entity instances; data_get() reads each record.
-    $deadlinkcheckers = $client->DeadLinkChecker()->list();
+    $deadlinkcheckers = $client->DeadLinkChecker()->list(["url" => "example"]);
     foreach ($deadlinkcheckers as $record) {
         $item = $record->data_get();
         echo $item["statusCode"] . "\n";
@@ -226,8 +226,8 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `($reqmatch, $ctrl): array` | Load a single entity by match criteria. |
-| `list` | `(?array $reqmatch = null, $ctrl): array` | List entities matching the criteria (call with no argument to list all). |
+| `load` | `($reqmatch, $ctrl): mixed` | Load a single entity by match criteria, and return it. |
+| `list` | `(?array $reqmatch = null, $ctrl): mixed` | List entities matching the criteria (call with no argument to list all), one per record. |
 | `data_get` | `(): array` | Get entity data. |
 | `data_set` | `($data): void` | Set entity data. |
 | `match_get` | `(): array` | Get entity match criteria. |
@@ -237,9 +237,9 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
-ops, a `list` for `list`) and throw on error. Wrap calls in
-`try`/`catch` to handle failures.
+Entity operations return the entity, and `list` an `array` of entities, one
+per record; an entity's `data_get()` reads its record (an `array`). They
+throw on error, so wrap calls in `try`/`catch` to handle failures.
 
 The `direct()` escape hatch never throws — it returns a result `array`
 you branch on via `$result["ok"]`:
@@ -364,8 +364,8 @@ Create an instance: `$dead_link_checker = $client->DeadLinkChecker();`
 #### Example: List
 
 ```php
-// list() returns an array of DeadLinkChecker records (throws on error).
-$dead_link_checkers = $client->DeadLinkChecker()->list();
+// list() returns an array of DeadLinkChecker entities, one per record (throws on error).
+$dead_link_checkers = $client->DeadLinkChecker()->list(["url" => "example"]);
 ```
 
 
@@ -450,8 +450,8 @@ Create an instance: `$seo = $client->Seo();`
 #### Example: List
 
 ```php
-// list() returns an array of Seo records (throws on error).
-$seos = $client->Seo()->list();
+// list() returns an array of Seo entities, one per record (throws on error).
+$seos = $client->Seo()->list(["url" => "example"]);
 ```
 
 
@@ -507,8 +507,8 @@ Create an instance: `$tech_stack_detection = $client->TechStackDetection();`
 #### Example: List
 
 ```php
-// list() returns an array of TechStackDetection records (throws on error).
-$tech_stack_detections = $client->TechStackDetection()->list();
+// list() returns an array of TechStackDetection entities, one per record (throws on error).
+$tech_stack_detections = $client->TechStackDetection()->list(["url" => "example"]);
 ```
 
 ## Features

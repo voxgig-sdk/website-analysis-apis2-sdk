@@ -19,8 +19,18 @@ const PLAN: any[] = [
       "url": "https://example.com"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url"
+    ],
+    "queryArgs": [
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -29,8 +39,8 @@ const PLAN: any[] = [
       "url": "https://example.com",
       "deadLinks": [
         {
-          "statusCode": 1,
-          "url": "x"
+          "url": "x",
+          "statusCode": 1
         }
       ],
       "totalLinks": 1
@@ -48,8 +58,18 @@ const PLAN: any[] = [
       "url": "https://example.com"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url"
+    ],
+    "queryArgs": [
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -74,8 +94,18 @@ const PLAN: any[] = [
       "url": "https://example.com"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url"
+    ],
+    "queryArgs": [
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -97,8 +127,18 @@ const PLAN: any[] = [
       "url": "https://example.com"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url"
+    ],
+    "queryArgs": [
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -136,8 +176,18 @@ const PLAN: any[] = [
       "url": "https://example.com"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url"
+    ],
+    "queryArgs": [
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -164,8 +214,18 @@ const PLAN: any[] = [
       "url": "https://example.com"
     },
     "headers": [],
+    "cookies": [],
+    "responseMedia": [
+      "application/json"
+    ],
     "query": [
       "url"
+    ],
+    "queryArgs": [
+      {
+        "name": "url",
+        "wire": "url"
+      }
     ],
     "auth": null,
     "status": 200,
@@ -174,8 +234,8 @@ const PLAN: any[] = [
       "url": "https://example.com",
       "technologies": [
         {
-          "category": "x",
           "name": "x",
+          "category": "x",
           "version": "x"
         }
       ]

@@ -86,6 +86,10 @@ main: kit: entity: seo: {
               "url"
             ]
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "seo"

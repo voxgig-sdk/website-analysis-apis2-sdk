@@ -79,6 +79,7 @@ module WebsiteAnalysisApis2Config
           },
           "optspec" => {
             "clearTimer" => "`$FUNCTION`",
+            "now" => "`$FUNCTION`",
             "setTimer" => "`$FUNCTION`",
           },
           "strict" => false,
@@ -146,6 +147,7 @@ module WebsiteAnalysisApis2Config
                         "kind" => "query",
                         "reqd" => true,
                         "example" => "https://example.com",
+                        "field" => true,
                       },
                     ],
                   },
@@ -153,6 +155,10 @@ module WebsiteAnalysisApis2Config
                     "exist" => [
                       "url",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -231,6 +237,7 @@ module WebsiteAnalysisApis2Config
                         "kind" => "query",
                         "reqd" => true,
                         "example" => "https://example.com",
+                        "field" => true,
                       },
                     ],
                   },
@@ -238,6 +245,10 @@ module WebsiteAnalysisApis2Config
                     "exist" => [
                       "url",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -299,6 +310,7 @@ module WebsiteAnalysisApis2Config
                         "kind" => "query",
                         "reqd" => true,
                         "example" => "https://example.com",
+                        "field" => true,
                       },
                     ],
                   },
@@ -306,6 +318,10 @@ module WebsiteAnalysisApis2Config
                     "exist" => [
                       "url",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -391,6 +407,7 @@ module WebsiteAnalysisApis2Config
                         "kind" => "query",
                         "reqd" => true,
                         "example" => "https://example.com",
+                        "field" => true,
                       },
                     ],
                   },
@@ -398,6 +415,10 @@ module WebsiteAnalysisApis2Config
                     "exist" => [
                       "url",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -485,6 +506,7 @@ module WebsiteAnalysisApis2Config
                         "kind" => "query",
                         "reqd" => true,
                         "example" => "https://example.com",
+                        "field" => true,
                       },
                     ],
                   },
@@ -492,6 +514,10 @@ module WebsiteAnalysisApis2Config
                     "exist" => [
                       "url",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],
@@ -558,6 +584,10 @@ module WebsiteAnalysisApis2Config
                     "exist" => [
                       "url",
                     ],
+                  },
+                  "response" => {
+                    "kind" => "json",
+                    "media" => "application/json",
                   },
                 },
               ],

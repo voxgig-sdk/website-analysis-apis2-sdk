@@ -77,6 +77,10 @@ main: kit: entity: performance: {
               "url"
             ]
           }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
           s: [
             {
               lit: "performance"

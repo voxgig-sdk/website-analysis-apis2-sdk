@@ -9,7 +9,7 @@ import { createLiveTransport } from '../../live-runner'
 import { runLiveEntity } from '../../live-entity'
 
 
-import { WebsiteAnalysisApis2SDK, BaseFeature, stdutil } from '../../..'
+import { WebsiteAnalysisApis2SDK, BaseFeature, config, stdutil } from '../../..'
 
 import {
   envOverride,
@@ -41,6 +41,64 @@ describe('DeadLinkCheckerEntity', async () => {
   })
 
 
+  class FailHook extends BaseFeature {
+    name = 'failhook'
+    version = '0.0.1'
+    active = true
+    unexpected = 0
+    init() { }
+    PreSpec() { throw new Error('dead_link_checker hook failed') }
+    PreUnexpected() { this.unexpected++ }
+  }
+
+  test('stream-error', async () => {
+    const offline = { net: { offline: true } }
+    await assert.rejects(async () => {
+      for await (const _item of WebsiteAnalysisApis2SDK.test(offline).DeadLinkChecker().stream('list')) { }
+    }, /offline/)
+
+    for await (const _item of WebsiteAnalysisApis2SDK.test(offline).DeadLinkChecker()
+      .stream('list', undefined, { ctrl: { throw: false } })) { }
+
+    if (null != (config as any).feature?.rbac) {
+      const denied = WebsiteAnalysisApis2SDK.test(undefined, { feature: { rbac: { active: true, deny: true } } })
+      await assert.rejects(async () => {
+        for await (const _item of denied.DeadLinkChecker().stream('list')) { }
+      }, (err: any) => 'rbac_denied' === err.code)
+    }
+  })
+
+  test('stream-ctrl', async () => {
+    const explain: any = {}
+    const ctrl: any = { explain }
+    for await (const _item of WebsiteAnalysisApis2SDK.test().DeadLinkChecker().stream('list', undefined, { ctrl })) { }
+    assert.deepStrictEqual(Object.keys(ctrl), ['explain'])
+    assert(explain === ctrl.explain && 0 < Object.keys(explain).length)
+  })
+
+  test('unexpected', async () => {
+    const hook = new FailHook()
+    const client = new WebsiteAnalysisApis2SDK({ feature: { test: { active: true } }, extend: [hook] })
+    await assert.rejects(client.DeadLinkChecker().list(), /hook failed/)
+    assert(0 < hook.unexpected)
+
+    const fired = hook.unexpected
+    assert.strictEqual(await client.DeadLinkChecker().list(undefined, { throw: false }), undefined)
+    assert(fired < hook.unexpected)
+  })
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = WebsiteAnalysisApis2SDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.DeadLinkChecker().list({"url":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
   test('basic', async (t) => {
 
     const live = 'TRUE' === process.env.WEBSITE_ANALYSIS_APIS2_TEST_LIVE
@@ -51,7 +109,7 @@ describe('DeadLinkCheckerEntity', async () => {
     
     const setup = basicSetup()
     if (setup.live) {
-      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"statusCode":{"a":true,"h":"Status Code","n":"statusCode","r":false,"t":"`$INTEGER`","key$":"statusCode","index$":0},"url":{"a":true,"fo":"uri","h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":1}},"name":"dead_link_checker","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /deadlinks","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"https://example.com","k":"query","n":"url","or":"url","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/deadlinks","q":{"exist":["url"]},"r":{},"s":[{"lit":"deadlinks"}],"t":{"req":"`reqdata`","res":"`body.deadLinks`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"dead_link_checker","name__orig":"dead_link_checker","Name":"DeadLinkChecker","name_":"dead_link_checker","name-":"dead-link-checker","NAME":"DEAD_LINK_CHECKER","index$":0}, {"active":true,"entity":"dead_link_checker","key$":"BasicDeadLinkCheckerFlow","kind":"basic","name":"BasicDeadLinkCheckerFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"dead_link_checker_ref01"}}],"index$":0}]}, 'DeadLinkChecker', {"GET /deadlinks":{"protocol":"http","parameters":[{"name":"url","in":"query","description":"The URL of the website to check for dead links","required":true,"schema":{"type":"string","format":"uri","example":"https://example.com"},"index$":0}]}})
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"statusCode":{"a":true,"h":"Status Code","n":"statusCode","r":false,"t":"`$INTEGER`","key$":"statusCode","index$":0},"url":{"a":true,"fo":"uri","h":"Url","n":"url","r":false,"t":"`$STRING`","key$":"url","index$":1}},"name":"dead_link_checker","op":{"list":{"input":"data","name":"list","points":[{"a":true,"co":{"id":"GET /deadlinks","source":"openapi3","version":2},"g":{"query":[{"a":true,"ex":"https://example.com","k":"query","n":"url","or":"url","r":true,"t":"`$STRING`","index$":0}]},"k":"http","m":"GET","o":"/deadlinks","q":{"exist":["url"]},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"deadlinks"}],"t":{"req":"`reqdata`","res":"`body.deadLinks`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"dead_link_checker","name__orig":"dead_link_checker","Name":"DeadLinkChecker","name_":"dead_link_checker","name-":"dead-link-checker","NAME":"DEAD_LINK_CHECKER","index$":0}, {"active":true,"entity":"dead_link_checker","key$":"BasicDeadLinkCheckerFlow","kind":"basic","name":"BasicDeadLinkCheckerFlow","param":{},"step":[{"a":true,"d":{},"i":{},"m":{},"o":"list","s":[],"v":[{"apply":"ItemExists","def":{"ref":"dead_link_checker_ref01"}}],"index$":0}]}, 'DeadLinkChecker', {"GET /deadlinks":{"protocol":"http","parameters":[{"name":"url","in":"query","description":"The URL of the website to check for dead links","required":true,"schema":{"type":"string","format":"uri","example":"https://example.com"},"index$":0}]}}, { strict: LIVE_STRICT, t })
     }
     const client = setup.client
     const struct = setup.struct
@@ -72,6 +130,12 @@ describe('DeadLinkCheckerEntity', async () => {
 })
 
 
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
 
 function basicSetup(extra?: any) {
   // TODO: fix test def options

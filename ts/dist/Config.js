@@ -87,6 +87,7 @@ class Config {
             },
             "optspec": {
                 "clearTimer": "`$FUNCTION`",
+                "now": "`$FUNCTION`",
                 "setTimer": "`$FUNCTION`"
             },
             "strict": false,
@@ -153,7 +154,8 @@ class Config {
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "reqd": true,
-                                        "example": "https://example.com"
+                                        "example": "https://example.com",
+                                        "field": true
                                     }
                                 ]
                             },
@@ -161,6 +163,10 @@ class Config {
                                 "exist": [
                                     "url"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -238,7 +244,8 @@ class Config {
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "reqd": true,
-                                        "example": "https://example.com"
+                                        "example": "https://example.com",
+                                        "field": true
                                     }
                                 ]
                             },
@@ -246,6 +253,10 @@ class Config {
                                 "exist": [
                                     "url"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -306,7 +317,8 @@ class Config {
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "reqd": true,
-                                        "example": "https://example.com"
+                                        "example": "https://example.com",
+                                        "field": true
                                     }
                                 ]
                             },
@@ -314,6 +326,10 @@ class Config {
                                 "exist": [
                                     "url"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -398,7 +414,8 @@ class Config {
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "reqd": true,
-                                        "example": "https://example.com"
+                                        "example": "https://example.com",
+                                        "field": true
                                     }
                                 ]
                             },
@@ -406,6 +423,10 @@ class Config {
                                 "exist": [
                                     "url"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -492,7 +513,8 @@ class Config {
                                         "type": "`$STRING`",
                                         "kind": "query",
                                         "reqd": true,
-                                        "example": "https://example.com"
+                                        "example": "https://example.com",
+                                        "field": true
                                     }
                                 ]
                             },
@@ -500,6 +522,10 @@ class Config {
                                 "exist": [
                                     "url"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]
@@ -566,6 +592,10 @@ class Config {
                                 "exist": [
                                     "url"
                                 ]
+                            },
+                            "response": {
+                                "kind": "json",
+                                "media": "application/json"
                             }
                         }
                     ]

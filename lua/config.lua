@@ -67,6 +67,7 @@ local function make_config()
         },
         ["optspec"] = {
           ["clearTimer"] = "`$FUNCTION`",
+          ["now"] = "`$FUNCTION`",
           ["setTimer"] = "`$FUNCTION`",
         },
         ["strict"] = false,
@@ -134,6 +135,7 @@ local function make_config()
                       ["kind"] = "query",
                       ["reqd"] = true,
                       ["example"] = "https://example.com",
+                      ["field"] = true,
                     },
                   },
                 },
@@ -141,6 +143,10 @@ local function make_config()
                   ["exist"] = {
                     "url",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -219,6 +225,7 @@ local function make_config()
                       ["kind"] = "query",
                       ["reqd"] = true,
                       ["example"] = "https://example.com",
+                      ["field"] = true,
                     },
                   },
                 },
@@ -226,6 +233,10 @@ local function make_config()
                   ["exist"] = {
                     "url",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -287,6 +298,7 @@ local function make_config()
                       ["kind"] = "query",
                       ["reqd"] = true,
                       ["example"] = "https://example.com",
+                      ["field"] = true,
                     },
                   },
                 },
@@ -294,6 +306,10 @@ local function make_config()
                   ["exist"] = {
                     "url",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -379,6 +395,7 @@ local function make_config()
                       ["kind"] = "query",
                       ["reqd"] = true,
                       ["example"] = "https://example.com",
+                      ["field"] = true,
                     },
                   },
                 },
@@ -386,6 +403,10 @@ local function make_config()
                   ["exist"] = {
                     "url",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -473,6 +494,7 @@ local function make_config()
                       ["kind"] = "query",
                       ["reqd"] = true,
                       ["example"] = "https://example.com",
+                      ["field"] = true,
                     },
                   },
                 },
@@ -480,6 +502,10 @@ local function make_config()
                   ["exist"] = {
                     "url",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },
@@ -546,6 +572,10 @@ local function make_config()
                   ["exist"] = {
                     "url",
                   },
+                },
+                ["response"] = {
+                  ["kind"] = "json",
+                  ["media"] = "application/json",
                 },
               },
             },

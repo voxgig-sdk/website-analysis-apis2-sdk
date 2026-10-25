@@ -96,6 +96,7 @@ def make_config():
         },
         "optspec": {
           "clearTimer": "`$FUNCTION`",
+          "now": "`$FUNCTION`",
           "setTimer": "`$FUNCTION`",
         },
         "strict": False,
@@ -163,6 +164,7 @@ def make_config():
                       "kind": "query",
                       "reqd": True,
                       "example": "https://example.com",
+                      "field": True,
                     },
                   ],
                 },
@@ -170,6 +172,10 @@ def make_config():
                   "exist": [
                     "url",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -248,6 +254,7 @@ def make_config():
                       "kind": "query",
                       "reqd": True,
                       "example": "https://example.com",
+                      "field": True,
                     },
                   ],
                 },
@@ -255,6 +262,10 @@ def make_config():
                   "exist": [
                     "url",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -316,6 +327,7 @@ def make_config():
                       "kind": "query",
                       "reqd": True,
                       "example": "https://example.com",
+                      "field": True,
                     },
                   ],
                 },
@@ -323,6 +335,10 @@ def make_config():
                   "exist": [
                     "url",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -408,6 +424,7 @@ def make_config():
                       "kind": "query",
                       "reqd": True,
                       "example": "https://example.com",
+                      "field": True,
                     },
                   ],
                 },
@@ -415,6 +432,10 @@ def make_config():
                   "exist": [
                     "url",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -502,6 +523,7 @@ def make_config():
                       "kind": "query",
                       "reqd": True,
                       "example": "https://example.com",
+                      "field": True,
                     },
                   ],
                 },
@@ -509,6 +531,10 @@ def make_config():
                   "exist": [
                     "url",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],
@@ -575,6 +601,10 @@ def make_config():
                   "exist": [
                     "url",
                   ],
+                },
+                "response": {
+                  "kind": "json",
+                  "media": "application/json",
                 },
               },
             ],

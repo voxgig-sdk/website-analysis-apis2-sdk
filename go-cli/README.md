@@ -20,7 +20,7 @@ export WEBSITE_ANALYSIS_APIS2_APIKEY=sk_live_xxx
 
 # 4. Each command line is ONE boru expression, run against the API:
 ./website-analysis-apis2-cli list dead_link_checker
-./website-analysis-apis2-cli list performance
+./website-analysis-apis2-cli list seo
 
 # 5. Override the API base URL for a single call
 WEBSITE_ANALYSIS_APIS2_BASE=https://api.example.com ./website-analysis-apis2-cli list dead_link_checker
